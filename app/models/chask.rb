@@ -1,6 +1,6 @@
 class Chask < ApplicationRecord
   belongs_to :task
-  has_manu :sub_chasks
+  belongs_to :chask, optional: true
 
   validates :title, presence: true
   validates :status, presence: true
