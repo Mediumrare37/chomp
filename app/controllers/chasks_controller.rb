@@ -1,0 +1,2 @@
+class ChasksController < ApplicationController
+end
