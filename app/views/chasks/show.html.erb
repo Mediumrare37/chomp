@@ -1,0 +1,16 @@
+<h1><%= @chask.title %></h1>
+<p><%= 'Status (not visible to user): ' + @chask.status.to_s.upcase %></p>
+<%= link_to "Edit Title", edit_chask_path, class:"btn btn-primary" %>
+<%= simple_form_for @chask do |f| %>
+  <%= f.input :status, as: :hidden, input_html: { value: 'queued'} %>
+  <%= f.button :submit, 'Save for Later', class:"btn-primary" %>
+<% end %>
+<%= simple_form_for @chask, url: excluded_chask_path(@chask) do |f| %>
+  <%= f.input :status, as: :hidden, input_html: { value: 'excluded'} %>
+  <%= f.button :submit, 'Exclude', class:"btn-primary" %>
+<% end %>
+<%= simple_form_for @chask, url: progress_chask_path(@chask) do |f| %>
+  <%= f.input :status, as: :hidden, input_html: { value: 'progress'} %>
+  <%= f.button :submit, 'Start', class:"btn-primary" %>
+<% end %>
+<%= link_to 'Break Down', breakdown_chask_path(@chask), class: " mt-3 btn btn-primary"  %>
