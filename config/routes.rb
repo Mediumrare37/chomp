@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   resources :chasks do
     member do
       patch :excluded
+      patch :queued
       patch :progress
-      post :breakdown
+      get :breakdown
     end
   end
 
