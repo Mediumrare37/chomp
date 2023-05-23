@@ -3,6 +3,7 @@ class ChasksController < ApplicationController
     # Line below is to create a sub-chask
     # @chask = Chask.new
     @chask = Chask.find(params[:id])
+    authorize @chask
     # if params[:filter]
   end
 

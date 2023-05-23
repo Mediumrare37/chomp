@@ -1,3 +1,18 @@
+
+<h1>Task Details</h1>
+
+<p>Title: <%= @task.title %></p>
+<p>Completed: <%= @task.completed %></p>
+
+<% if policy(@task).update? %>
+  <%= link_to 'Edit', edit_task_path(@task) %>
+<% end %>
+
+
+
+
+
+
 <h1><%= @chask.title %></h1>
 <p><%= 'Status (not visible to user): ' + @chask.status.to_s.upcase %></p>
 <%= link_to "Edit Title", edit_chask_path, class:"btn btn-primary" %>
