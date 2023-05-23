@@ -1,1 +1,18 @@
 // Specific CSS for your home-page
+
+#main-header {
+  h1 {
+    font: {
+      weight: 800;
+      size: 2rem;
+    }
+  }
+  h2 { font-weight: 600; }
+}
+
+h3 { font-weight: 600; }
+
+.banner img {
+  max-width: 100%;
+  display: block;
+}

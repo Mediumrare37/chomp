@@ -1,2 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <header id="main-header">
+    <h1>Task Chomp</h1>
+    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla beatae ea ad, voluptates nobis veniam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, nisi!</h2>
+  </header>
+
+  <div class="banner">
+    <%= image_tag "stars.svg" %>
+  </div>
+
+  <%= simple_form_for @task do |f| %>
+    <%= f.input :title %>
+  <% end %>
+
+  <h3>Start a journey!</h3>
+</div>
