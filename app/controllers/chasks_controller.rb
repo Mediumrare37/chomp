@@ -1,26 +1,32 @@
 class ChasksController < ApplicationController
+
   def show
     # Line below is to create a sub-chask
     # @chask = Chask.new
     @chask = Chask.find(params[:id])
     authorize @chask
     # if params[:filter]
+    authorize @chask
   end
 
   def edit
     @chask = Chask.find(params[:id])
     @task = @chask.task
+    authorize @chask
   end
 
   def update
-    @chask = Chask.find(params[:id])
+    @chask = Chask.find(params[:id]) # Find the @chask object first
     @task = @chask.task
+    # Authorize the found @chask object
 
     if @chask.update(chask_params)
       redirect_to chask_path(@chask), notice: 'Chask was successfully updated.'
     else
       render :edit
     end
+
+  authorize @chask
   end
 
   def progress
