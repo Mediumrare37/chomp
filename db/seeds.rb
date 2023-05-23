@@ -12,11 +12,9 @@ task1 = Task.create(title: 'Task 1', completed: false, user_id: user1.id)
 task2 = Task.create(title: 'Task 2', completed: true, user_id: user2.id)
 
 
-# Create users
+# to Create users
 # user1 = User.create(name: 'User 1')
 # user2 = User.create(name: 'User 2')
-
-
 
 #To create random id numbers
 # task1 = Task.create(title: 'Task 1', completed: false)
@@ -44,7 +42,7 @@ task_data.each do |task_info|
   end
 end
 
-puts "Compleed seeding"
+puts "Completed seeding"
 
 # Examples:
 #
