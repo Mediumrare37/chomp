@@ -24,9 +24,11 @@
 h3 {
   font-weight: 600;
   span { color: $dreamy-yellow; }
+  text-align: center;
 }
 
 .banner img {
+  position: relative;
   margin: 2rem 0;
   max-width: 100%;
   display: block;
