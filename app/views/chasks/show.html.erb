@@ -1,7 +1,13 @@
 <h1><%= @chask.title %></h1>
 <p><%= 'Status (not visible to user): ' + @chask.status.to_s.upcase %></p>
+<p><%= 'Belongs to Task: ' + @chask.task.id.to_s %></p>
+<% if @chask.chask %>
+  <p><%= 'Belongs to Chask: ' + @chask.chask.id.to_s %></p>
+<% else %>
+  <%= link_to 'Break Down', breakdown_chask_path(@chask), class: " mt-3 btn btn-primary"  %>
+<% end %>
 <%= link_to "Edit Title", edit_chask_path, class:"btn btn-primary" %>
-<%= simple_form_for @chask do |f| %>
+<%= simple_form_for @chask, url: queued_chask_path(@chask) do |f| %>
   <%= f.input :status, as: :hidden, input_html: { value: 'queued'} %>
   <%= f.button :submit, 'Save for Later', class:"btn-primary" %>
 <% end %>
@@ -13,4 +19,3 @@
   <%= f.input :status, as: :hidden, input_html: { value: 'progress'} %>
   <%= f.button :submit, 'Start', class:"btn-primary" %>
 <% end %>
-<%= link_to 'Break Down', breakdown_chask_path(@chask), class: " mt-3 btn btn-primary"  %>
