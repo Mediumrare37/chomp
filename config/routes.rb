@@ -5,7 +5,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :tasks do
-    resources :chasks
+  resources :tasks, only: [:show]
+  resources :chasks do
+    member do
+      patch :excluded
+      patch :queued
+      patch :progress
+      patch :paused
+      patch :completed
+      get :breakdown
+    end
   end
+
 end
