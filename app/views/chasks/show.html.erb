@@ -1,13 +1,4 @@
 
-<h1>Task Details</h1>
-
-<p>Title: <%= @task.title %></p>
-<p>Completed: <%= @task.completed %></p>
-
-<% if policy(@task).update? %>
-  <%= link_to 'Edit', edit_task_path(@task) %>
-<% end %>
-
 
 
 
