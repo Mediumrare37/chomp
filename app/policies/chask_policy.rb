@@ -3,6 +3,10 @@ class ChaskPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    true
+  end
+
   def show?
     true
   end
@@ -12,7 +16,7 @@ class ChaskPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.task.user
+    record.task.user == user
   end
 
   def destroy?

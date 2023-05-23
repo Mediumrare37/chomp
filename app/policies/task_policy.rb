@@ -12,7 +12,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    record.user == user
   end
 
   def destroy?
