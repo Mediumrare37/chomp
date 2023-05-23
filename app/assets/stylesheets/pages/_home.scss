@@ -1,5 +1,9 @@
 // Specific CSS for your home-page
 
+.wrapper {
+  padding: 1rem;
+}
+
 #main-header {
   h1 {
     font: {
@@ -7,12 +11,36 @@
       size: 2rem;
     }
   }
-  h2 { font-weight: 600; }
+  h2 {
+    span { color: $dreamy-yellow; }
+    line-height: 1.4;
+    font: {
+      weight: 600;
+      size: 1.25rem;
+    }
+  }
 }
 
-h3 { font-weight: 600; }
+h3 {
+  font-weight: 600;
+  span { color: $dreamy-yellow; }
+}
 
 .banner img {
+  margin: 2rem 0;
   max-width: 100%;
   display: block;
+}
+
+.search-bar-wrapper {
+  background: linear-gradient(90deg, $calming-purple, $peace-blue);
+  padding: 0.4rem;
+  border-radius: 40px;
+}
+
+.search-bar {
+  border-radius: 20px;
+  height: 40px;
+  background-color: #333333;
+  border: 0px solid transparent;
 }

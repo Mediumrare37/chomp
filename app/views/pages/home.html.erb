@@ -1,16 +1,19 @@
-<div class="container">
+<div class="wrapper">
   <header id="main-header">
     <h1>Task Chomp</h1>
-    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla beatae ea ad, voluptates nobis veniam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, nisi!</h2>
+    <h2><span>Lorem ipsum dolor sit amet</span> consectetur adipisicing elit. Nulla beatae ea ad, voluptates nobis veniam. <span>Lorem ipsum dolor</span> sit amet consectetur adipisicing elit. Ipsum, nisi!</h2>
   </header>
 
   <div class="banner">
     <%= image_tag "stars.svg" %>
   </div>
 
+  <h3>Start a <span>journey!</span></h3>
   <%= simple_form_for @task do |f| %>
-    <%= f.input :title %>
+    <div class="search-bar-wrapper">
+      <div class="search-group">
+        <%= f.input :title, placeholder: "Enter task here", label: false, input_html: { class: 'search-bar' } %>
+      </div>
+    </div>
   <% end %>
-
-  <h3>Start a journey!</h3>
 </div>
