@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       patch :excluded
       patch :queued
       patch :progress
+      patch :paused
+      patch :completed
       get :breakdown
     end
   end

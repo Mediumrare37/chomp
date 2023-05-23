@@ -22,13 +22,41 @@ class ChasksController < ApplicationController
     end
   end
 
-  def progress
+  def paused
     #inject HTML or create partial for progress view
     @chask = Chask.find(params[:id])
     @task = @chask.task
 
     if @chask.update(chask_params)
+      redirect_to chask_path(@chask), notice: 'Chask PAUSED'
+    else
+      render :show
+    end
+  end
+
+  def completed
+    #inject HTML or create partial for progress view
+    @chask = Chask.find(params[:id])
+    @task = @chask.task
+    @end_time = Time.now
+
+    if @chask.update(chask_params)
       next_chask(@task, @chask)
+    else
+      render :show
+    end
+  end
+
+  def progress
+    #inject HTML or create partial for progress view
+    @chask = Chask.find(params[:id])
+    @task = @chask.task
+    @start_time = Time.now
+
+    if @chask.update(chask_params)
+      redirect_to chask_path(@chask), notice: 'Chask STARTED'
+      # next_chask(@task, @chask)
+      # no need to go to next chask for this
     else
       render :show
     end
