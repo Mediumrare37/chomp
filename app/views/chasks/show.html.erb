@@ -1,0 +1,16 @@
+<h1>Show Page</h1>
+<h2><%= @chask.title %></h2>
+<p><%= @chask.status %></p>
+<%= link_to "Delete Chask", edit_chask_path %>
+<%= link_to "Break Down" %>
+<% if @chask.pending? %>
+  <%= simple_form_for @chask do |f| %>
+    <%= f.input :status, as: :hidden, input_html: { value: 'queued'} %>
+    <%= f.button :submit, 'Save for Later', class:"button-primary" %>
+  <% end %>
+<% end %>
+<%= link_to "Start Task Now" %>
+<%= simple_form_for @chask, url: excluded_chask_path(@chask) do |f| %>
+  <%= f.input :status, as: :hidden, input_html: { value: 'excluded'} %>
+  <%= f.button :submit, 'Exclude', class:"button-primary" %>
+<% end %>

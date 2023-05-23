@@ -1,12 +1,42 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+require 'yaml'
+require 'open-uri'
+require 'pexels'
 
-puts "Cleaning database..."
-
+puts "Cleaning the db..."
+User.destroy_all
 Task.destroy_all
 Chask.destroy_all
-User.destroy_all
 
+john = User.create!({:email => "john@test.com", :password => "pass123", :password_confirmation => "pass123" })
+paul = User.create!({:email => "paul@test.com", :password => "pass123", :password_confirmation => "pass123" })
+gui_presentation = User.create!({:email => "guihortinha@test.com", :password => "pass123", :password_confirmation => "pass123" })
+
+puts "Created #{User.count} users!"
+
+10.times do
+  new_task = Task.new({
+    title: 'Find a job in Canada',
+    })
+
+  new_task.user = paul
+  new_task.save!
+  end
+
+puts "Created #{Task.count} tasks!"
+
+10.times do
+  new_chask = Chask.new({
+    title: 'Check visa situation',
+    status: Chask::STATUS.sample
+  })
+
+  new_chask.task = Task.all.sample
+  new_chask.save!
+end
+
+puts "Created #{Chask.count} chasks!"
+
+# Fontain
 puts "Creating the tasks."
 task1 = Task.create(title: 'Task 1', completed: false, user_id: user1.id)
 task2 = Task.create(title: 'Task 2', completed: true, user_id: user2.id)
@@ -45,8 +75,3 @@ task_data.each do |task_info|
 end
 
 puts "Compleed seeding"
-
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
