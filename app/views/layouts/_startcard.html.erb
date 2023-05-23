@@ -1,0 +1,11 @@
+<div class="container">
+  <%= 'Started Task at: ' + @start_time.to_s %>
+  <%= simple_form_for @chask, url: paused_chask_path(@chask) do |f| %>
+    <%= f.input :status, as: :hidden, input_html: { value: 'paused'} %>
+    <%= f.button :submit, 'Pause', class:"btn-primary" %>
+  <% end %>
+  <%= simple_form_for @chask, url: completed_chask_path(@chask) do |f| %>
+    <%= f.input :status, as: :hidden, input_html: { value: 'progress'} %>
+    <%= f.button :submit, 'Mark as Done', class:"btn-primary" %>
+  <% end %>
+</div>
