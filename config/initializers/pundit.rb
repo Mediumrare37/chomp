@@ -1,6 +1,6 @@
 
-# Pundit.policy_ancestors = ['ApplicationPolicy']
+# # Pundit.policy_ancestors = ['ApplicationPolicy']
 
-Pundit.configure do |config|
-  # Add your configuration here
-end
+# Pundit.configure do |config|
+#   # Add your configuration here
+# end

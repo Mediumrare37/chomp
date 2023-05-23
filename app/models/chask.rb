@@ -1,5 +1,5 @@
 class Chask < ApplicationRecord
-  STATUS = ['pending', 'queued', 'progress', 'paused', 'completed', 'excluded' ]
+  STATUS = ['pending', 'queued', 'progress', 'paused', 'completed', 'excluded']
 
   belongs_to :task
   belongs_to :chask, optional: true
