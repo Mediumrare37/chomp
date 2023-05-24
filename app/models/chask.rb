@@ -24,6 +24,10 @@ class Chask < ApplicationRecord
     self.status == 'progress'
   end
 
+  def paused?
+    self.status == 'paused'
+  end
+
   def save_for_later
     self.status = 'queued'
   end
