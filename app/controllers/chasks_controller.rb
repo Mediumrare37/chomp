@@ -1,24 +1,27 @@
 class ChasksController < ApplicationController
-
   def show
     # Line below is to create a sub-chask
     # @chask = Chask.new
     @chask = Chask.find(params[:id])
     authorize @chask
-    # if params[:filter]
-    authorize @chask
+    # authorize @task
   end
 
   def edit
     @chask = Chask.find(params[:id])
     @task = @chask.task
+
     authorize @chask
+    authorize @task
   end
 
   def update
     @chask = Chask.find(params[:id]) # Find the @chask object first
     @task = @chask.task
+
     # Authorize the found @chask object
+    authorize @chask
+    authorize @task
 
     if @chask.update(chask_params)
       redirect_to chask_path(@chask), notice: 'Chask was successfully updated.'
@@ -34,6 +37,9 @@ class ChasksController < ApplicationController
     @chask = Chask.find(params[:id])
     @task = @chask.task
 
+    authorize @chask
+    authorize @task
+
     if @chask.update(chask_params)
       redirect_to chask_path(@chask), notice: 'Chask PAUSED'
     else
@@ -47,6 +53,9 @@ class ChasksController < ApplicationController
     @task = @chask.task
     @end_time = Time.now
 
+    authorize @chask
+    authorize @task
+
     if @chask.update(chask_params)
       next_chask(@task, @chask)
     else
@@ -59,6 +68,9 @@ class ChasksController < ApplicationController
     @chask = Chask.find(params[:id])
     @task = @chask.task
     @start_time = Time.now
+
+    authorize @chask
+    authorize @task
 
     if @chask.update(chask_params)
       redirect_to chask_path(@chask), notice: 'Chask STARTED'
@@ -74,6 +86,9 @@ class ChasksController < ApplicationController
     @chask = Chask.find(params[:id])
     @task = @chask.task
 
+    authorize @chask
+    authorize @task
+
     if @chask.update(chask_params)
       next_chask(@task, @chask)
     else
@@ -85,6 +100,9 @@ class ChasksController < ApplicationController
     @chask = Chask.find(params[:id])
     @task = @chask.task
 
+    authorize @chask
+    authorize @task
+
     if @chask.update(chask_params)
       next_chask(@task, @chask)
     else
@@ -95,6 +113,9 @@ class ChasksController < ApplicationController
   def breakdown
     @chask = Chask.find(params[:id])
     @task = @chask.task
+
+    authorize @chask
+    authorize @task
     # Task is in progress since it was broken down
     @chask.status = 'progress'
     @chask.save
@@ -123,17 +144,22 @@ class ChasksController < ApplicationController
   end
 
   def chat_get(prompt)
-    prompt = ''
     # method to call openAI API
+    divider = 'nex2'
+    ammount = 3
+    adapted_prompt = "I want a list of '#{ammount}' sub-tasks (maximum 10 words per item) for the task of #{prompt}. Split each sub-task with a divider '#{divider}', return in simple text format"
+    response = OpenaiService.new(adapted_prompt).call
+    response = response.split(divider)
+    return response
     # return an array
-    ['test3', 'test4', 'tell uncle']
+    # ['test3', 'test4', 'tell uncle']
   end
 
   def next_chask(task, chask)
     # Checks if there is a next sub_chask, if there is a next chask
     next_chask = task.chasks.find_by(status: 'pending')
     next_sub_chask = Chask.where(chask_id: chask.chask_id).find_by(status: 'pending')
-    if next_sub_chask
+    if (next_sub_chask) && (next_sub_chask.chask_id)
       return redirect_to chask_path(next_sub_chask), notice: 'Next Sub_Chask'
       # If no next_sub_chask need to find a way to change status of Chask
     elsif next_chask

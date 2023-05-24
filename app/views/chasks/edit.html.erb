@@ -1,5 +1,19 @@
-<h1>Edit a Chask</h1>
-<%= simple_form_for [@chask] do |f| %>
-  <%= f.input :title %>
-  <%= f.submit class: "btn btn-primary", value: "Update Chask" %>
+<div class="container">
+  <div class="chaskcard">
+    <div class="title">
+      <h5>Edit Task Information</h5>
+      <h2><%= @chask.title %></h2>
+    </div>
+    <div class="edit-form">
+      <%= simple_form_for @chask do |f| %>
+        <%= f.input :title, class: "edit-input", label: false %>
+        <%= f.submit class: "edit-button", value: "Save Changes" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<p><%= 'Status (not visible to user): ' + @chask.status.to_s.upcase %></p>
+<p><%= 'Belongs to Task: ' + @chask.task.id.to_s %></p>
+<% if @chask.chask %>
+  <p><%= 'Belongs to Chask: ' + @chask.chask.id.to_s %></p>
 <% end %>

@@ -3,6 +3,7 @@ class Chask < ApplicationRecord
 
   belongs_to :task
   belongs_to :chask, optional: true
+  has_many :notifications, as: :object
 
   validates :title, presence: true
   validates :status, presence: true
@@ -21,6 +22,10 @@ class Chask < ApplicationRecord
 
   def progress?
     self.status == 'progress'
+  end
+
+  def paused?
+    self.status == 'paused'
   end
 
   def save_for_later

@@ -1,34 +1,47 @@
-
-
-
-
-
-
-<h1><%= @chask.title %></h1>
+<div class="container">
+  <% if @chask.progress? %>
+    <%= render 'layouts/startcard' %>
+  <% else %>
+    <div class="chaskcard">
+      <div class="title">
+        <h5><%= 'Task Flow: ' + @chask.task.title.to_s %></h5>
+        <h2><%= @chask.title %></h2>
+      </div>
+      <div class="options">
+        <div class="startsave">
+          <div class="startsave-button">
+            <%= simple_form_for @chask, url: progress_chask_path(@chask) do |f| %>
+              <%= f.input :status, as: :hidden, input_html: { value: 'progress'} %>
+              <%= f.button :button do %>
+                <%= @chask.paused? ? 'Resume' : 'Start Now'  %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="startsave-button">
+            <%= simple_form_for @chask, url: queued_chask_path(@chask) do |f| %>
+              <%= f.input :status, as: :hidden, input_html: { value: 'queued'} %>
+              <%= f.button :submit, 'Save and Next' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="menu-icons">
+          <% if !@chask.chask %>
+            <%= link_to icon("fa-solid", "arrows-split-up-and-left"), breakdown_chask_path(@chask) %>
+          <% end %>
+          <%= link_to icon("fa-solid", "pen"), edit_chask_path %>
+          <%= simple_form_for @chask, url: excluded_chask_path(@chask) do |f| %>
+            <%= f.input :status, as: :hidden, input_html: { value: 'excluded'} %>
+            <%= f.button :button do %>
+              <%= icon("fa-solid", "ban") %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 <p><%= 'Status (not visible to user): ' + @chask.status.to_s.upcase %></p>
 <p><%= 'Belongs to Task: ' + @chask.task.id.to_s %></p>
-<% if @chask.progress? %>
-  <%= render 'layouts/startcard' %>
-<% else %>
-  <% if @chask.completed? %>
-    <%= 'Ended Task at: ' + @end_time.to_s %>
-  <% end %>
-  <% if @chask.chask %>
-    <p><%= 'Belongs to Chask: ' + @chask.chask.id.to_s %></p>
-  <% else %>
-    <%= link_to 'Break Down', breakdown_chask_path(@chask), class: " mt-3 btn btn-primary"  %>
-  <% end %>
-  <%= link_to "Edit Title", edit_chask_path, class:"btn btn-primary" %>
-  <%= simple_form_for @chask, url: queued_chask_path(@chask) do |f| %>
-    <%= f.input :status, as: :hidden, input_html: { value: 'queued'} %>
-    <%= f.button :submit, 'Save for Later', class:"btn-primary" %>
-  <% end %>
-  <%= simple_form_for @chask, url: excluded_chask_path(@chask) do |f| %>
-    <%= f.input :status, as: :hidden, input_html: { value: 'excluded'} %>
-    <%= f.button :submit, 'Exclude', class:"btn-primary" %>
-  <% end %>
-  <%= simple_form_for @chask, url: progress_chask_path(@chask) do |f| %>
-    <%= f.input :status, as: :hidden, input_html: { value: 'progress'} %>
-    <%= f.button :submit, 'Start', class:"btn-primary" %>
-  <% end %>
+<% if @chask.chask %>
+  <p><%= 'Belongs to Chask: ' + @chask.chask.id.to_s %></p>
 <% end %>

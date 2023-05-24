@@ -3,9 +3,9 @@ require 'open-uri'
 require 'pexels'
 
 puts "Cleaning the db..."
-User.destroy_all
-Task.destroy_all
 Chask.destroy_all
+Task.destroy_all
+User.destroy_all
 
 john = User.create!({:email => "john@test.com", :password => "pass123", :password_confirmation => "pass123" })
 paul = User.create!({:email => "paul@test.com", :password => "pass123", :password_confirmation => "pass123" })
@@ -18,10 +18,8 @@ puts "Created #{User.count} users!"
 # user2 = User.create(name: 'User 2')
 
 # To create random id numbers
-task1 = Task.new(title: 'Task 1', completed: false)
-task2 = Task.new(title: 'Task 2', completed: true)
-
-john.tasks << [task1, task2]
+task1 = Task.create(title: 'Task 1', completed: false, user: john)
+task2 = Task.create(title: 'Task 2', completed: true, user: paul)
 
 
 puts "Creating chasks"
@@ -75,4 +73,4 @@ puts "Created #{Task.count} tasks!"
 #   end
 # end
 
-puts "Compleed seeding"
+# puts "Compleed seeding"

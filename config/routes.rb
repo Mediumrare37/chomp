@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :notifications, only: [:index, :update]
   resources :tasks, only: [:show, :create, :index]
   resources :chasks do
     member do
