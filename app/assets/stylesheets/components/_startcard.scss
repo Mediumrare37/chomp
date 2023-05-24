@@ -1,0 +1,68 @@
+.startcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 2px #871CDE;
+  border-radius: 8px;
+  /* background: #231855; */
+  margin-top: 25px;
+  height: 700px;
+  background-image: 'images/stars.svg';
+}
+
+.startcard-title {
+  width: 100%;
+  padding: 25px;
+  height: 15%;
+  // justify-content: start;
+  // display: flex;
+  // flex-direction: column;
+}
+
+.startcard-title h2 {
+  font-family: $audio-font;
+  text-align: center;
+  color: white;
+}
+
+.startcard-prompt {
+  height: 30%;
+}
+
+.startcard-prompt h2 {
+  margin-top: 85px;
+  font-family: $audio-font;
+  text-align: center;
+  color: $dreamy-yellow;
+}
+
+.startcard-timer {
+  height: 40%;
+}
+
+.startcard-timer img {
+  width: 378px;
+}
+
+.pausedone {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  margin-top: 10px;
+}
+
+.pausedone-button{
+  // width: 50%;
+  // flex-grow: 1;
+  margin: 5px;
+  border: solid 2px $dreamy-yellow;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.pausedone-button input{
+  // width: 50%;
+  width: 100%;
+  color: white;
+}

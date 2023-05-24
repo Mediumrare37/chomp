@@ -1,0 +1,104 @@
+.chaskcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 2px #871CDE;
+  border-radius: 8px;
+  /* background: #231855; */
+  margin-top: 25px;
+  height: 700px;
+  background: #871CDE;
+}
+
+.title {
+  background: #871CDE;
+  width: 100%;
+  padding: 25px;
+  height: 50%;
+  justify-content: end;
+  display: flex;
+  flex-direction: column;
+}
+
+.title h2 {
+  font-family: $audio-font;
+  text-align: center;
+  color: $dreamy-yellow;
+}
+
+.title h5 {
+  font-family: $audio-font;
+  text-align: center;
+  font-size: 15px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  height: 50%;
+}
+
+.startsave {
+  // display: flex;
+  // flex-direction: row;
+  // justify-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  margin-top: 10px;
+}
+
+.startsave-button{
+  // width: 50%;
+  // flex-grow: 1;
+  margin: 5px;
+  border: solid 2px $dreamy-yellow;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.startsave-button form {
+  text-align: center;
+}
+
+.startsave-button button {
+  color: white;
+}
+
+.startsave-button input{
+  // width: 50%;
+  width: 100%;
+  color: white;
+}
+
+.menu-icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 90%;
+  margin: 10px;
+  border: solid 2px $dreamy-yellow;
+  border-radius: 8px;
+
+  // display: flex;
+  // flex-direction: row;
+  // justify-items: center;
+}
+
+.menu-icons a {
+  text-align: center;
+  padding-top: 9px;
+  color: white;
+}
+
+.menu-icons form {
+  text-align: center;
+  padding-top: 4px;
+  color: white;
+}
+
+.menu-icons .fa-solid {
+  color: white;
+}
