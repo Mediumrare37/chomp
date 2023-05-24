@@ -3,6 +3,7 @@ class Chask < ApplicationRecord
 
   belongs_to :task
   belongs_to :chask, optional: true
+  has_many :notifications, as: :object
 
   validates :title, presence: true
   validates :status, presence: true

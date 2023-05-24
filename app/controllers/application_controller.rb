@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :check_notifications
   include Pundit::Authorization
 
   # Pundit: allow-list approach
@@ -17,5 +18,14 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def check_notifications
+    if user_signed_in?
+      @notifications = current_user.notifications.where(status: 'pending').map do |notification|
+        notification.update(message: "Pending #{notification.chask.title} with #{current_user.email}")
+        notification
+      end
+    end
   end
 end

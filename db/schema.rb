@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_22_054336) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_24_050741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_054336) do
     t.datetime "updated_at", null: false
     t.index ["chask_id"], name: "index_chasks_on_chask_id"
     t.index ["task_id"], name: "index_chasks_on_task_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "user_type", null: false
+    t.bigint "user_id", null: false
+    t.string "object_type", null: false
+    t.bigint "object_id", null: false
+    t.string "message"
+    t.boolean "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", default: "pending"
+    t.index ["object_type", "object_id"], name: "index_notifications_on_object"
+    t.index ["user_type", "user_id"], name: "index_notifications_on_user"
   end
 
   create_table "tasks", force: :cascade do |t|

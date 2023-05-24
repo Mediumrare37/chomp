@@ -1,5 +1,4 @@
 class ChasksController < ApplicationController
-
   def show
     # Line below is to create a sub-chask
     # @chask = Chask.new
