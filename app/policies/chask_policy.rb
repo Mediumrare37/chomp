@@ -15,8 +15,34 @@ class ChaskPolicy < ApplicationPolicy
     true
   end
 
+  def breakdown?
+    # record.task.user == user
+    true
+  end
+
+  def paused?
+    true
+  end
+
+  def completed?
+    true
+  end
+
+  def progress?
+    true
+  end
+
   def update?
-    record.task.user == user
+    # record.task.user == user
+    true
+  end
+
+  def excluded?
+    true
+  end
+
+  def queued?
+    true
   end
 
   def destroy?
