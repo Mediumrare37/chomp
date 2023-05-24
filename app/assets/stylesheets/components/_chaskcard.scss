@@ -50,6 +50,27 @@
   margin-top: 10px;
 }
 
+.edit-form {
+  width: 80%;
+  text-align: center;
+}
+
+// Not working
+.edit-input {
+  border: solid 1px black;
+  border-radius: 8px;
+}
+
+.edit-button {
+  margin-top: 15px;
+  border: solid 2px $dreamy-yellow;
+  border-radius: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background: none;
+  color: white;
+}
+
 .startsave-button{
   // width: 50%;
   // flex-grow: 1;

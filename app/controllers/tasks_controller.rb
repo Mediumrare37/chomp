@@ -55,7 +55,7 @@ class TasksController < ApplicationController
     # method to call openAI API
     divider = 'nex2'
     ammount = 5
-    adapted_prompt = "I want a list of '#{ammount}' sub-tasks (maximum 10 words per item) for the task of #{prompt}. Split each sub-task with a divdier '#{divider}'"
+    adapted_prompt = "I want a list of '#{ammount}' sub-tasks (maximum 10 words per item) for the task of #{prompt}. Split each sub-task with a divider '#{divider}', return in simple text format"
     response = OpenaiService.new(adapted_prompt).call
     adapted_response = response.split(divider)
     return adapted_response
