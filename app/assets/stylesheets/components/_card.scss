@@ -1,9 +1,49 @@
 .card-layout {
   display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(6em, auto);
+  gap: 1em;
 }
 
 .task-card {
-  border: 5px solid green;
+  background-color: #333333;
   padding: 0.5em;
-  flex: 1 1 33%;
+  border-radius: 1em;
+  p { font-size: 0.8em; }
+  transition: 0.2s ease;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0px 10px rgba(135, 28, 222, 0.4);
+    .check-icon { visibility: visible; }
+  }
+}
+
+.check-icon {
+  visibility: hidden;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@keyframes expand {
+  0% { height: 0; }
+  100% { height: 100%; }
+}
+
+@keyframes collapse {
+  0% { height: 100%; }
+  100% { height: 0; }
+}
+
+.expanded {
+  height: 100%;
+  animation: collapse 0.5s ease;
+}
+
+.collapsed {
+  height: 0;
+  animation: expand 0.5s ease;
 }
