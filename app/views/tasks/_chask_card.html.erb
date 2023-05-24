@@ -1,3 +1,7 @@
 <div class="chask-card">
-  <p><%= chask.title %></p>
+  <% if chask.status == "completed" %>
+    <p><s><%= chask.title %></s></p>
+  <% else %>
+    <p><%= chask.title %></p>
+  <% end %>
 </div>

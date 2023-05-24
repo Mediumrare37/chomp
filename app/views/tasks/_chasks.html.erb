@@ -1,7 +1,5 @@
-<div class="chasks collpased" data-expand-card-target="chasks">
+<div class="chasks collapsed" data-expand-card-target="chasks">
   <% task.chasks.each do |chask| %>
-    <div class="chask-card">
-      <p><%= chask.title %></p>
-    </div>
+    <%= render 'tasks/chask_card', chask: chask %>
   <% end %>
 </div>
