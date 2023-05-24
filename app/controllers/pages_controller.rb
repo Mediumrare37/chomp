@@ -4,11 +4,4 @@ class PagesController < ApplicationController
   def home
     @task = Task.new
   end
-
-  private
-
-  def task_params
-    params.require(:task).permit(:title)
-  end
-
 end
