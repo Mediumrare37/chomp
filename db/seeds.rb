@@ -18,8 +18,10 @@ puts "Created #{User.count} users!"
 # user2 = User.create(name: 'User 2')
 
 # To create random id numbers
-task1 = Task.create(title: 'Task 1', completed: false)
-task2 = Task.create(title: 'Task 2', completed: true)
+task1 = Task.new(title: 'Task 1', completed: false)
+task2 = Task.new(title: 'Task 2', completed: true)
+
+john.tasks << [task1, task2]
 
 
 puts "Creating chasks"
@@ -27,6 +29,8 @@ chask1 = Chask.create(title: 'Chask 1', status: 'pending', task_id: task1.id)
 chask2 = Chask.create(title: 'Chask 2', status: 'completed', task_id: task1.id)
 chask3 = Chask.create(title: 'Chask 3', status: 'pending', task_id: task2.id)
 chask4 = Chask.create(title: 'Chask 4', status: 'completed', task_id: task2.id)
+
+puts "Created #{Chask.count} chasks!"
 
 
 # Loop through task_data array to create tasks and associated chasks
@@ -45,17 +49,17 @@ chask4 = Chask.create(title: 'Chask 4', status: 'completed', task_id: task2.id)
 
 puts "Created #{Task.count} tasks!"
 
-30.times do
-  new_chask = Chask.new({
-    title: 'Check visa situation',
-    status: Chask::STATUS.sample
-  })
+# 30.times do
+#   new_chask = Chask.new({
+#     title: 'Check visa situation',
+#     status: Chask::STATUS.sample
+#   })
 
-  new_chask.task = Task.all.sample
-  new_chask.save!
-end
+#   new_chask.task = Task.all.sample
+#   new_chask.save!
+# end
 
-puts "Completed seeding"
+# puts "Completed seeding"
 
 # # Loop through task_data array to create tasks and associated chasks
 # task_data.each do |task_info|
