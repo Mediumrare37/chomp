@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :tasks, only: [:show]
+  resources :tasks, only: [:show, :create, :index]
   resources :chasks do
     member do
       patch :excluded
