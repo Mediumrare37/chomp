@@ -1,0 +1,11 @@
+<h1>Notifications</h1>
+
+<ul>
+  <% @notifications.each do |notification| %>
+    <li>
+      <strong>Message:</strong> <%= notification.message %><br>
+    </li>
+  <% end %>
+</ul>
+
+<% @notifications.update_all(read: true) %>

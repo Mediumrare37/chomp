@@ -22,9 +22,8 @@ class ApplicationController < ActionController::Base
 
   def check_notifications
     if user_signed_in?
-      @notifications = current_user.notifications.where(status: 'pending').map do |notification|
-        notification.update(message: "Pending #{notification.chask.title} with #{current_user.email}")
-        notification
+      current_user.chasks.where(status: 'progress').map do |chask|
+        Notification.create(message: "Pending #{chask.title} ", user: current_user, object: chask)
       end
     end
   end
