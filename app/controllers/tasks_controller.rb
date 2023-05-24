@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   def index
-    @task = Task.all
+    @task = policy_scope(Task).all
   end
 
   def show
@@ -16,7 +16,13 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user = current_user
     authorize @task
+    if @task.save
+      redirect_to tasks_path, notice: 'Task successfully created!'
+    else
+      render 'pages/home'
+    end
   end
 
   def destroy
@@ -24,5 +30,11 @@ class TasksController < ApplicationController
     authorize @task
 
     # Destroy logic...
+  end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:title)
   end
 end
