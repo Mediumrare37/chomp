@@ -6,9 +6,10 @@
 }
 
 .task-card {
+  position: relative;
   overflow: hidden;
-  background-color: #333333;
-  padding: 0.5em;
+  background-color: #333333 !important;
+  padding: 1em;
   border-radius: 1em;
   p { font-size: 0.8em; }
 
@@ -24,6 +25,29 @@
   }
 }
 
+.task-card-info {
+  p {
+    margin: 0;
+    font-weight: 600;
+  }
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.completion-percentage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  padding: 1em;
+  background: rgba(160, 59, 242, 0.6);
+  box-shadow: 1px 1px 10px rgba(0,0,0,.4)
+}
+
 .chask-card {
   margin: 0.5em 0;
   padding: 0.5em;
@@ -34,6 +58,14 @@
 .buttons {
   display: flex;
   justify-content: flex-end;
+}
+
+.card-link {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
 }
 
 // .expanded > .chask-card {
