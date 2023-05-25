@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal<%= task.id %>" tabindex="-1" aria-labelledby="taskModal<%= task.id %>Label" aria-hidden="true">
+<div class="modal fade" id="modal<%= task.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,7 +8,7 @@
       <div class="modal-body">
         <h2><%= task.title %></h2>
         <% task.chasks.each do |chask| %>
-          <%=  render 'tasks/chask_card', chask: chask %>
+          <%= render 'tasks/chask_card', chask: chask %>
         <% end %>
       </div>
       <div class="modal-footer">
