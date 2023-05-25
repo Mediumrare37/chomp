@@ -3,7 +3,8 @@ class Chask < ApplicationRecord
 
   belongs_to :task
   belongs_to :chask, optional: true
-  has_many :notifications, as: :object
+  has_many :chasks, dependent: :destroy
+  has_many :notifications, as: :object, dependent: :destroy
 
   validates :title, presence: true
   validates :status, presence: true
@@ -30,5 +31,20 @@ class Chask < ApplicationRecord
 
   def save_for_later
     self.status = 'queued'
+  end
+
+  after_save :update_task_completion_status
+
+  def update_task_completion_status
+    return unless task
+
+    total_chasks = task.chasks.count
+    completed_chasks = task.chasks.where(status: 'completed').count
+
+    if total_chasks > 0 && completed_chasks == total_chasks
+      task.update(completed: true)
+    elsif completed_chasks < total_chasks && task.completed?
+      task.update(completed: false)
+    end
   end
 end
