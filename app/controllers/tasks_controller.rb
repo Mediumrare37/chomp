@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
   def index
-    @task = policy_scope(Task).all
+    @tasks = policy_scope(Task).all
   end
 
   def show

@@ -50,4 +50,4 @@ puts "Created #{Chask.count} chasks!"
 #   end
 # end
 
-# puts "Compleed seeding"
+puts "Compleed seeding"

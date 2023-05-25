@@ -1,0 +1,106 @@
+.card-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(6em, auto);
+  gap: 1em;
+}
+
+.task-card {
+  overflow: hidden;
+  background-color: #333333;
+  padding: 0.5em;
+  border-radius: 1em;
+  p { font-size: 0.8em; }
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0px 10px rgba(135, 28, 222, 0.4);
+    .check-icon { visibility: visible; }
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.chask-card {
+  margin: 0.5em 0;
+  padding: 0.5em;
+  background: #606060;
+  border-radius: 0.3em;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+// .expanded > .chask-card {
+//   opacity: 1;
+//   animation: reveal 0.7s ease;
+// }
+
+// .collapsed > .chask-card {
+//   opacity: 0;
+//   animation: unreveal 0.2s ease;
+// }
+
+// .expanded {
+//   height: 100%;
+//   animation: expand 0.5s ease;
+// }
+
+// .collapsed {
+//   height: 0;
+//   animation: collapse 0.2s ease;
+// }
+
+// .rotated {
+//   transform: rotate(90deg);
+// }
+
+// .unrotated {
+//   transform: rotate(0);
+// }
+
+// @keyframes expand {
+//   0% { height: 0; }
+//   100% { height: 100%; }
+// }
+
+// @keyframes collapse {
+//   0% { height: 100%; }
+//   100% { height: 0; }
+// }
+
+// @keyframes reveal {
+//   0% {
+//       opacity: 0;
+//       transform: translateY(-20px);
+//   }
+//   100% {
+//       opacity: 1;
+//       transform: translateY(0);
+//   }
+// }
+// @keyframes unreveal {
+//   0% {
+//       opacity: 1;
+//       transform: translateY(0);
+//   }
+//   100% {
+//       opacity: 0;
+//       transform: translateY(-20px);
+//   }
+// }
+
+// @keyframes rotate {
+//   0% { transform: rotate(0); }
+//   100% { transform: rotate(90deg); }
+// }
+
+// @keyframes unrotate {
+//   0% { transform: rotate(90deg); }
+//   100% { transform: rotate(0); }
+// }

@@ -1,1 +1,8 @@
-<h1>Task Dashboard</h1>
+<div class="container">
+  <h1>Task Dashboard</h1>
+  <div class="card-layout">
+    <% @tasks.each do |task| %>
+      <%= render 'tasks/task_card', task: task %>
+    <% end %>
+  </div>
+</div>
