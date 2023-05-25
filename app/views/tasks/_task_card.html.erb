@@ -2,10 +2,14 @@
   <header>
     <h6><%= task.title %></h6>
   </header>
-  <div class="buttons">
-    <button type="button" class="btn btn-flat" data-bs-toggle="modal" data-bs-target="#modal<%= task.id %>" data-bs-whatever="a">Open modal for a</button>
-    <p>20%</p>
-    <i class="fa-solid fa-angle-right expand-icon" data-expand-card-target="icon"></i>
+  <div class="task-card-info">
+    <div class="completion-percentage">
+      <p><%=task.complete_percentage %>%</p>
+    </div>
+    <% if false %>
+      <button type="button" class="btn btn-flat" data-bs-toggle="modal" data-bs-target="#modal<%= task.id %>" data-bs-whatever="a">Open modal for a</button>
+    <% end %>
   </div>
+  <%= link_to '', task_path(task), class: "card-link" %>
 </div>
 <%= render 'task_modal', task: task %>
