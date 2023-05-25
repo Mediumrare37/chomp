@@ -1,0 +1,23 @@
+.show-progress {
+  padding-top: 5px;
+  padding-bottom: 25px;
+}
+
+.show-progress .progress {
+  border: solid 3px $calming-purple;
+  border-radius: 8px;
+  height: 30px;
+}
+
+.show-progress .progress-bar {
+  border: solid 2px $calming-purple;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  background: $calming-purple;
+}
+
+.show-progress .progress-bar  {
+  color: $dreamy-yellow;
+  font-weight: bold;
+  font-family: $audio-font;
+}
