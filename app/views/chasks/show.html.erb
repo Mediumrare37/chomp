@@ -3,6 +3,9 @@
     <%= render 'layouts/startcard' %>
   <% else %>
     <div class="chaskcard">
+      <div class="points">
+        <%= 'Points: ' + @user.totalpoints.to_s %>
+      </div>
       <div class="title">
         <h5><%= 'Task Flow: ' + @chask.task.title.to_s %></h5>
         <h2><%= @chask.title %></h2>
@@ -36,6 +39,12 @@
             <% end %>
           <% end %>
         </div>
+      </div>
+      <div class="deadline">
+        <%= simple_form_for @chask, url: deadline_chask_path(@chask) do |f| %>
+          <%= f.input :deadline, as: :date, label:false, html5: true %>
+          <%= f.button :submit, 'Update Chask' %>
+        <% end %>
       </div>
     <% end %>
   </div>

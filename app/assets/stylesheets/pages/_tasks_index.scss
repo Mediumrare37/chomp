@@ -1,5 +1,6 @@
 .container {
   justify-content: center;
+  background: $background;
 }
 
 .navbar {
@@ -9,15 +10,34 @@
   color: azure;
 }
 
+.index-title > h1 {
+  font-family: $audio-font;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  color: $dreamy-yellow;
+}
+
 .h2 {
   color: azure;
 }
 
 .body {
-  background-color: black;
+  background-color: $background;
 }
 
 .footer {
   background:linear-gradient(271.37deg, #871CDE 34.61%, #5873FE 87.96%);
   border-bottom-right-radius: 100%;
+}
+
+.task-card {
+  background: $calming-purple;
+}
+
+.task-card h6 {
+  font-family: $audio-font;
+  text-align: start;
+  color: $peace-blue;
+  text-shadow: black 1px 1px;
 }

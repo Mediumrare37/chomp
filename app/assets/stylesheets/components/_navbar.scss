@@ -8,6 +8,14 @@ body {
 }
 
 .navbar-wrapper {
+  i {
+    color: $dreamy-yellow;
+  }
+
+  span {
+    color: white;
+  }
+
   ul {
     // border-radius: 2em;
     // margin: 0;
@@ -16,14 +24,17 @@ body {
     // list-style: none;
     // display: flex;
     // justify-content: space-between;
-    // background: $calming-purple;
+    background: $background;
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     margin: 0;
     padding: 0;
-    background: #414141;
+    border-top: solid 3px $peace-blue;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    overflow: hidden;
   }
 
   nav {
