@@ -3,7 +3,9 @@
     <p><%= task.title %></p>
   </header>
   <div class="buttons">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal<%= task.id %>" data-bs-whatever="a">Open modal for a</button>
+    <p>20%</p>
     <i class="fa-solid fa-angle-right expand-icon" data-expand-card-target="icon"></i>
   </div>
-  <%= render "tasks/chasks", task: task %>
+  <%= render 'task_modal', task: task %>
 </div>

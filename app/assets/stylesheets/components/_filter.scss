@@ -1,0 +1,14 @@
+.filters {
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul li {
+    padding: 0.25em 1em;
+    background: $calming-purple;
+    border-radius: 0.25em;
+  }
+}

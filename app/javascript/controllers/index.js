@@ -9,3 +9,6 @@ application.register("expand-card", ExpandCardController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import SetActiveController from "./set_active_controller"
+application.register("set-active", SetActiveController)
