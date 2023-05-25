@@ -1,6 +1,6 @@
 <div class="navbar-wrapper">
-  <nav class="navbar">
-    <ul>
+  <nav data-controller="set-active">
+    <ul data-target="list">
       <li>
         <%= link_to root_path do %>
           <%= icon("fa-solid", "house", class: "home-icon") %>
