@@ -155,19 +155,29 @@ class ChasksController < ApplicationController
     # ['test3', 'test4', 'tell uncle']
   end
 
+  def overall_progress_percentage(task)
+    total_chasks = task.chasks.count
+    completed_chasks = task.chasks.where(status: 'completed').count
+
+    overall_percentage = (completed_chasks.to_f / total_chasks.to_f) * 100
+    overall_percentage.round(2)
+  end
+
   def next_chask(task, chask)
-    # Checks if there is a next sub_chask, if there is a next chask
-    next_chask = task.chasks.find_by(status: 'pending')
-    next_sub_chask = Chask.where(chask_id: chask.chask_id).find_by(status: 'pending')
-    if (next_sub_chask) && (next_sub_chask.chask_id)
-      return redirect_to chask_path(next_sub_chask), notice: 'Next Sub_Chask'
-      # If no next_sub_chask need to find a way to change status of Chask
-    elsif next_chask
-      # Unsure if the status change can occur here
-      next_chask.status = 'completed'
-      return redirect_to chask_path(next_chask), notice: 'All Sub_Chasks Completed, Next Chask'
+    next_sub_chask = Chask.where(chask_id: chask.chask_id, status: 'pending').first
+
+    if next_sub_chask
+      redirect_to chask_path(next_sub_chask), notice: 'Next Sub_Chask'
     else
-      return redirect_to tasks_path
+      next_chask = task.chasks.find_by(status: 'pending')
+
+      if next_chask
+        next_chask.update(status: 'completed') # Mark the next task as completed
+        redirect_to chask_path(next_chask), notice: 'All Sub_Chasks Completed, Next Chask'
+      else
+        task.update(completed: true) # Mark the task as completed
+        redirect_to tasks_path, notice: 'All Tasks Completed' # Redirect to tasks/index.html.erb
+      end
     end
   end
 end
