@@ -28,6 +28,8 @@ chask2 = Chask.create(title: 'Chask 2', status: 'completed', task_id: task1.id)
 chask3 = Chask.create(title: 'Chask 3', status: 'pending', task_id: task2.id)
 chask4 = Chask.create(title: 'Chask 4', status: 'completed', task_id: task2.id)
 
+puts "Created #{Chask.count} chasks!"
+
 
 # Loop through task_data array to create tasks and associated chasks
 # task_data.each do |task_info|
@@ -45,17 +47,17 @@ chask4 = Chask.create(title: 'Chask 4', status: 'completed', task_id: task2.id)
 
 puts "Created #{Task.count} tasks!"
 
-30.times do
-  new_chask = Chask.new({
-    title: 'Check visa situation',
-    status: Chask::STATUS.sample
-  })
+# 30.times do
+#   new_chask = Chask.new({
+#     title: 'Check visa situation',
+#     status: Chask::STATUS.sample
+#   })
 
-  new_chask.task = Task.all.sample
-  new_chask.save!
-end
+#   new_chask.task = Task.all.sample
+#   new_chask.save!
+# end
 
-puts "Completed seeding"
+# puts "Completed seeding"
 
 # # Loop through task_data array to create tasks and associated chasks
 # task_data.each do |task_info|

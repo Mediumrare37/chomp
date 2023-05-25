@@ -1,0 +1,9 @@
+<div class="task-card" data-controller="expand-card" data-action="click->expand-card#displayChasks">
+  <header>
+    <p><%= task.title %></p>
+  </header>
+  <div class="buttons">
+    <i class="fa-solid fa-angle-right expand-icon" data-expand-card-target="icon"></i>
+  </div>
+  <%= render "tasks/chasks", task: task %>
+</div>

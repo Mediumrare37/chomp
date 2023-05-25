@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import ExpandCardController from "./expand_card_controller"
+application.register("expand-card", ExpandCardController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
