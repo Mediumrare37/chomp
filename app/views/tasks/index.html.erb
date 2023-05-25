@@ -1,5 +1,7 @@
 <div class="container">
-  <h1>Task Dashboard</h1>
+  <div class="index-title">
+    <h1>Open Task Flows</h1>
+  </div>
   <div class="card-layout">
     <% @tasks.each do |task| %>
       <%= render 'tasks/task_card', task: task %>
