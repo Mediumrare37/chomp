@@ -6,6 +6,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @chasks = @task.chasks
     authorize @task
   end
 

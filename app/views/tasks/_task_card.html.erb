@@ -3,9 +3,15 @@
     <h6><%= task.title %></h6>
   </header>
   <div class="buttons">
-    <button type="button" class="btn btn-flat" data-bs-toggle="modal" data-bs-target="#modal<%= task.id %>" data-bs-whatever="a">Open modal for a</button>
+    <%= link_to icon("fa-solid", "angle-right expand-icon"), task_path(task) %>
+    <%# <button type="button" class="btn btn-flat" data-bs-toggle="modal" data-bs-target="#modal<%= task.id >" data-bs-whatever="a">Open modal for a</button> %>
     <p>20%</p>
-    <i class="fa-solid fa-angle-right expand-icon" data-expand-card-target="icon"></i>
   </div>
 </div>
 <%= render 'task_modal', task: task %>
+<%# <div class="deadline">
+  <%= simple_form_for @chask, url: deadline_chask_path(@chask) do |f| %>
+  <%# <%= f.input :deadline, as: :date, label:false, html5: true %>
+  <%# <%= f.button :submit, 'Update Chask' %>
+  <%# <% end %>
+  <%# </div> %>
