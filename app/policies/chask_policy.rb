@@ -15,6 +15,10 @@ class ChaskPolicy < ApplicationPolicy
     true
   end
 
+  def deadline?
+    true
+  end
+
   def breakdown?
     # record.task.user == user
     true

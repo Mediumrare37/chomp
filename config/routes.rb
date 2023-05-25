@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       patch :paused
       patch :completed
       get :breakdown
+      patch :deadline
     end
   end
 

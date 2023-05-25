@@ -3,8 +3,10 @@ class ChasksController < ApplicationController
     # Line below is to create a sub-chask
     # @chask = Chask.new
     @chask = Chask.find(params[:id])
+    @task = @chask.task
+    @user = @task.user
     authorize @chask
-    # authorize @task
+    authorize @task
   end
 
   def edit
@@ -32,6 +34,23 @@ class ChasksController < ApplicationController
   authorize @chask
   end
 
+  def deadline
+    @chask = Chask.find(params[:id]) # Find the @chask object first
+    @task = @chask.task
+
+    # Authorize the found @chask object
+    authorize @chask
+    authorize @task
+
+      # Compares Chask deadline with task deadline, should be >=0
+    if @task.deadline
+      redirect_to chask_path(@chask), notice: 'Chask deadline MAXIMUM Task deadline' if (@task.deadline - @chask.deadline < 0)
+    else
+      @chask.update(chask_params)
+      redirect_to chask_path(@chask), notice: 'Chask deadline updated'
+    end
+  end
+
   def paused
     #inject HTML or create partial for progress view
     @chask = Chask.find(params[:id])
@@ -51,12 +70,17 @@ class ChasksController < ApplicationController
     #inject HTML or create partial for progress view
     @chask = Chask.find(params[:id])
     @task = @chask.task
+    @user = @task.user
     @end_time = Time.now
 
     authorize @chask
     authorize @task
 
     if @chask.update(chask_params)
+      @chask.chask_id ? @user.complete_subchask : @user.complete_chask
+      @chask.chask_id ? @user.complete_subchask_same_day_bonus : @user.complete_chask_same_day_bonus
+
+      @user.save
       next_chask(@task, @chask)
     else
       render :show
@@ -67,12 +91,16 @@ class ChasksController < ApplicationController
     #inject HTML or create partial for progress view
     @chask = Chask.find(params[:id])
     @task = @chask.task
+    @user = @task.user
     @start_time = Time.now
 
     authorize @chask
     authorize @task
 
     if @chask.update(chask_params)
+      # need to add condition for chask not started before
+      @user.start_chask
+      @user.save
       redirect_to chask_path(@chask), notice: 'Chask STARTED'
       # next_chask(@task, @chask)
       # no need to go to next chask for this
@@ -113,6 +141,7 @@ class ChasksController < ApplicationController
   def breakdown
     @chask = Chask.find(params[:id])
     @task = @chask.task
+    @user = @task.user
 
     authorize @chask
     authorize @task
@@ -125,7 +154,7 @@ class ChasksController < ApplicationController
     sub_chask_array.each do |sub_title|
       sub_chask = Chask.new(title: sub_title, chask: @chask, task: @chask.task)
       if sub_chask.save
-        # Controller sub chask simply passes any subchask to the method so it works
+        # Conroller sub chask simply passes any subchask to the method so it works
         @controler_sub_chask = sub_chask
       else
         raise
@@ -133,14 +162,16 @@ class ChasksController < ApplicationController
     end
       # need alternative condition if subtask doe snot save
       # redirect_to chask_path(@chask), notice: 'Sub Chask could not be created.'
-
+    # Points update
+    @user.break_down_bonus
+    @user.save
     next_chask(@task, @controler_sub_chask)
   end
 
   private
 
   def chask_params
-    params.require(:chask).permit(:title, :status)
+    params.require(:chask).permit(:title, :status, :deadline)
   end
 
   def chat_get(prompt)

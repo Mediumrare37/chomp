@@ -14,9 +14,29 @@ class TasksController < ApplicationController
     authorize @task
   end
 
+  #This method will be called from Tasks dashboard
+
+  def deadline
+    @task = Task.find(params[:id])
+    @chask = @task.chasks
+
+    # Authorize the found @chask object
+    authorize @chask
+    authorize @task
+
+    # Compares Task deadline with Chask deadline, should be >= 0
+    if @chask.deadline
+      redirect_to chask_path(@chask), notice: 'Chask deadline MAXIMUM Task deadline' if (@task.deadline - @chask.deadline < 0)
+    else
+      @chask.update(chask_params)
+      redirect_to chask_path(@chask), notice: 'Chask deadline updated'
+    end
+  end
+
   def create
     @task = Task.new(task_params)
     @task.user = current_user
+    @user = @task.user
     authorize @task
 
     if @task.save
@@ -31,6 +51,8 @@ class TasksController < ApplicationController
           raise
         end
       end
+      @user.create_task
+      @user.save
       authorize @chask
       next_chask(@task, @chask)
     else

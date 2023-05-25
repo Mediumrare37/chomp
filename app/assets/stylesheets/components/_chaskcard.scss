@@ -10,10 +10,17 @@
   background: #871CDE;
 }
 
+.points {
+  margin: 10px;
+  align-self: end;
+  font-family: $audio-font;
+  color: $dreamy-yellow;
+}
+
 .title {
   background: #871CDE;
   width: 100%;
-  padding: 25px;
+  padding: 5px;
   height: 50%;
   justify-content: end;
   display: flex;
