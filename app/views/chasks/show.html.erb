@@ -1,4 +1,4 @@
-<div class="chask-container">
+<div class="container" data-controller="show">
   <% if @chask.progress? %>
     <%= render 'layouts/startcard' %>
   <% else %>
@@ -29,7 +29,7 @@
         </div>
         <div class="menu-icons">
           <% if !@chask.chask %>
-            <%= link_to icon("fa-solid", "arrows-split-up-and-left"), breakdown_chask_path(@chask) %>
+            <%= link_to icon("fa-solid", "arrows-split-up-and-left"), breakdown_chask_path(@chask), data: { action: 'click->show#insert' } %>
           <% end %>
           <%= link_to icon("fa-solid", "pen"), edit_chask_path %>
           <%= simple_form_for @chask, url: excluded_chask_path(@chask) do |f| %>
@@ -40,6 +40,11 @@
           <% end %>
         </div>
       </div>
+      <% if @chask.paused? %>
+        <div class="spinner-overlay d-flex justify-content-center align-items-center" data-show-target="spinner">
+          <div class="spinner"></div>
+        </div>
+      <% end %>
       <div class="deadline">
         <%= simple_form_for @chask, url: deadline_chask_path(@chask) do |f| %>
           <%= f.input :deadline, as: :date, label:false, html5: true, input_html: { class:"chask_deadline" } %>
