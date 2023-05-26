@@ -7,10 +7,11 @@
 }
 
 .task-card {
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
-  background-color: #333333 !important;
-  padding: 1em;
+  background-color: $calming-purple !important;
   border-radius: 1em;
   p { font-size: 0.8em; }
 
@@ -26,6 +27,13 @@
   }
 }
 
+.task-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+}
+
 .task-card-info {
   p {
     margin: 0;
@@ -34,6 +42,27 @@
   align-items: center;
   display: flex;
   justify-content: flex-end;
+}
+
+.settings-button {
+  background: black;
+  height: 100%;
+  width: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.remove-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0px;
+  height: 100%;
 }
 
 .completion-percentage {
@@ -45,7 +74,7 @@
   height: 55px;
   border-radius: 50%;
   padding: 1em;
-  background: rgba(160, 59, 242, 0.6);
+  background: $peace-blue;
   box-shadow: 1px 1px 10px rgba(0,0,0,.4)
 }
 
@@ -61,13 +90,24 @@
   justify-content: flex-end;
 }
 
-.card-link {
+.card-link, .remove-link {
   position: absolute;
   width: 100%;
   top: 0;
   bottom: 0;
   left: 0;
 }
+
+.task-card.active .settings-button {
+  /*fixed*/
+  border-radius: 0;
+}
+
+.task-card.active .remove-button {
+  width: 100px;
+}
+
+// Expanding and collapsing animation
 
 // .expanded > .chask-card {
 //   opacity: 1;

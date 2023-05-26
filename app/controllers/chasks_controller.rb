@@ -51,6 +51,23 @@ class ChasksController < ApplicationController
     end
   end
 
+  def global_deadline
+    @chask = Chask.find(params[:id]) # Find the @chask object first
+    @task = @chask.task
+
+    # Authorize the found @chask object
+    authorize @chask
+    authorize @task
+
+      # Compares Chask deadline with task deadline, should be >=0
+    if @task.deadline
+      redirect_to task_path(@task), notice: 'Chask deadline MAXIMUM Task deadline' if (@task.deadline - @chask.deadline < 0)
+    else
+      @chask.update(chask_params)
+      redirect_to task_path(@task), notice: 'Chask deadline updated'
+    end
+  end
+
   def paused
     #inject HTML or create partial for progress view
     @chask = Chask.find(params[:id])
@@ -71,7 +88,7 @@ class ChasksController < ApplicationController
     @chask = Chask.find(params[:id])
     @task = @chask.task
     @user = @task.user
-    @end_time = Time.now
+    # @end_time = Time.now
 
     authorize @chask
     authorize @task

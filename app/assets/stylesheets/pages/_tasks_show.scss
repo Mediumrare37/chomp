@@ -45,6 +45,7 @@
 
 .chask-card {
   background: $calming-purple;
+  margin-bottom: 20px;
 }
 
 .chask-card h6 {
@@ -63,20 +64,81 @@ header > h1 {
 }
 
 .show-button-div {
+  position: fixed;
+  bottom: 90px;
+  left: 104px;
+  border: solid 4px $dreamy-yellow;
   text-align: center;
-  width: 200px;
-  position: absolute;
-  bottom: 1em;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  border: solid 4px $calming-purple;
   background: $dreamy-yellow;
-  padding: 5px;
+  padding: 6px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-radius: 8px;
 }
 
 .show-button a {
   color: white;
   font-weight: bold;
+}
+
+// Style for cards displayed in show page
+.subshow-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.subshow-header a {
+  position: relative;
+  top: 0px;
+  font-size: 25px;
+}
+
+.subshow-title > p {
+  font-family: $audio-font;
+  text-align: start;
+  padding-bottom: 15px;
+  color: $white;
+}
+
+.subshow-buttons {
+  padding-left: 8px;
+}
+
+// Sub-header (deadline and status)
+.subshow-subheader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.chask-deadline {
+  width: 60%;
+}
+
+.chask-status {
+  // padding-left: 30px;
+}
+
+.chask-status > p {
+  font-family: $audio-font;
+  color: $white;
+}
+
+// Sub-header b (only status for subchasks)
+.subshow-b-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+// Title div is the same as in show-header
+
+// Deadline form styling
+.chask_deadline {
+  border: $dreamy-yellow;
+  border-radius: 8px;
+  background-color: $peace-blue;
+  padding: 5px;
+  color: white;
 }
