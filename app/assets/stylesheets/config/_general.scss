@@ -1,4 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100vh;
+}
+
 body {
+  min-height: 100vh;
+  padding-bottom: calc(63px + 1em);
   color: $white;
   font-size: 18px;
   background: #231855;

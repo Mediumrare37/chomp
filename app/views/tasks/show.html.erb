@@ -1,4 +1,4 @@
-<div class="container">
+<div class="wrapper">
   <div class="show-points">
     <%= 'Points: ' + current_user.totalpoints.to_s %>
   </div>
@@ -17,7 +17,7 @@
     </header>
     <div class="completed-tasks">
       <% @chasks.each do |chask| %>
-        <% if chask.completed? %>
+        <% if chask.chask? & chask.completed? %>
           <%= render 'tasks/chask_card', chask: chask %>
         <% end %>
       <% end %>
@@ -25,11 +25,11 @@
   </div>
   <div class="saved">
     <header>
-      <h1>Saved Tasks</h1>
+      <h1>To Do</h1>
     </header>
     <div class="saved-tasks">
       <% @chasks.each do |chask| %>
-        <% if chask.queued? %>
+        <% if chask.chask? & (chask.queued? |chask.paused? | chask.progress?) %>
           <%= render 'tasks/chask_card', chask: chask  %>
         <% end %>
       <% end %>
@@ -41,8 +41,8 @@
     </header>
     <div class="excluded-tasks">
       <% @chasks.each do |chask| %>
-        <% if chask.excluded? %>
-          <%= render 'tasks/chask_card', chask: chask   %>
+        <% if chask.chask? & chask.excluded? %>
+          <%= render 'tasks/chask_card', chask: chask %>
         <% end %>
       <% end %>
     </div>

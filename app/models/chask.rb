@@ -9,8 +9,12 @@ class Chask < ApplicationRecord
   validates :title, presence: true
   validates :status, presence: true
 
-  def show_inner_chasks
-    # method
+  def sub_chask?
+    self.chask_id == true
+  end
+
+  def chask?
+    self.chask_id == nil
   end
 
   def pending?

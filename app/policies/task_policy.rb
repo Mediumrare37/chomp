@@ -21,6 +21,10 @@ class TaskPolicy < ApplicationPolicy
     true
   end
 
+  def global_deadline?
+    true
+  end
+
   def destroy?
     user == record.user
   end
