@@ -10,5 +10,8 @@ application.register("expand-card", ExpandCardController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import SetActiveController from "./set_active_controller"
-application.register("set-active", SetActiveController)
+import SpinnerController from "./spinner_controller"
+application.register("spinner", SpinnerController)
+
+import ShowController from "./show_controller"
+application.register("show", ShowController)
