@@ -1,0 +1,12 @@
+<% chask.chasks.each do |subchask| %>
+  <div class="chask-card">
+    <div class="subshow-b-header">
+      <div class="subshow-title">
+        <p><%= subchask.title %></p>
+      </div>
+      <div class="chask-status">
+        <p><%= subchask.status %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
