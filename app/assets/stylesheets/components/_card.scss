@@ -3,12 +3,15 @@
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(6em, auto);
   gap: 1em;
+  margin: 0 1em;
 }
 
 .task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
-  background-color: #333333;
-  padding: 0.5em;
+  background-color: $calming-purple !important;
   border-radius: 1em;
   p { font-size: 0.8em; }
 
@@ -24,6 +27,57 @@
   }
 }
 
+.task-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+}
+
+.task-card-info {
+  p {
+    margin: 0;
+    font-weight: 600;
+  }
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.settings-button {
+  background: black;
+  height: 100%;
+  width: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.remove-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0px;
+  height: 100%;
+}
+
+.completion-percentage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  padding: 1em;
+  background: $peace-blue;
+  box-shadow: 1px 1px 10px rgba(0,0,0,.4)
+}
+
 .chask-card {
   margin: 0.5em 0;
   padding: 0.5em;
@@ -35,6 +89,25 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.card-link, .remove-link {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.task-card.active .settings-button {
+  /*fixed*/
+  border-radius: 0;
+}
+
+.task-card.active .remove-button {
+  width: 100px;
+}
+
+// Expanding and collapsing animation
 
 // .expanded > .chask-card {
 //   opacity: 1;

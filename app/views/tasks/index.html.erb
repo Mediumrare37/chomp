@@ -1,11 +1,11 @@
-<div class="container">
+<div class="cards-container">
   <div class="index-title">
     <h1>Open Task Flows</h1>
   </div>
   <div class="card-layout">
     <% @tasks.each do |task| %>
-      <%= render 'tasks/progress_bar', task: task %>
-            <%= render 'tasks/task_card', task: task %>
+      <%# <%= render 'tasks/progress_bar', task: task %>
+      <%= render 'tasks/task_card', task: task %>
     <% end %>
   </div>
 </div>

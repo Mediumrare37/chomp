@@ -1,6 +1,7 @@
 // Specific CSS for your home-page
 
 .wrapper {
+  min-height: 100vh;
   padding: 1rem;
 }
 
@@ -31,6 +32,10 @@ h3 {
   margin: 2rem 0;
   max-width: 100%;
   display: block;
+}
+
+.search-container {
+  margin-top: 3rem;
 }
 
 .search-bar-wrapper {
