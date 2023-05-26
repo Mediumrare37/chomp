@@ -13,3 +13,9 @@
   <%= link_to '', task_path(task), class: "card-link" %>
 </div>
 <%= render 'task_modal', task: task %>
+<%# <div class="deadline">
+  <%= simple_form_for @chask, url: deadline_chask_path(@chask) do |f| %>
+  <%# <%= f.input :deadline, as: :date, label:false, html5: true %>
+  <%# <%= f.button :submit, 'Update Chask' %>
+  <%# <% end %>
+  <%# </div> %>

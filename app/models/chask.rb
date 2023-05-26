@@ -17,6 +17,14 @@ class Chask < ApplicationRecord
     self.status == 'pending'
   end
 
+  def excluded?
+    self.status == 'pending'
+  end
+
+  def queued?
+    self.status == 'queued'
+  end
+
   def completed?
     self.status == 'completed'
   end
