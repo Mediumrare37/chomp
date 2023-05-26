@@ -14,28 +14,35 @@ gui_presentation = User.create!({:email => "guihortinha@test.com", :password => 
 
 puts "Created #{User.count} users!"
 
-10.times do
-  new_task = Task.new({
-    title: 'Find a job in Canada',
-    })
+travel = Task.new(title: "Travel abroad by myself without any money")
+cook = Task.new(title: "Cook a crocodile")
+cancer = Task.new(title: "Find a cure to cancer")
+job = Task.new(title: "Find a job in web development")
+car = Task.new(title: "Fix my 1998 Toyota Camry")
 
-  new_task.user = paul
-  new_task.save!
-  end
+lucca.tasks << [travel, cook, cancer, job, car]
 
-puts "Created #{Task.count} tasks!"
+job.chasks << [
+  Chask.new(title: "Learn foundational web development languages (HTML, CSS, JavaScript)."),
+  Chask.new(title: "Build a portfolio of personal web projects to showcase skills."),
+  Chask.new(title: "Gain practical experience through internships or freelance projects."),
+  Chask.new(title: "Expand knowledge by exploring frameworks and libraries (e.g., React, Angular)."),
+  Chask.new(title: "Network with professionals, attend meetups, and apply for web development positions.")
+]
 
-30.times do
-  new_chask = Chask.new({
-    title: 'Check visa situation',
-    status: Chask::STATUS.sample
-  })
+job.chasks.last << [
+  Chask.new(title: "Join online communities and forums related to web development."),
+  Chask.new(title: "Engage in discussions, ask questions, and offer assistance to others."),
+  Chask.new(title: "Connect with web developers on professional networking platforms like LinkedIn.")
+]
 
-  new_chask.task = Task.all.sample
-  new_chask.save!
-end
-
-puts "Created #{Chask.count} chasks!"
+cook.chasks << [
+  Chask.new(title: "Source fresh crocodile meat from a reputable supplier or farm."),
+  Chask.new(title: "Clean and prepare the crocodile meat for cooking."),
+  Chask.new(title: "Marinate the meat with spices and seasonings for flavor."),
+  Chask.new(title: "Choose a suitable cooking method (grilling, frying, stewing) for the meat."),
+  Chask.new(title: "Cook the crocodile meat thoroughly, ensuring it reaches a safe internal temperature."),
+]
 
 # # Loop through task_data array to create tasks and associated chasks
 # task_data.each do |task_info|
