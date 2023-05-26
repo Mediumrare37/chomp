@@ -6,6 +6,10 @@ class Task < ApplicationRecord
   # validates :completed, presence: true
 
   def complete_percentage
-    (chasks.where(status: "completed").length / chasks.length.to_f * 100).round
+    if chasks.where(status: "completed").any?
+      (chasks.where(status: "completed").length / chasks.length.to_f * 100).round
+    else
+      0
+    end
   end
 end
