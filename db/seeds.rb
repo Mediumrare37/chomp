@@ -30,6 +30,20 @@ job.chasks << [
   Chask.new(title: "Network with professionals, attend meetups, and apply for web development positions.")
 ]
 
+job.chasks.last << [
+  Chask.new(title: "Join online communities and forums related to web development."),
+  Chask.new(title: "Engage in discussions, ask questions, and offer assistance to others."),
+  Chask.new(title: "Connect with web developers on professional networking platforms like LinkedIn.")
+]
+
+cook.chasks << [
+  Chask.new(title: "Source fresh crocodile meat from a reputable supplier or farm."),
+  Chask.new(title: "Clean and prepare the crocodile meat for cooking."),
+  Chask.new(title: "Marinate the meat with spices and seasonings for flavor."),
+  Chask.new(title: "Choose a suitable cooking method (grilling, frying, stewing) for the meat."),
+  Chask.new(title: "Cook the crocodile meat thoroughly, ensuring it reaches a safe internal temperature."),
+]
+
 # # Loop through task_data array to create tasks and associated chasks
 # task_data.each do |task_info|
 #   task_id = SecureRandom.uuid
