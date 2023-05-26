@@ -30,7 +30,7 @@ job.chasks << [
   Chask.new(title: "Network with professionals, attend meetups, and apply for web development positions.")
 ]
 
-job.chasks.last << [
+job.chasks.last.chasks << [
   Chask.new(title: "Join online communities and forums related to web development."),
   Chask.new(title: "Engage in discussions, ask questions, and offer assistance to others."),
   Chask.new(title: "Connect with web developers on professional networking platforms like LinkedIn.")
