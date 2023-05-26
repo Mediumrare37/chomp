@@ -1,7 +1,7 @@
-.container {
+.wrapper {
+  position: relative;
   justify-content: center;
   background: $background;
-  height: 95vh;
 }
 
 .show-points {
@@ -18,7 +18,6 @@
 }
 
 .show-header a {
-  position: relative;
   top: 18px;
   font-size: 29px;
 }
@@ -64,9 +63,13 @@ header > h1 {
 }
 
 .show-button-div {
+  text-align: center;
+  width: 200px;
   position: absolute;
-  bottom: 90px;
-  left: 104px;
+  bottom: 1em;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
   border: solid 4px $calming-purple;
   background: $dreamy-yellow;
   padding: 5px;

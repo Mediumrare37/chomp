@@ -3,11 +3,11 @@ a {
   color: inherit;
 }
 
-body {
-  min-height: calc(100vh + 80px);
-}
-
 .navbar-wrapper {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+
   i {
     color: $dreamy-yellow;
   }
@@ -43,9 +43,6 @@ body {
     // display: flex;
     // justify-content: center;
     // align-items: center;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
 
     li a {
       width: 60px;
