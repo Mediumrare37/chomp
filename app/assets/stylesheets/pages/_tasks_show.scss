@@ -1,0 +1,82 @@
+.wrapper {
+  position: relative;
+  justify-content: center;
+  background: $background;
+}
+
+.show-points {
+    margin: 10px;
+    text-align: end;
+    font-family: $audio-font;
+    color: $dreamy-yellow;
+}
+
+.show-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.show-header a {
+  top: 18px;
+  font-size: 29px;
+}
+
+.show-title > h1 {
+  font-family: $audio-font;
+  text-align: start;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  color: $dreamy-yellow;
+}
+
+.h2 {
+  color: azure;
+}
+
+.body {
+  background-color: $background;
+}
+
+.footer {
+  background:linear-gradient(271.37deg, #871CDE 34.61%, #5873FE 87.96%);
+  border-bottom-right-radius: 100%;
+}
+
+.chask-card {
+  background: $calming-purple;
+}
+
+.chask-card h6 {
+  font-family: $audio-font;
+  text-align: start;
+  color: $peace-blue;
+  text-shadow: black 1px 1px;
+}
+
+header > h1 {
+  font-family: $audio-font;
+  text-align: start;
+  color: $dreamy-yellow;
+  font-size: 20px;
+  padding-top: 15px;
+}
+
+.show-button-div {
+  text-align: center;
+  width: 200px;
+  position: absolute;
+  bottom: 1em;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  border: solid 4px $calming-purple;
+  background: $dreamy-yellow;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.show-button a {
+  color: white;
+  font-weight: bold;
+}
