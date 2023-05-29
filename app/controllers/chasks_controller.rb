@@ -6,7 +6,11 @@ class ChasksController < ApplicationController
     @task = @chask.task
     @user = @task.user
     authorize @chask
-    authorize @task
+    @message = Message.new
+    @response = chat_get_reply('Hello, how are you?')
+    raise
+    authorize @message
+    # authorize @task
   end
 
   def edit
@@ -31,7 +35,7 @@ class ChasksController < ApplicationController
       render :edit
     end
 
-  authorize @chask
+    authorize @chask
   end
 
   def deadline
@@ -182,6 +186,11 @@ class ChasksController < ApplicationController
 
   def chask_params
     params.require(:chask).permit(:title, :status, :deadline)
+  end
+
+  def chat_get_reply(user_prompt)
+    response = OpenaiService.new(user_prompt).call
+    return response
   end
 
   def overall_progress_percentage(task)
