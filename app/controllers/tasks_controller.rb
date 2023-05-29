@@ -41,23 +41,28 @@ class TasksController < ApplicationController
     authorize @task
 
     if @task.save
-      task_prompt = @task.title
       # API Call
-      chask_array = chat_get(task_prompt)
-      chask_array.each do |title|
-        chask = Chask.new(title: title, task: @task)
+      task_hash = @task.openai_call_api
+      task_hash.keys.each do |chask_title|
+        chask = Chask.new(title: chask_title, task: @task)
         if chask.save
-          @chask = chask
+          task_hash[chask_title].each do |subchask_title|
+            subchask = Chask.new(title: subchask_title, chask: chask, task: @task, status: 'unrequested')
+            redirect_to root unless subchask.save
+          end
         else
-          raise
+          redirect_to root
         end
       end
+
+      # Points
       @user.create_task
       @user.save
-      authorize @chask
-      next_chask(@task, @chask)
+
+      # Move to start displaying flow
+      next_chask(@task)
     else
-      render 'pages/home'
+      redirect_to root
     end
   end
 
@@ -74,26 +79,16 @@ class TasksController < ApplicationController
     params.require(:task).permit(:title)
   end
 
-  def chat_get(prompt)
-    # method to call openAI API
-    divider = 'nex2'
-    ammount = 5
-    adapted_prompt = "I want a list of '#{ammount}' sub-tasks (maximum 10 words per item) for the task of #{prompt}. Split each sub-task with a divider '#{divider}', return in simple text format"
-    response = OpenaiService.new(adapted_prompt).call
-    adapted_response = response.split(divider)
-    return adapted_response
-    # return an array
-    # ['layer1test3', 'layer1test4', 'layer1tell uncle']
-  end
-
-  def next_chask(task, chask)
-    # Checks if there is a next sub_chask, if there is a next chask
-    next_chask = task.chasks.find_by(status: 'pending')
-    if next_chask
-      return redirect_to chask_path(next_chask), notice: 'Chask Completed, Next Chask'
+  def next_chask(task)
+    next_chask = task.chasks.where(chask_id: nil).find_by(status: 'pending')
+    next_subchask = task.chasks.where.not(chask_id: nil).find_by(status: 'pending')
+    if next_subchask
+      redirect_to chask_path(next_sub_chask)
+    elsif next_chask
+      redirect_to chask_path(next_chask)
     else
       task.completed = true
-      return redirect_to tasks_path
+      redirect_to tasks_path
     end
   end
 end
