@@ -17,3 +17,16 @@
     </div>
   <% end %>
 </div>
+
+<div class="widget">
+  <%# <%= image_tag('pixel-art-8-bit-cartoon-t-rex-tyrannosaurus-dinosaur-character-H3KKDG.jpg') %>
+    <div class="widget-content">
+    <%= simple_form_for @task do |f| %>
+    <div class="search-bar-wrapper">
+      <div class="search-group">
+        <%= f.input :title, placeholder: "Ask me anychomp!", label: false, input_html: { class: 'search-bar' } %>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>

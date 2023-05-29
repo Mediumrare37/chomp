@@ -3,8 +3,8 @@ class Chask < ApplicationRecord
 
   belongs_to :task
   belongs_to :chask, optional: true
-  has_many :chasks, dependent: :destroy
-  has_many :notifications, as: :object, dependent: :destroy
+  has_many :notifications, as: :object
+  has_many :messages
 
   validates :title, presence: true
   validates :status, presence: true

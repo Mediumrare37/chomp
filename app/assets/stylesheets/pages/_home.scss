@@ -45,3 +45,24 @@ h3 {
   background-color: #333333;
   border: 0px solid transparent;
 }
+
+.widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #8326bc;
+  transition: all 0.3s ease-in-out;
+}
+
+.widget.expand {
+  width: 200px;
+  height: 200px;
+  background-color: #000000;
+}
+
+.widget-content {
+  display: none;
+}

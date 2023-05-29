@@ -4,11 +4,14 @@
 
 import { application } from "./application"
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
 import ExpandCardController from "./expand_card_controller"
 application.register("expand-card", ExpandCardController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import SetActiveController from "./set_active_controller"
-application.register("set-active", SetActiveController)
+import SpinnerController from "./spinner_controller"
+application.register("spinner", SpinnerController)

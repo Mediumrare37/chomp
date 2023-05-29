@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index, :update]
   resources :tasks, only: [:show, :create, :index]
   resources :chasks do
+    resources :messages, only: [:create]
     member do
       patch :excluded
       patch :queued
