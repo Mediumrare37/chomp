@@ -1,4 +1,8 @@
-<div class="container" data-controller="show">
+<div class="container">
+  <div class="" data-controller="show">
+    <div id="overlay" data-show-target="overlay">
+      <div class="spinner-top" data-show-target="theSpinner"></div>
+    </div>
   <% if @chask.progress? %>
     <%= render 'layouts/startcard' %>
   <% else %>
@@ -7,4 +11,5 @@
     <% else %>
       <%= render 'layouts/show-subchask-card', user: @user, chask: @chask %>
     <% end %>
+   <% end %>
 </div>

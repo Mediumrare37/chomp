@@ -1,19 +1,82 @@
-<div class="container">
-  <div class="notifications shadow-lg border border-primary rounded">
-    <h1>Notifications</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><strong>Notifications</strong></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(180deg, #280E33, #080808);
+      font-family: 'Audiowide', cursive;
+      color: #FDE700; /* White text color */
+    }
 
-    <ul class="list-group">
-      <% @notifications.each do |notification| %>
-        <li class="list-group-item notification">
-          <div class="notification-content">
-            <div class="notification-message">
-              <strong>Message:</strong> <%= notification.message %>
+    .notifications {
+      background-color: #871CDE;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border: 2px solid #871CDE;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .notifications h1 {
+      font-size: 24px;
+      font-weight: normal;
+      margin-top: 0;
+      color: #FDE700; /* Dreamy yellow text color */
+    }
+
+    .list-group {
+      margin-top: 20px;
+      padding: 0;
+    }
+
+    .notification {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #4C0E7E; /* Updated background color */
+    }
+
+    .notification-content {
+      display: flex;
+      align-items: center;
+    }
+
+    .notification-message {
+      margin-left: 10px;
+      color: White; /* Dreamy yellow text color */
+    }
+
+    .notification-message strong {
+      font-weight: bold;
+      color: #FDE700; /* White text color */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="notifications shadow-lg">
+      <h1><strong>Notifications</strong></h1>
+
+      <ul class="list-group">
+        <% @notifications.each do |notification| %>
+          <li class="list-group-item notification">
+            <div class="notification-content">
+              <div class="notification-message">
+                <strong>Message:</strong> <%= notification.message %>
+              </div>
             </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+          </li>
+        <% end %>
+      </ul>
 
-    <% @notifications.update_all(read: true) %>
+      <% @notifications.update_all(read: true) %>
+    </div>
   </div>
-</div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
