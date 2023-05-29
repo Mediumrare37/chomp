@@ -1,18 +1,23 @@
 <div class="task-card" data-controller="expand-card" data-action="click->expand-card#displayChasks">
-  <header>
-    <h6><%= task.title %></h6>
-  </header>
-  <div class="task-card-info">
-    <div class="completion-percentage">
-      <p><%=task.complete_percentage %>%</p>
+  <div class="task-content">
+    <header>
+      <h6><%= task.title %></h6>
+    </header>
+    <div class="task-card-info">
+      <div class="completion-percentage">
+        <p><%=task.complete_percentage %>%</p>
+      </div>
     </div>
-    <% if false %>
-      <button type="button" class="btn btn-flat" data-bs-toggle="modal" data-bs-target="#modal<%= task.id %>" data-bs-whatever="a">Open modal for a</button>
-    <% end %>
+    <%= link_to '', task_path(task), class: "card-link" %>
   </div>
-  <%= link_to '', task_path(task), class: "card-link" %>
+  <div class="settings-button">
+    <%= icon('fa-solid', 'ellipsis-v') %>
+  </div>
+  <div class="remove-button">
+    <%= icon('fa-solid', 'trash') %>
+    <%= link_to '', task_path(task), class: "remove-link" %>
+  </div>
 </div>
-<%= render 'task_modal', task: task %>
 <%# <div class="deadline">
   <%= simple_form_for @chask, url: deadline_chask_path(@chask) do |f| %>
   <%# <%= f.input :deadline, as: :date, label:false, html5: true %>

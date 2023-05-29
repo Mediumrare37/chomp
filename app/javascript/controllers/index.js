@@ -15,3 +15,6 @@ application.register("hello", HelloController)
 
 import SpinnerController from "./spinner_controller"
 application.register("spinner", SpinnerController)
+
+import ShowController from "./show_controller"
+application.register("show", ShowController)

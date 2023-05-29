@@ -1,86 +1,10 @@
-<div class="container">
+<div class="container" data-controller="show">
   <% if @chask.progress? %>
     <%= render 'layouts/startcard' %>
   <% else %>
-    <div class="chaskcard">
-      <div class="points">
-        <%= 'Points: ' + @user.totalpoints.to_s %>
-      </div>
-      <div class="title">
-        <h5><%= 'Task Flow: ' + @chask.task.title.to_s %></h5>
-        <h2><%= @chask.title %></h2>
-      </div>
-      <div class="options">
-        <div class="startsave">
-          <div class="startsave-button">
-            <%= simple_form_for @chask, url: progress_chask_path(@chask) do |f| %>
-              <%= f.input :status, as: :hidden, input_html: { value: 'progress'} %>
-              <%= f.button :button do %>
-                <%= @chask.paused? ? 'Resume' : 'Start Now'  %>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="startsave-button">
-            <%= simple_form_for @chask, url: queued_chask_path(@chask) do |f| %>
-              <%= f.input :status, as: :hidden, input_html: { value: 'queued'} %>
-              <%= f.button :submit, 'Save and Next' %>
-            <% end %>
-          </div>
-        </div>
-        <div class="menu-icons">
-          <% if !@chask.chask %>
-            <%= link_to icon("fa-solid", "arrows-split-up-and-left"), breakdown_chask_path(@chask) %>
-          <% end %>
-          <%= link_to icon("fa-solid", "pen"), edit_chask_path %>
-          <%= simple_form_for @chask, url: excluded_chask_path(@chask) do |f| %>
-            <%= f.input :status, as: :hidden, input_html: { value: 'excluded'} %>
-            <%= f.button :button do %>
-              <%= icon("fa-solid", "ban") %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-      <div class="deadline">
-        <%= simple_form_for @chask, url: deadline_chask_path(@chask) do |f| %>
-          <%= f.input :deadline, as: :date, label:false, html5: true %>
-          <%= f.button :submit, 'Update Chask' %>
-        <% end %>
-      </div>
+    <% if !@chask.chask %>
+      <%= render 'layouts/show-chask-card', user: @user, chask: @chask %>
+    <% else %>
+      <%= render 'layouts/show-subchask-card', user: @user, chask: @chask %>
     <% end %>
-  </div>
-  </div>
-</div>
-<div class="chatbox border border-white">
-<div class="container chatroom"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chask.id %>"
-  data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
->
-  <h6>#<%= @chask.title %></h1>
-
-    <div class="messages" data-chatroom-subscription-target="messages">
-      <% @chask.messages.each do |message| %>
-      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-      <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-        <%= render "messages/message", message: message %>
-      </div>
-    </div>
-  <% end %>
-</div>
-  <%= simple_form_for [@chask, @message],
-      html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-    %>
-      <%= f.input :content,
-        label: false,
-        placeholder: "Feed me your questions",
-        wrapper_html: {class: "flex-grow-1"}
-      %>
-      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-    <% end %>
-<p><%= 'Status (not visible to user): ' + @chask.status.to_s.upcase %></p>
-<p><%= 'Belongs to Task: ' + @chask.task.id.to_s %></p>
-<% if @chask.chask %>
-  <p><%= 'Belongs to Chask: ' + @chask.chask.id.to_s %></p>
-<% end %>
-</div>
 </div>

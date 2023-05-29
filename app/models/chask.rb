@@ -1,5 +1,5 @@
 class Chask < ApplicationRecord
-  STATUS = ['pending', 'queued', 'progress', 'paused', 'completed', 'excluded']
+  STATUS = ['unrequested', 'pending', 'queued', 'progress', 'paused', 'completed', 'excluded']
 
   belongs_to :task
   belongs_to :chask, optional: true
@@ -9,8 +9,16 @@ class Chask < ApplicationRecord
   validates :title, presence: true
   validates :status, presence: true
 
-  def show_inner_chasks
-    # method
+  def sub_chask?
+    self.chask_id == true
+  end
+
+  def chask?
+    self.chask_id == nil
+  end
+
+  def unrequested?
+    self.status == 'unrequested'
   end
 
   def pending?
@@ -18,7 +26,7 @@ class Chask < ApplicationRecord
   end
 
   def excluded?
-    self.status == 'pending'
+    self.status == 'excluded'
   end
 
   def queued?

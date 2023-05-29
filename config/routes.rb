@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       patch :completed
       get :breakdown
       patch :deadline
+      patch :global_deadline
     end
   end
 
