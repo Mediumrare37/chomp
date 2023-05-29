@@ -3,9 +3,17 @@
     <h1>Open Task Flows</h1>
   </div>
   <div class="card-layout">
-    <% @tasks.each do |task| %>
+    <% @tasks.each_with_index do |task, index| %>
       <%# <%= render 'tasks/progress_bar', task: task %>
-      <%= render 'tasks/task_card', task: task %>
+      <div class="row">
+        <% if index.odd? %>
+          <div class="empty-cell"></div>
+          <%= render 'tasks/task_card', task: task %>
+        <% else %>
+          <%= render 'tasks/task_card', task: task %>
+          <div class="empty-cell"></div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

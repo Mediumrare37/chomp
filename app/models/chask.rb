@@ -1,10 +1,10 @@
 class Chask < ApplicationRecord
-  STATUS = ['pending', 'queued', 'progress', 'paused', 'completed', 'excluded']
+  STATUS = ['unrequested', 'pending', 'queued', 'progress', 'paused', 'completed', 'excluded']
 
   belongs_to :task
   belongs_to :chask, optional: true
-  has_many :chasks, dependent: :destroy
-  has_many :notifications, as: :object, dependent: :destroy
+  has_many :notifications, as: :object
+  has_many :messages
 
   validates :title, presence: true
   validates :status, presence: true
@@ -17,12 +17,16 @@ class Chask < ApplicationRecord
     self.chask_id == nil
   end
 
+  def unrequested?
+    self.status == 'unrequested'
+  end
+
   def pending?
     self.status == 'pending'
   end
 
   def excluded?
-    self.status == 'pending'
+    self.status == 'excluded'
   end
 
   def queued?

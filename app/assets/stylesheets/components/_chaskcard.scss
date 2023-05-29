@@ -10,6 +10,17 @@
   background: #871CDE;
 }
 
+.subchaskcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 2px $peace-blue;
+  border-radius: 8px;
+  margin-top: 25px;
+  height: 700px;
+  background: $peace-blue;
+}
+
 .points {
   margin: 10px;
   align-self: end;
@@ -17,7 +28,7 @@
   color: $dreamy-yellow;
 }
 
-.title {
+.chaskcard-title {
   background: #871CDE;
   width: 100%;
   padding: 5px;
@@ -27,13 +38,35 @@
   flex-direction: column;
 }
 
-.title h2 {
+.subchaskcard-title {
+  background: $peace-blue;
+  width: 100%;
+  padding: 5px;
+  height: 50%;
+  justify-content: end;
+  display: flex;
+  flex-direction: column;
+}
+
+.chaskcard-title h2 {
   font-family: $audio-font;
   text-align: center;
   color: $dreamy-yellow;
 }
 
-.title h5 {
+.subchaskcard-title h5 {
+  font-family: $audio-font;
+  text-align: center;
+  font-size: 15px;
+}
+
+.subchaskcard-title h2 {
+  font-family: $audio-font;
+  text-align: center;
+  color: $dreamy-yellow;
+}
+
+.chaskcard-title h5 {
   font-family: $audio-font;
   text-align: center;
   font-size: 15px;
@@ -102,7 +135,7 @@
   color: white;
 }
 
-.menu-icons {
+.chask-menu-icons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: 90%;
@@ -115,19 +148,48 @@
   // justify-items: center;
 }
 
-.menu-icons a {
+.subchask-menu-icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  margin: 10px;
+  border: solid 2px $dreamy-yellow;
+  border-radius: 8px;
+
+  // display: flex;
+  // flex-direction: row;
+  // justify-items: center;
+}
+
+.chask-menu-icons a {
   text-align: center;
   padding-top: 9px;
   color: white;
 }
 
-.menu-icons form {
+.subchask-menu-icons a {
+  text-align: center;
+  padding-top: 9px;
+  color: white;
+}
+
+.chask-menu-icons form {
   text-align: center;
   padding-top: 4px;
   color: white;
 }
 
-.menu-icons .fa-solid {
+.subchask-menu-icons form {
+  text-align: center;
+  padding-top: 4px;
+  color: white;
+}
+
+.chask-menu-icons .fa-solid {
+  color: white;
+}
+
+.subchask-menu-icons .fa-solid {
   color: white;
 }
 

@@ -30,6 +30,31 @@
       <%= image_tag "stars.svg" %>
     </div>
 
+    <div class="search-container">
+      <h3>Start a <span>journey!</span></h3>
+      <%= simple_form_for @task do |f| %>
+        <div class="search-bar-wrapper">
+          <div class="search-group">
+            <%= f.input :title, placeholder: "Enter task here", label: false, input_html: { class: 'search-bar' } %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+<div class="widget">
+  <%# <%= image_tag('pixel-art-8-bit-cartoon-t-rex-tyrannosaurus-dinosaur-character-H3KKDG.jpg') %>
+    <div class="widget-content">
+    <%= simple_form_for @task do |f| %>
+    <div class="search-bar-wrapper">
+      <div class="search-group">
+        <%= f.input :title, placeholder: "Ask me anychomp!", label: false, input_html: { class: 'search-bar' } %>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
     <div class="spinner-container" data-controller="spinner">
       <%= simple_form_for @task, html: { data: { action: 'submit->spinner#insert' } } do |f| %>
         <div class="search-bar-wrapper">
