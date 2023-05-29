@@ -212,7 +212,12 @@ class ChasksController < ApplicationController
   end
 
   def next_chask(task, chask)
+    # There is a problem with the logic here
+    # When the user creates a new task and goes through some of the chasks, the code will sometimes redirect the user to another task flow.
+    # For example, when a new task is created, chask_id is nil unless the user decides to break it down, but by the default, chask_id is nil
     next_sub_chask = Chask.where(chask_id: chask.chask_id, status: 'pending').first
+    # When the code above runs, it'll return an array containing every chask instance where chask_id is nil.
+    # To sum it up, it's selecting not only the chasks for that specific task, but instead, every single instance of chask where chask_id = nil.
 
     if next_sub_chask
       redirect_to chask_path(next_sub_chask), notice: 'Next Sub_Chask'
