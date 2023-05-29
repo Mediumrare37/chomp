@@ -98,7 +98,7 @@ class ChasksController < ApplicationController
       @chask.chask_id ? @user.complete_subchask_same_day_bonus : @user.complete_chask_same_day_bonus
 
       @user.save
-      next_chask(@task, @chask)
+      next_chask(@task)
     else
       render :show
     end
@@ -135,7 +135,7 @@ class ChasksController < ApplicationController
     authorize @task
 
     if @chask.update(chask_params)
-      next_chask(@task, @chask)
+      next_chask(@task)
     else
       render :show
     end
@@ -149,7 +149,7 @@ class ChasksController < ApplicationController
     authorize @task
 
     if @chask.update(chask_params)
-      next_chask(@task, @chask)
+      next_chask(@task)
     else
       render :show
     end
@@ -167,7 +167,7 @@ class ChasksController < ApplicationController
     @chask.save
 
     # Change status of relevant subchasks from unrequested to pending
-    @task.chasks.where.not(chask_id: nil).each do |subchask|
+    @task.chasks.where(chask_id: @chask.id).each do |subchask|
       subchask.status = 'pending'
       subchask.save
     end
@@ -196,7 +196,7 @@ class ChasksController < ApplicationController
     next_chask = task.chasks.where(chask_id: nil).find_by(status: 'pending')
     next_subchask = task.chasks.where.not(chask_id: nil).find_by(status: 'pending')
     if next_subchask
-      redirect_to chask_path(next_sub_chask)
+      redirect_to chask_path(next_subchask)
     elsif next_chask
       redirect_to chask_path(next_chask)
     else
