@@ -1,4 +1,11 @@
-<div class="container" data-controller="show">
+<div class="container">
+  <div class="" data-controller="show">
+
+
+    <div id="overlay" data-show-target="overlay">
+      <div class="spinner-top" data-show-target="theSpinner"></div>
+    </div>
+
   <% if @chask.progress? %>
     <%= render 'layouts/startcard' %>
   <% else %>
@@ -41,7 +48,7 @@
         </div>
       </div>
       <% if @chask.paused? %>
-        <div class="spinner-overlay d-flex justify-content-center align-items-center" data-show-target="spinner">
+        <div class="d-flex justify-content-center align-items-center" data-show-target="spinner">
           <div class="spinner" data-spinner-target="show"></div>
         </div>
       <% end %>
@@ -54,7 +61,7 @@
     </div>
   <% end %>
 </div>
-
+</div>
 <%# <p><%= 'Status (not visible to user): ' + @chask.status.to_s.upcase %></p>
 <%# <p><%= 'Belongs to Task: ' + @chask.task.id.to_s %></p>
 <%# <% if @chask.chask %>
