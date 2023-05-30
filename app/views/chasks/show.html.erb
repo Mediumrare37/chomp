@@ -1,15 +1,16 @@
 <div class="container">
-  <div class="" data-controller="show">
+  <div data-controller="show">
     <div id="overlay" data-show-target="overlay">
       <div class="spinner-top" data-show-target="theSpinner"></div>
     </div>
-  <% if @chask.progress? %>
-    <%= render 'layouts/startcard' %>
-  <% else %>
-    <% if !@chask.chask %>
-      <%= render 'layouts/show-chask-card', user: @user, chask: @chask %>
+    <% if @chask.progress? %>
+      <%= render 'layouts/startcard' %>
     <% else %>
-      <%= render 'layouts/show-subchask-card', user: @user, chask: @chask %>
+      <% if !@chask.chask %>
+        <%= render 'layouts/show-chask-card', user: @user, chask: @chask %>
+      <% else %>
+        <%= render 'layouts/show-subchask-card', user: @user, chask: @chask %>
+      <% end %>
     <% end %>
-   <% end %>
+  </div>
 </div>

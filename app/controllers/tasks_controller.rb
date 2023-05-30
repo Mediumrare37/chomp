@@ -50,10 +50,10 @@ class TasksController < ApplicationController
         if chask.save
           task_hash[chask_title].each do |subchask_title|
             subchask = Chask.new(title: subchask_title, chask: chask, task: @task, status: 'unrequested')
-            redirect_to root_path and return unless subchask.save
+            redirect_to root_path unless subchask.save
           end
         else
-          redirect_to root_path and return
+          redirect_to root_path
         end
       end
 
