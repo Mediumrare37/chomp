@@ -1,6 +1,7 @@
 <div class="chaskcard">
   <div class="points">
     <%= 'Points: ' + user.totalpoints.to_s %>
+    <%= link_to icon("fa-solid", "x"), tasks_path %>
   </div>
   <div class="chaskcard-title">
     <h5><%= 'Task Flow: ' + chask.task.title.to_s %></h5>
@@ -27,11 +28,12 @@
       <% if !chask.chask %>
         <%= link_to icon("fa-solid", "arrows-split-up-and-left"), breakdown_chask_path(chask), data: { action: 'click->show#insert' } %>
       <% end %>
+      <%= link_to icon("fa-solid", "bell") %>
       <%= link_to icon("fa-solid", "pen"), edit_chask_path %>
       <%= simple_form_for chask, url: excluded_chask_path(chask) do |f| %>
         <%= f.input :status, as: :hidden, input_html: { value: 'excluded'} %>
         <%= f.button :button do %>
-          <%= icon("fa-solid", "ban") %>
+          <%= icon("fa-solid", "trash") %>
         <% end %>
       <% end %>
     </div>
