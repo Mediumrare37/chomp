@@ -1,13 +1,15 @@
 .chaskcard {
+  bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: solid 2px #871CDE;
   border-radius: 8px;
-  /* background: #231855; */
   margin-top: 25px;
-  height: 700px;
+  height: 750px;
   background: #871CDE;
+  position: relative;
+  top: 20px;
 }
 
 .subchaskcard {
@@ -23,9 +25,22 @@
 
 .points {
   margin: 10px;
-  align-self: end;
-  font-family: $audio-font;
-  color: $dreamy-yellow;
+  align-self: start;
+  font-family: "Audiowide", sans-serif;
+  color: #E8B508;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.points i {
+  color: white;
+  font-size: 20px;
+}
+
+.points a {
+  width: 20px;
 }
 
 .chaskcard-title {
@@ -137,7 +152,7 @@
 
 .chask-menu-icons {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   width: 90%;
   margin: 10px;
   border: solid 2px $dreamy-yellow;
@@ -150,7 +165,7 @@
 
 .subchask-menu-icons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   width: 90%;
   margin: 10px;
   border: solid 2px $dreamy-yellow;

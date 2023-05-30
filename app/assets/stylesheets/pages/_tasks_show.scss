@@ -20,6 +20,7 @@
 .show-header a {
   top: 18px;
   font-size: 29px;
+  position: relative;
 }
 
 .show-title > h1 {
@@ -28,6 +29,10 @@
   padding-top: 20px;
   padding-bottom: 15px;
   color: $dreamy-yellow;
+}
+
+.buttons {
+  margin-left: 15px;
 }
 
 .h2 {
