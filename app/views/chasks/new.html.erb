@@ -1,29 +1,11 @@
 <div class="chask-card" data-controller="expand-card">
   <div class="subshow-header">
     <div class="subshow-title">
-      <%= simple_form_for [@chask] do |f| %>
-        <%= f.input :title, label: false %>
+      <%= simple_form_for @chask do |f| %>
+        <%= f.input :task_id, value: @task.id, as: :hidden, label: false %>
+        <%= f.input :title, label: 'Write task name' %>
         <%= f.submit class:"visually-hidden", value: "Save Changes" %>
       <% end %>
     </div>
-    <div class="subshow-buttons">
-      <% if @chask.has_chasks? %>
-        <i class="fa-solid fa-angle-down" data-action ="click->expand-card#displayChasks"></i>
-      <% end %>
-    </div>
   </div>
-  <div class="subshow-subheader">
-    <div class="chask-deadline">
-      <%# <%= simple_form_for @chask, url: global_deadline_chask_path(@chask) do |f| %>
-        <%# <%= f.input :deadline, as: :date, label:false, html5: true, input_html: { class:"chask_deadline" } %>
-        <%# <%= f.button :submit, 'Update Chask', class:"visually-hidden" %>
-        <%# <% end %>
-      </div>
-      <div class="chask-status">
-        <p><%= @chask.status %></p>
-      </div>
-    </div>
-    <div class="subchasks-section d-none" data-expand-card-target="chasks" >
-      <%= render 'tasks/subchask_card', chask: @chask %>
-    </div>
-  </div>
+</div>

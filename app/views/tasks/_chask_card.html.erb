@@ -10,6 +10,8 @@
       <% end %>
     </div>
     <div class="subshow-buttons">
+      <%= link_to icon("fa-solid", "pencil"), edit_chask_path(chask), class: "delete-button" %>
+      <%= link_to icon("fa-solid", "trash"), chask_path(chask), class: "delete-button", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       <% if chask.has_chasks? %>
         <i class="fa-solid fa-angle-down" data-action ="click->expand-card#displayChasks"></i>
       <% end %>
