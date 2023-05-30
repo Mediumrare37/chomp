@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       get :breakdown
       patch :deadline
       patch :global_deadline
+      get :new
+      post :create
     end
   end
 

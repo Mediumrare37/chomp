@@ -12,6 +12,30 @@ class ChasksController < ApplicationController
     # authorize @task
   end
 
+  def new
+    @task = Task.find(params[:id])
+    @chask = Chask.new(task: @task)
+    authorize @chask
+    authorize @task
+  end
+
+  def create
+    @chask = Chask.new(chask_params)
+    raise
+    @task = Task.find(params[:id])
+    raise
+    authorize @chask
+    authorize @task
+
+    @chask.task = @task
+
+    if @chask.save
+      redirect_to task_path(@task)
+    else
+      render :new
+    end
+  end
+
   def edit
     @chask = Chask.find(params[:id])
     @task = @chask.task
@@ -184,7 +208,7 @@ class ChasksController < ApplicationController
   private
 
   def chask_params
-    params.require(:chask).permit(:title, :status, :deadline)
+    params.require(:chask).permit(:title, :status, :deadline, :task)
   end
 
   def chat_get_reply(user_prompt)
