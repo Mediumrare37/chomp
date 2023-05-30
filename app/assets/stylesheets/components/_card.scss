@@ -2,23 +2,64 @@
   padding: 1em;
 }
 
+.task-card-container {
+  padding: 0;
+  width: min-content;
+  height: 180px;
+}
+
 .row {
+  height: 180px;
   display: flex;
   justify-content: space-between;
-  height: 180px;
 }
 
 .empty-cell {
   width: 50%;
+  height: 100%;
 }
 
-.task-card {
+$cards: 20;
+
+@mixin background($completion) {
+  background: conic-gradient($peace-blue $completion, white 0deg);
+}
+
+%progress {
+  $completion: var(--progress-percent);
+  position: absolute;
+  border-radius: 50%;
   width: 180px;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
-  overflow: hidden;
-  background-color: $calming-purple !important;
+  height: 180px;
+  z-index: -1;
+  @include background($completion);
+}
+
+@mixin progressbarx {
+  @for $i from 0 through $cards {
+    .progressbar#{$i} { @extend %progress; }
+  }
+}
+
+@include progressbarx;
+
+// .progressbar {
+//   position: absolute;
+//   background: conic-gradient(red $completion, white 0deg);
+//   border-radius: 50%;
+//   width: 200px;
+//   height: 200px;
+// }
+
+.task-card {
+  background: $calming-purple;
+  position: relative;
+  height: 160px;
+  width: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // overflow: hidden;
   border-radius: 50%;
   p { font-size: 0.8em; }
 
@@ -38,7 +79,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   width: 100%;
   height: 100%;
 }
@@ -94,95 +134,8 @@
   border-radius: 0.3em;
 }
 
-.buttons {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.card-link, .remove-link {
+.card-link {
   position: absolute;
   width: 100%;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  height: 100%;
 }
-
-.task-card.active .settings-button {
-  /*fixed*/
-  border-radius: 0;
-}
-
-.task-card.active .remove-button {
-  width: 100px;
-}
-
-// Expanding and collapsing animation
-
-// .expanded > .chask-card {
-//   opacity: 1;
-//   animation: reveal 0.7s ease;
-// }
-
-// .collapsed > .chask-card {
-//   opacity: 0;
-//   animation: unreveal 0.2s ease;
-// }
-
-// .expanded {
-//   height: 100%;
-//   animation: expand 0.5s ease;
-// }
-
-// .collapsed {
-//   height: 0;
-//   animation: collapse 0.2s ease;
-// }
-
-// .rotated {
-//   transform: rotate(90deg);
-// }
-
-// .unrotated {
-//   transform: rotate(0);
-// }
-
-// @keyframes expand {
-//   0% { height: 0; }
-//   100% { height: 100%; }
-// }
-
-// @keyframes collapse {
-//   0% { height: 100%; }
-//   100% { height: 0; }
-// }
-
-// @keyframes reveal {
-//   0% {
-//       opacity: 0;
-//       transform: translateY(-20px);
-//   }
-//   100% {
-//       opacity: 1;
-//       transform: translateY(0);
-//   }
-// }
-// @keyframes unreveal {
-//   0% {
-//       opacity: 1;
-//       transform: translateY(0);
-//   }
-//   100% {
-//       opacity: 0;
-//       transform: translateY(-20px);
-//   }
-// }
-
-// @keyframes rotate {
-//   0% { transform: rotate(0); }
-//   100% { transform: rotate(90deg); }
-// }
-
-// @keyframes unrotate {
-//   0% { transform: rotate(90deg); }
-//   100% { transform: rotate(0); }
-// }
