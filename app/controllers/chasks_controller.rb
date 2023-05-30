@@ -20,14 +20,12 @@ class ChasksController < ApplicationController
   end
 
   def create
+    @task = Task.find(params[:chask][:task_id])
     @chask = Chask.new(chask_params)
-    raise
-    @task = Task.find(params[:id])
-    raise
+    @chask.task = @task
+    @chask.status = 'queued'
     authorize @chask
     authorize @task
-
-    @chask.task = @task
 
     if @chask.save
       redirect_to task_path(@task)
@@ -39,26 +37,37 @@ class ChasksController < ApplicationController
   def edit
     @chask = Chask.find(params[:id])
     @task = @chask.task
-
     authorize @chask
     authorize @task
   end
 
   def update
-    @chask = Chask.find(params[:id]) # Find the @chask object first
+    @chask = Chask.find(params[:id])
     @task = @chask.task
-
-    # Authorize the found @chask object
     authorize @chask
     authorize @task
 
     if @chask.update(chask_params)
-      redirect_to chask_path(@chask), notice: 'Chask was successfully updated.'
+      if @chask.pending? || @chask.paused?
+        redirect_to chask_path(@chask)
+      else
+        redirect_to task_path(@task)
+      end
     else
       render :edit
     end
 
     authorize @chask
+  end
+
+  def destroy
+    @chask = Chask.find(params[:id]) # Find the @chask
+    @task = @chask.task
+    authorize @chask
+    authorize @task
+
+    @chask.destroy
+    redirect_to task_path(@task)
   end
 
   def deadline
@@ -208,7 +217,7 @@ class ChasksController < ApplicationController
   private
 
   def chask_params
-    params.require(:chask).permit(:title, :status, :deadline, :task)
+    params.require(:chask).permit(:title, :status, :deadline)
   end
 
   def chat_get_reply(user_prompt)
