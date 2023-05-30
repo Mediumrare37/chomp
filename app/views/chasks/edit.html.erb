@@ -12,8 +12,3 @@
     </div>
   </div>
 </div>
-<p><%= 'Status (not visible to user): ' + @chask.status.to_s.upcase %></p>
-<p><%= 'Belongs to Task: ' + @chask.task.id.to_s %></p>
-<% if @chask.chask %>
-  <p><%= 'Belongs to Chask: ' + @chask.chask.id.to_s %></p>
-<% end %>

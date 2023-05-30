@@ -49,6 +49,14 @@ class Chask < ApplicationRecord
     self.status = 'queued'
   end
 
+  def has_chasks?
+    Chask.where(chask_id: self.id).where.not(status: 'unrequested') != []
+  end
+
+  def subchasks
+    Chask.where(chask_id: self.id).where.not(status: 'unrequested')
+  end
+
   after_save :update_task_completion_status
 
   def update_task_completion_status
