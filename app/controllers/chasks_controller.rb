@@ -7,11 +7,6 @@ class ChasksController < ApplicationController
     @user = @task.user
     authorize @chask
     @message = Message.new
-<<<<<<< Updated upstream
-    # @response = chat_get_reply(@message)
-=======
-    @response = chat_get_reply('Hello, how are you?')
->>>>>>> Stashed changes
     authorize @message
     # authorize @task
   end

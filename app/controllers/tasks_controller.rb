@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
 
+#We have an issue with the home page loading to the created methd below.
+
   def index
     @tasks = policy_scope(Task).all
   end
@@ -48,10 +50,10 @@ class TasksController < ApplicationController
         if chask.save
           task_hash[chask_title].each do |subchask_title|
             subchask = Chask.new(title: subchask_title, chask: chask, task: @task, status: 'unrequested')
-            redirect_to root unless subchask.save
+            redirect_to root_path and return unless subchask.save
           end
         else
-          redirect_to root
+          redirect_to root_path and return
         end
       end
 
@@ -62,7 +64,7 @@ class TasksController < ApplicationController
       # Move to start displaying flow
       next_chask(@task)
     else
-      redirect_to root
+      redirect_to root_path
     end
   end
 

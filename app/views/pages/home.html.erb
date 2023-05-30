@@ -16,7 +16,6 @@
           height: 200px; /* Adjust the size as needed */
         }
       }
-<<<<<<< Updated upstream
     </style>
   </head>
   <body>
@@ -31,13 +30,7 @@
         </div>
         <div class="search-container">
           <h3>Start a <span>journey!</span></h3>
-          <%= simple_form_for @task do |f| %>
-            <div class="search-bar-wrapper">
-              <div class="search-group">
-                <%= f.input :title, placeholder: "Enter task here", label: false, input_html: { class: 'search-bar' } %>
-              </div>
-            </div>
-          <% end %>
+
         </div>
       </div>
       <div class="widget">
@@ -63,54 +56,6 @@
         <% end %>
         <div class="spinner" data-spinner-target="spinner"></div>
       </div>
-      <h3 class="text-center">Start a <span>journey!</span></h3>
     </div>
   </body>
-=======
-
-      .spinner {
-        width: 200px; /* Adjust the size as needed */
-        height: 200px; /* Adjust the size as needed */
-      }
-    }
-  </style>
-</head>
-<body>
- <div class="wrapper">
-  <div class="header-container">
-    <header id="main-header">
-      <h1>Task Chomp</h1>
-      <h2>Seize the day, one task at a time!</h2>
-    </header>
-
-    <div class="banner">
-      <%= image_tag "stars.svg" %>
-    </div>
-
-<div class="widget">
-    <div class="widget-content">
-    <%= simple_form_for @task do |f| %>
-    <div class="search-bar-wrapper">
-      <div class="search-group">
-        <%= f.input :title, placeholder: "Ask me anychomp!", label: false, input_html: { class: 'search-bar' } %>
-      </div>
-    </div>
-  <% end %>
-</div>
-</div>
-    <div class="spinner-container" data-controller="spinner">
-    <h3 class="text-center">Start a <span>journey!</span></h3>
-      <%= simple_form_for @task, html: { data: { action: 'submit->spinner#insert' } } do |f| %>
-        <div class="search-bar-wrapper">
-          <div class="search-group">
-            <%= f.input :title, placeholder: "Enter task here", label: false, input_html: { class: 'search-bar' } %>
-            <%= f.button :submit, 'Search' %>
-          </div>
-        </div>
-      <% end %>
-      <div class="spinner" data-spinner-target="spinner"></div>
-    </div>
-  </div>
-</body>
->>>>>>> Stashed changes
 </html>
