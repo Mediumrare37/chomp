@@ -39,12 +39,14 @@ $cards: 20;
   height: 180px;
   z-index: -1;
   @include background($completion);
-  box-shadow: 1px 1px 10px rgba(0,0,0,.2)
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, .2)
 }
 
 @mixin progressbarx {
   @for $i from 0 through $cards {
-    .progressbar#{$i} { @extend %progress; }
+    .progressbar#{$i} {
+      @extend %progress;
+    }
   }
 }
 
@@ -68,7 +70,10 @@ $cards: 20;
   align-items: center;
   // overflow: hidden;
   border-radius: 50%;
-  p { font-size: 0.8em; }
+
+  p {
+    font-size: 0.8em;
+  }
 }
 
 .task-content {
@@ -84,6 +89,7 @@ $cards: 20;
     margin: 0;
     font-weight: 600;
   }
+
   align-items: center;
   display: flex;
   justify-content: flex-end;
@@ -120,14 +126,14 @@ $cards: 20;
   border-radius: 50%;
   padding: 1em;
   background: $peace-blue;
-  box-shadow: 1px 1px 10px rgba(0,0,0,.4)
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, .4)
 }
 
 .chask-card {
   margin: 0.5em 0;
   padding: 0.5em;
-  background: #606060;
   border-radius: 0.3em;
+  background: #606060;
 }
 
 .card-link {
