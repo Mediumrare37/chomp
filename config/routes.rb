@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :notifications, only: [:index, :update]
-  resources :tasks, only: [:show, :create, :index] do
+  resources :tasks, only: [:show, :create, :index, :destroy] do
     resources :chasks, only: [:new, :create]
-    collection do
-      get :index_sort
-    end
+    # collection do
+    #   get :index_sort
+    # end
   end
   resources :chasks, except: [:new, :create] do
     resources :messages, only: [:create]

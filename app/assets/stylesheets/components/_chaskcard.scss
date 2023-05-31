@@ -1,5 +1,4 @@
 .chaskcard {
-  bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +9,7 @@
   background: #871CDE;
   position: relative;
   top: 20px;
+  bottom: 20px;
 }
 
 .subchaskcard {
@@ -19,8 +19,11 @@
   border: solid 2px $peace-blue;
   border-radius: 8px;
   margin-top: 25px;
-  height: 700px;
+  height: 750px;
   background: $peace-blue;
+  position: relative;
+  top: 20px;
+  bottom: 20px;
 }
 
 .points {
