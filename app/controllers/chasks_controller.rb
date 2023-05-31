@@ -138,7 +138,7 @@ class ChasksController < ApplicationController
       if @chask.sub_chask? #if it is a subchask
         @chask.parent_chask.status = 'completed' if @chask.parent_chask.all_completed?
       else #if it is a chask
-        @chask.status = 'complted' if @chask.all_completed?
+        @chask.status = 'completed' if @chask.all_completed?
       end
 
       # Call progress method to see if parent task is fully completed
