@@ -7,6 +7,7 @@ User.destroy_all
 Task.destroy_all
 Chask.destroy_all
 
+User.create!({id: 999, email: "chompy@chompiest.com", password: "pass123", password_confirmation: "pass123"})
 lucca = User.create!({email: "lucca@test.com", password: "pass123", password_confirmation: "pass123"})
 john = User.create!({:email => "john@test.com", :password => "pass123", :password_confirmation => "pass123" })
 paul = User.create!({:email => "paul@test.com", :password => "pass123", :password_confirmation => "pass123" })

@@ -11,6 +11,7 @@ class ChasksController < ApplicationController
 
     # Messages Show
     @message = Message.new
+    # @response = chat_get_reply(@message)
     authorize @message
     # authorize @task
   end
