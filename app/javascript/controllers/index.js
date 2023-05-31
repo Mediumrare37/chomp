@@ -13,8 +13,11 @@ application.register("expand-card", ExpandCardController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import SpinnerController from "./spinner_controller"
-application.register("spinner", SpinnerController)
+import SetActiveNavlinkController from "./set_active_navlink_controller"
+application.register("set-active-navlink", SetActiveNavlinkController)
 
 import ShowController from "./show_controller"
 application.register("show", ShowController)
+
+import SpinnerController from "./spinner_controller"
+application.register("spinner", SpinnerController)
