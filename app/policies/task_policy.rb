@@ -26,7 +26,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user == record.user
+    true
   end
 
   def breakdown?

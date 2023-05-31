@@ -118,8 +118,8 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     authorize @task
-
-    # Destroy logic...
+    @task.destroy
+    redirect_to tasks_path
   end
 
   private
