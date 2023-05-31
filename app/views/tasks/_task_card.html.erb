@@ -1,10 +1,8 @@
 <div class="task-card-container">
   <div class="task-card">
-    <div class="progressbar<%= index %>" style="--progress-percent: <%= (task.complete_percentage * 3.6).to_i %>deg;"></div>
+    <div class="progressbar<%= index %>" style="--progress-percent: <%= task.complete_percentage %>%;"></div>
       <div class="task-content">
-        <header>
-          <h6><%= task.title %></h6>
-        </header>
+        <h6><%= task.title %></h6>
         <%= link_to '', task_path(task), class: "card-link" %>
       </div>
   </div>
