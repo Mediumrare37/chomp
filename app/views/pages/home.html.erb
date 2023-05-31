@@ -1,60 +1,60 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      @media (max-width: 767px) {
-        .spinner-container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 40vh;
-          flex-direction: column;
-        }
-
-        .spinner {
-          width: 200px; /* Adjust the size as needed */
-          height: 200px; /* Adjust the size as needed */
-        }
+<head>
+  <style>
+    @media (max-width: 767px) {
+      .spinner-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40vh;
+        flex-direction: column;
       }
-    </style>
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="header-container">
-        <header id="main-header">
-          <h1>Task Chomp</h1>
-          <h2>Seize the day, one task at a time!</h2>
-        </header>
-        <div class="banner">
-          <%= image_tag "stars.svg" %>
-        </div>
-        <div class="search-container">
-          <h3>Start a <span>journey!</span></h3>
-        </div>
+
+      .spinner {
+        width: 200px; /* Adjust the size as needed */
+        height: 200px; /* Adjust the size as needed */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    <div class="header-container">
+      <header id="main-header">
+        <h1>Task Chomp</h1>
+        <h2>Seize the day, one task at a time!</h2>
+      </header>
+      <div class="banner">
+        <%= image_tag "stars.svg" %>
       </div>
-      <div class="widget">
-        <%# <%= image_tag('pixel-art-8-bit-cartoon-t-rex-tyrannosaurus-dinosaur-character-H3KKDG.jpg') %>
-        <div class="widget-content">
-          <%= simple_form_for @task do |f| %>
-            <div class="search-bar-wrapper">
-              <div class="search-group">
-                <%= f.input :title, placeholder: "Ask me anychomp!", label: false, input_html: { class: 'search-bar' } %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+      <div class="search-container">
+        <h3>Start a <span>journey!</span></h3>
       </div>
-      <div class="spinner-container" data-controller="spinner">
-        <%= simple_form_for @task, html: { data: { action: 'submit->spinner#insert' } } do |f| %>
+    </div>
+    <div class="widget">
+      <%# <%= image_tag('pixel-art-8-bit-cartoon-t-rex-tyrannosaurus-dinosaur-character-H3KKDG.jpg') %>
+      <div class="widget-content">
+        <%= simple_form_for @task do |f| %>
           <div class="search-bar-wrapper">
             <div class="search-group">
-              <%= f.input :title, placeholder: "Enter task here", label: false, input_html: { class: 'search-bar' } %>
-              <%= f.button :submit, class:"visually-hidden" %>
+              <%= f.input :title, placeholder: "Ask me anychomp!", label: false, input_html: { class: 'search-bar' } %>
             </div>
           </div>
         <% end %>
-        <div class="spinner" data-spinner-target="spinner"></div>
       </div>
     </div>
-  </body>
-</html>
+    <div class="spinner-container" data-controller="spinner">
+      <%= simple_form_for @task, html: { data: { action: 'submit->spinner#insert' } } do |f| %>
+        <div class="search-bar-wrapper">
+          <div class="search-group">
+            <%= f.input :title, placeholder: "Enter task here", label: false, input_html: { class: 'search-bar' } %>
+            <%= f.button :submit, class:"visually-hidden" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="spinner" data-spinner-target="spinner"></div>
+    </div>
+  </div>
+</body>
