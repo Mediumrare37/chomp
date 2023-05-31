@@ -1,10 +1,9 @@
 <div class="chask-card" data-controller="expand-card">
   <div class="subshow-header">
     <div class="subshow-title">
-      <%= simple_form_for @chask do |f| %>
-        <%= f.input :task_id, value: @task.id, as: :hidden, label: false %>
-        <%= f.input :title, label: 'Write task name' %>
-        <%= f.submit class:"visually-hidden", value: "Save Changes" %>
+      <%= simple_form_for [@task, @chask] do |f| %>
+        <%= f.input :title, label: 'What task do you need help on?' %>
+        <%= f.submit :submit, class:"visually-hidden", value: "Save Changes" %>
       <% end %>
     </div>
   </div>

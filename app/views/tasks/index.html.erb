@@ -1,19 +1,47 @@
 <div class="cards-container">
-  <div class="index-title">
-    <h1>Open Task Flows</h1>
+  <div class="filter-dropdown">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="index-title">
+          <h1><%= @label %></h1>
+        </div>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Dashboard View", tasks_path(filter: 'dashboard') %></li>
+        <li><%= link_to "Recently modified", tasks_path(filter: 'recent') %></li>
+        <li><%= link_to "Forgotten Flows", tasks_path(filter: 'old') %></li>
+        <li><%= link_to "Most Urgent", tasks_path(filter: 'most_urgent') %></li>
+        <li><%= link_to "Least Urgent", tasks_path(filter: 'least_urgent') %></li>
+        <li><%= link_to "Most Progress", tasks_path(filter: 'most_progress') %></li>
+        <li><%= link_to "Least Progress", tasks_path(filter: 'least_progress') %></li>
+      </ul>
+    </div>
   </div>
   <div class="card-layout" style="--cards: <%= current_user.tasks.count %>;">
-    <% @tasks.each_with_index do |task, index| %>
+    <% @filtered_tasks.each_with_index do |task, index| %>
       <%# <%= render 'tasks/progress_bar', task: task %>
         <% if index.odd? %>
-          <div class="row align-left">
+          <div class="row align-left"">
+            <h2><%= @label == 'Dashboard View' ? @sublabel[index] : 'placeholder' %></h2>
             <%= render 'tasks/task_card', task: task, index: index %>
           </div>
         <% else %>
           <div class="row">
             <%= render 'tasks/task_card', task: task, index: index %>
+            <h2><%= @label == 'Dashboard View' ? @sublabel[index] : 'placeholder' %></h2>
           </div>
         <% end %>
     <% end %>
-  </div>
+    <h2>Your Completed Tasks</h2>
+    <% @tasks.where(completed: true).each_with_index do |task, index| %>
+      <% if index.odd? %>
+        <div class="row align-left"></div>
+          <%= render 'tasks/task_card', task: task, index: index %>
+        </div>
+      <% else %>
+        <div class="row">
+          <%= render 'tasks/task_card', task: task, index: index %>
+        </div>
+      <% end %>
+    <% end %>
 </div>
