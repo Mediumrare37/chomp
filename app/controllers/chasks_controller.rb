@@ -7,6 +7,7 @@ class ChasksController < ApplicationController
     @user = @task.user
     authorize @chask
     @message = Message.new
+    # @response = chat_get_reply(@message)
     authorize @message
     # authorize @task
   end
