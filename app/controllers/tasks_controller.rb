@@ -36,6 +36,8 @@ class TasksController < ApplicationController
     end
   end
 
+#updated the create with the API call
+
   def create
     @task = Task.new(task_params)
     @task.user = current_user
@@ -60,6 +62,12 @@ class TasksController < ApplicationController
       # Points
       @user.create_task
       @user.save
+
+      # Send notification to LINE account
+      line_service = LineService.new
+      message = 'A new task has been created!'
+      destination = 'U909af1996750d210edbc91f0a1fa2e1e' # Replace with the actual destination user ID
+      line_service.send_message(message, destination)
 
       # Move to start displaying flow
       next_chask(@task)
