@@ -50,7 +50,6 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
-
 #adding pundit
 gem 'pundit'
 
