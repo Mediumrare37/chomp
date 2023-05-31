@@ -7,9 +7,12 @@ class Task < ApplicationRecord
   validates :title, presence: true
   # validates :completed, presence: true
 
+  #changed to add excluded
   def complete_percentage
-    if chasks.where(status: "completed").any?
-      (chasks.where(status: "completed").length / chasks.length.to_f * 100).round
+    if chasks.where(status: ["completed", "excluded", "unrequested"]).any?
+      completed_excluded_chasks = chasks.where(status: ["completed", "excluded", "unrequested"]).length
+      total_chasks = chasks.length
+      (completed_excluded_chasks / total_chasks.to_f * 100).round
     else
       0
     end

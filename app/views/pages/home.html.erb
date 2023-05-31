@@ -7,7 +7,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 100vh;
+          height: 40vh;
           flex-direction: column;
         }
 
@@ -30,7 +30,6 @@
         </div>
         <div class="search-container">
           <h3>Start a <span>journey!</span></h3>
-
         </div>
       </div>
       <div class="widget">
@@ -50,7 +49,7 @@
           <div class="search-bar-wrapper">
             <div class="search-group">
               <%= f.input :title, placeholder: "Enter task here", label: false, input_html: { class: 'search-bar' } %>
-              <%= f.button :submit, 'Search' %>
+              <%= f.button :submit, class:"visually-hidden" %>
             </div>
           </div>
         <% end %>

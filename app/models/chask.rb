@@ -4,7 +4,7 @@ class Chask < ApplicationRecord
   belongs_to :task
   belongs_to :chask, optional: true
   has_many :notifications, as: :object, dependent: :destroy
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :chasks, dependent: :destroy
 
 

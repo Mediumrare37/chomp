@@ -20,31 +20,28 @@
   <div class="card-layout" style="--cards: <%= current_user.tasks.count %>;">
     <% @filtered_tasks.each_with_index do |task, index| %>
       <%# <%= render 'tasks/progress_bar', task: task %>
-      <div class="row">
         <% if index.odd? %>
-          <div class="empty-cell">
+          <div class="row align-left"">
             <h2><%= @label == 'Dashboard View' ? @sublabel[index] : 'placeholder' %></h2>
+            <%= render 'tasks/task_card', task: task, index: index %>
           </div>
-          <%= render 'tasks/task_card', task: task, index: index %>
         <% else %>
-          <%= render 'tasks/task_card', task: task, index: index %>
-          <div class="empty-cell">
+          <div class="row">
+            <%= render 'tasks/task_card', task: task, index: index %>
             <h2><%= @label == 'Dashboard View' ? @sublabel[index] : 'placeholder' %></h2>
           </div>
         <% end %>
-      </div>
     <% end %>
     <h2>Your Completed Tasks</h2>
     <% @tasks.where(completed: true).each_with_index do |task, index| %>
-      <div class="row">
-        <% if index.odd? %>
-          <div class="empty-cell"></div>
+      <% if index.odd? %>
+        <div class="row align-left"></div>
           <%= render 'tasks/task_card', task: task, index: index %>
-        <% else %>
+        </div>
+      <% else %>
+        <div class="row">
           <%= render 'tasks/task_card', task: task, index: index %>
-          <div class="empty-cell"></div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
-  </div>
 </div>
