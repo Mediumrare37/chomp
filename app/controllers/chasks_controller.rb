@@ -123,25 +123,38 @@ class ChasksController < ApplicationController
   end
 
   def completed
-    #inject HTML or create partial for progress view
+    # This method changes status of relevant Chask when user marks as completed. It distinguishes between Chask and SubChask
     @chask = Chask.find(params[:id])
     @task = @chask.task
     @user = @task.user
-    # @end_time = Time.now
-
     authorize @chask
     authorize @task
 
     if @chask.update(chask_params)
-      @chask.chask_id ? @user.complete_subchask : @user.complete_chask
-      @chask.chask_id ? @user.complete_subchask_same_day_bonus : @user.complete_chask_same_day_bonus
-      @chask.chasks.update_all(status: "completed")
-      @user.save
+      # Updates status of chask/subchask to completed regardless of what happens next
+      @chask.status = 'completed'
+      # conditional below checks if all subchasks in a chask are completed. If yes, it completes the parent chask
+      if @chask.sub_chask? #if it is a subchask
+        @chask.parent_chask.status = 'completed' if @chask.parent_chask.all_completed?
+      else #if it is a chask
+        @chask.status = 'complted' if @chask.all_completed?
+      end
+
+      # Call progress method to see if parent task is fully completed
+      @task.completed!
+
+      # Move to next chask
       next_chask(@task)
     else
       render :show
     end
   end
+
+    # Code below is games system deprectaed
+    # @chask.chask_id ? @user.complete_subchask : @user.complete_chask
+    # @chask.chask_id ? @user.complete_subchask_same_day_bonus : @user.complete_chask_same_day_bonus
+    # @chask.chasks.update_all(status: "completed")
+    # @user.save
 
   def progress
     #inject HTML or create partial for progress view
