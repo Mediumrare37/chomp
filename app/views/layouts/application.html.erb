@@ -11,8 +11,8 @@
   <body>
     <%= render "shared/flashes" %>
     <%= yield %>
-    <%# <% if (current_page?(controller: 'chasks') & (current_page?(action: 'show') || current_page?(action: 'edit'))) %>
-    <%= render 'shared/navbar' %>
-    <%# <% end %> %>
+    <% if @show_navbar == nil %>
+      <%= render 'shared/navbar' %>
+    <% end %>
   </body>
 </html>

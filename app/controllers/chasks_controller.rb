@@ -1,30 +1,33 @@
 class ChasksController < ApplicationController
   def show
-    # Line below is to create a sub-chask
-    # @chask = Chask.new
+    # Navbar display
+    @show_navbar = true
+
+    # Chask Show
     @chask = Chask.find(params[:id])
     @task = @chask.task
     @user = @task.user
     authorize @chask
+
+    # Messages Show
     @message = Message.new
     authorize @message
     # authorize @task
   end
 
   def new
-    @task = Task.find(params[:id])
-    @chask = Chask.new(task: @task)
+    @chask = Chask.new
+    @task = Task.find(params[:task_id])
     authorize @chask
     authorize @task
   end
 
   def create
-    @task = Task.find(params[:chask][:task_id])
     @chask = Chask.new(chask_params)
-    @chask.task = @task
+    @task = Task.find(params[:task_id])
     @chask.status = 'queued'
+    @chask.task = @task
     authorize @chask
-    authorize @task
 
     if @chask.save
       redirect_to task_path(@task)
@@ -34,6 +37,7 @@ class ChasksController < ApplicationController
   end
 
   def edit
+    @show_navbar = true
     @chask = Chask.find(params[:id])
     @task = @chask.task
     authorize @chask
