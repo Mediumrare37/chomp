@@ -4,31 +4,21 @@
       <li>
         <%= link_to root_path do %>
           <%= icon("fa-solid", "house", class: "home-icon") %>
-          <span>Home</span>
         <% end %>
       </li>
       <li>
         <%= link_to tasks_path do %>
           <%= icon("fa-solid", "table-columns", class: "dashboard-icon") %>
-          <span>Dashboard</span>
         <% end %>
       </li>
       <li>
         <%= link_to "" do %>
           <%= icon("fa-solid", "user", class: "user-icon") %>
-          <span>Profile</span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "" do %>
-          <%= icon("fa-solid", "trophy", class: "leaderboard-icon") %>
-          <span>Leaderboard</span>
         <% end %>
       </li>
       <li>
         <%= link_to notifications_path do %>
           <%= icon("fa-solid", "bell", class: "notification-icon") %>
-          <span>Notifications</span>
         <% end %>
       </li>
     </ul>
