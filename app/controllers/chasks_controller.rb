@@ -131,7 +131,7 @@ class ChasksController < ApplicationController
     if @chask.update(chask_params)
       @chask.chask_id ? @user.complete_subchask : @user.complete_chask
       @chask.chask_id ? @user.complete_subchask_same_day_bonus : @user.complete_chask_same_day_bonus
-
+      @chask.chasks.update_all(status: "completed")
       @user.save
       next_chask(@task)
     else
@@ -224,11 +224,12 @@ class ChasksController < ApplicationController
     return response
   end
 
+  #to add excluded
   def overall_progress_percentage(task)
-  total_chasks = task.chasks.count
-  completed_chasks = task.chasks.where(status: 'completed').count
+    total_chasks = task.chasks.count
+    completed_excluded_chasks = task.chasks.where(status: ["completed", "excluded"]).count
 
-    overall_percentage = (completed_chasks.to_f / total_chasks.to_f) * 100
+    overall_percentage = (completed_excluded_chasks.to_f / total_chasks.to_f) * 100
     overall_percentage.round(2)
   end
 
