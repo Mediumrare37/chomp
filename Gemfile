@@ -33,7 +33,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -57,6 +57,10 @@ gem 'pundit'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+
+# Sidekiq for Background jobs
+gem "sidekiq", "<7"
+gem "sidekiq-failures", "~> 1.0"
 
 gem "devise"
 gem "autoprefixer-rails"

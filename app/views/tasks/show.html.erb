@@ -48,7 +48,7 @@
           <div class="tab-pane fade py-3" id="todo-tab-pane" role="tabpanel" aria-labelledby="todo-tab" tabindex="0">
             <div class="saved-tasks">
               <% @chasks.each do |chask| %>
-                <% if chask.chask? & (chask.queued? |chask.paused? | chask.progress?) %>
+                <% if chask.chask? && (chask.queued? || chask.paused? || chask.progress?) %>
                   <%= render 'tasks/chask_card', chask: chask  %>
                 <% end %>
               <% end %>
@@ -59,7 +59,7 @@
           <div class="tab-pane fade py-3" id="excluded-tab-pane" role="tabpanel" aria-labelledby="excluded-tab" tabindex="0">
             <div class="excluded-tasks">
               <% @chasks.each do |chask| %>
-                <% if chask.chask? & chask.excluded? %>
+                <% if chask.chask? && chask.excluded? %>
                   <%= render 'tasks/chask_card', chask: chask %>
                 <% end %>
               <% end %>
