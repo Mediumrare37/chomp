@@ -1,23 +1,23 @@
 <div class="navbar-wrapper">
-  <nav data-controller="set-active">
-    <ul data-target="list">
+  <nav data-controller="set-active-navlink">
+    <ul>
       <li>
-        <%= link_to root_path do %>
+        <%= link_to root_path, class: 'home-link' do %>
           <%= icon("fa-solid", "house", class: "home-icon") %>
         <% end %>
       </li>
       <li>
-        <%= link_to tasks_path do %>
+        <%= link_to tasks_path, class: 'dashboard-link' do %>
           <%= icon("fa-solid", "table-columns", class: "dashboard-icon") %>
         <% end %>
       </li>
       <li>
-        <%= link_to "" do %>
+        <%= link_to "#", class: 'user-link' do %>
           <%= icon("fa-solid", "user", class: "user-icon") %>
         <% end %>
       </li>
       <li>
-        <%= link_to notifications_path do %>
+        <%= link_to notifications_path, class: 'notification-link' do %>
           <%= icon("fa-solid", "bell", class: "notification-icon") %>
         <% end %>
       </li>
