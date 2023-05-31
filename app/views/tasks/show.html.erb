@@ -24,46 +24,51 @@
       </li>
     </ul>
     <div class="buttons">
-      <%= link_to icon("fa-solid", "plus"), chask_path %>
+      <%# <%= simple_form_for @task, url: new_chask_path do |f| %>
+        <%# <%= f.submit :task_id, value: @task.id do %>
+          <%# <%= icon("fa-solid", "plus") %>
+          <%# <% end %>
+          <%# <% end %>
+          <%= link_to icon("fa-solid", "plus"), new_chask_path %>
+        </div>
+      </div>
+      <div class="tab-content" id="myTabContent">
+        <div class="completed">
+          <div class="tab-pane fade show active" id="completed-tab-pane" role="tabpanel" aria-labelledby="completed-tab" tabindex="0">
+            <div class="completed-tasks">
+              <% @chasks.each do |chask| %>
+                <% if chask.chask? & chask.completed? %>
+                  <%= render 'tasks/chask_card', chask: chask %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="todo">
+          <div class="tab-pane fade py-3" id="todo-tab-pane" role="tabpanel" aria-labelledby="todo-tab" tabindex="0">
+            <div class="saved-tasks">
+              <% @chasks.each do |chask| %>
+                <% if chask.chask? & (chask.queued? |chask.paused? | chask.progress?) %>
+                  <%= render 'tasks/chask_card', chask: chask  %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="excluded">
+          <div class="tab-pane fade py-3" id="excluded-tab-pane" role="tabpanel" aria-labelledby="excluded-tab" tabindex="0">
+            <div class="excluded-tasks">
+              <% @chasks.each do |chask| %>
+                <% if chask.chask? & chask.excluded? %>
+                  <%= render 'tasks/chask_card', chask: chask %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="show-button-div">
+      <%= link_to 'Continue Task Flow', chask_path(@task.chasks.first), class: 'show-button'  %>
     </div>
   </div>
-  <div class="tab-content" id="myTabContent">
-    <div class="completed">
-      <div class="tab-pane fade show active" id="completed-tab-pane" role="tabpanel" aria-labelledby="completed-tab" tabindex="0">
-        <div class="completed-tasks">
-          <% @chasks.each do |chask| %>
-            <% if chask.chask? & chask.completed? %>
-              <%= render 'tasks/chask_card', chask: chask %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="todo">
-      <div class="tab-pane fade py-3" id="todo-tab-pane" role="tabpanel" aria-labelledby="todo-tab" tabindex="0">
-        <div class="saved-tasks">
-          <% @chasks.each do |chask| %>
-            <% if chask.chask? & (chask.queued? |chask.paused? | chask.progress?) %>
-              <%= render 'tasks/chask_card', chask: chask  %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="excluded">
-      <div class="tab-pane fade py-3" id="excluded-tab-pane" role="tabpanel" aria-labelledby="excluded-tab" tabindex="0">
-        <div class="excluded-tasks">
-          <% @chasks.each do |chask| %>
-            <% if chask.chask? & chask.excluded? %>
-              <%= render 'tasks/chask_card', chask: chask %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="show-button-div">
-  <%= link_to 'Continue Task Flow', chask_path(@task.chasks.first), class: 'show-button'  %>
-</div>
-</div>
