@@ -5,15 +5,15 @@
   <div class="card-layout" style="--cards: <%= current_user.tasks.count %>;">
     <% @tasks.each_with_index do |task, index| %>
       <%# <%= render 'tasks/progress_bar', task: task %>
-      <div class="row">
         <% if index.odd? %>
-          <div class="empty-cell"></div>
-          <%= render 'tasks/task_card', task: task, index: index %>
+          <div class="row align-left">
+            <%= render 'tasks/task_card', task: task, index: index %>
+          </div>
         <% else %>
-          <%= render 'tasks/task_card', task: task, index: index %>
-          <div class="empty-cell"></div>
+          <div class="row">
+            <%= render 'tasks/task_card', task: task, index: index %>
+          </div>
         <% end %>
-      </div>
     <% end %>
   </div>
 </div>
