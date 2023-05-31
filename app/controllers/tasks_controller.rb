@@ -92,7 +92,7 @@ class TasksController < ApplicationController
     if @task.save
       # API Call
       # task_hash = @task.openai_call_api
-      GenerateTaskJob.perform_now(@task)
+      GenerateTaskJob.perform_later(@task)
       # task_hash.keys.each do |chask_title|
       #   chask = Chask.new(title: chask_title, task: @task)
       #   if chask.save
