@@ -35,6 +35,9 @@
       <p><%= chask.status %></p>
     </div>
   </div>
+  <div class="breakdown-subheader">
+    <%= link_to 'Break down this task', breakdown_chask_path(chask), class: "breakdown-button" %>
+  </div>
   <div class="subchasks-section d-none" data-expand-card-target="chasks" >
     <%= render 'tasks/subchask_card', chask: chask %>
   </div>

@@ -233,6 +233,21 @@ header>h1 {
   right: 5px;
 }
 
+// Break-down sub-header
+.breakdown-subheader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.breakdown-subheader .breakdown-button {
+  padding: 5px;
+  font-size: 15px;
+  font-family: $audio-font;
+  text-decoration: underline 6px $dreamy-yellow;
+  text-align: center;
+}
+
 // Sub-header (deadline and status)
 .subshow-subheader {
   display: flex;
@@ -245,12 +260,15 @@ header>h1 {
 }
 
 .chask-status {
-  // padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .chask-status>p {
   font-family: $audio-font;
   color: $white;
+  margin-bottom: 0px;
 }
 
 // Sub-header b (only status for subchasks)
