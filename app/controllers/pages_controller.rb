@@ -8,5 +8,9 @@ class PagesController < ApplicationController
     # linebot.send_message(message_text)
   end
 
+  def profile
+    @user = current_user
+  end
+
 
 end
