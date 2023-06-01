@@ -117,7 +117,7 @@ class TasksController < ApplicationController
       # destination = 'U909af1996750d210edbc91f0a1fa2e1e' # Replace with the actual destination user ID
       # line_service.send_message(message, destination)
 
-      # Move to start displaying flow
+      # # Move to start displaying flow
       next_chask(@task)
     else
       redirect_to root_path
