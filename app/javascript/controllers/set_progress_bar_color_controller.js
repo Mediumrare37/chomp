@@ -20,7 +20,7 @@ export default class extends Controller {
     } else if (percentage <= 75) {
       this.progressbarTarget.style.setProperty('--progress-color', 'yellow');
     } else {
-      this.progressbarTarget.style.setProperty('--progress-color', 'green');
+      this.progressbarTarget.style.setProperty('--progress-color', 'lime');
     }
   }
 }
