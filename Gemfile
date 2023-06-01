@@ -32,6 +32,15 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+#LINE API CALL
+# gem 'httparty'
+
+#for LINE API Call BOT
+gem 'line-bot-api', '1.3.0'
+
+#Scheduler for LINE notification
+# gem 'whenever', require: false
+
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
@@ -50,13 +59,16 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
-
 #adding pundit
 gem 'pundit'
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+
+# Sidekiq for Background jobs
+gem "sidekiq", "<7"
+gem "sidekiq-failures", "~> 1.0"
 
 gem "devise"
 gem "autoprefixer-rails"

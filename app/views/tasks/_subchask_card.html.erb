@@ -1,12 +1,17 @@
 <% chask.subchasks.each do |subchask| %>
-  <div class="chask-card">
-    <div class="subshow-b-header">
-      <div class="subshow-title">
-        <p><%= subchask.title %></p>
+  <% if subchask.excluded? == false %>
+    <div class="chask-card">
+      <div class="subshow-b-header">
+        <div class="subshow-title">
+          <p><%= subchask.title %></p>
+        </div>
+        <div class="chask-status">
+          <p><%= subchask.status %></p>
+        </div>
       </div>
-      <div class="chask-status">
-        <p><%= subchask.status %></p>
+      <div class="subshow-buttons">
+        <%= link_to icon("fa-solid", "play"), chask_path(subchask), class: "edit-button" %>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

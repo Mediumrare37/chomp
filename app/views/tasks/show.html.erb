@@ -1,7 +1,7 @@
 <div class="wrapper">
-  <div class="show-points">
-    <%= 'Points: ' + current_user.totalpoints.to_s %>
-  </div>
+  <%# <div class="show-points"> %>
+  <%# <%= 'Points: ' + current_user.totalpoints.to_s %>
+  <%# </div> %>
   <div class="show-header">
     <div class="show-title">
       <h1><%= @task.title %></h1>
@@ -14,7 +14,7 @@
   <div class="task-show-menu">
     <ul class="big-buttons" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <span class="task-show-menu-button" id="todo-tab" data-bs-toggle="tab" data-bs-target="#todo-tab-pane" role="tab" aria-controls="todo-tab-pane" aria-selected="true">To Do</span>
+        <span class="active task-show-menu-button" id="todo-tab" data-bs-toggle="tab" data-bs-target="#todo-tab-pane" role="tab" aria-controls="todo-tab-pane" aria-selected="true">To Do</span>
       </li>
       <li class="nav-item" role="presentation">
         <span class="task-show-menu-button" id="completed-tab" data-bs-toggle="tab" data-bs-target="#completed-tab-pane" role="tab" aria-controls="completed-tab-pane" aria-selected="false">Completed</span>
@@ -29,42 +29,31 @@
     </div>
   </div>
   <div class="tab-content" id="myTabContent">
-    <%# <div class="todo"> %>
     <div class="tab-pane fade show active" id="todo-tab-pane" role="tabpanel" aria-labelledby="todo-tab" tabindex="0">
-      <%# <div class="saved-tasks"> %>
       <% @chasks.each do |chask| %>
-        <% if chask.chask? & (chask.queued? |chask.paused? | chask.progress?) %>
+        <% if chask.chask? && (chask.queued? || chask.paused? || chask.progress?) %>
           <%= render 'tasks/chask_card', chask: chask  %>
+        <% elsif chask.chask? && (chask.pending?) %>
+          <%= render 'tasks/gray_chask_card', chask: chask  %>
         <% end %>
       <% end %>
-      <%# </div> %>
     </div>
-    <%# </div> %>
-    <%# <div class="completed"> %>
-    <div class="tab-pane fadeshow active" id="completed-tab-pane" role="tabpanel" aria-labelledby="completed-tab" tabindex="0">
-      <%# <div class="completed-tasks"> %>
+    <div class="tab-pane fade" id="completed-tab-pane" role="tabpanel" aria-labelledby="completed-tab" tabindex="1">
       <% @chasks.each do |chask| %>
-        <% if chask.chask? & chask.completed? %>
+        <% if chask.chask? && chask.completed? %>
           <%= render 'tasks/chask_card', chask: chask %>
         <% end %>
       <% end %>
-      <%# </div> %>
     </div>
-    <%# </div> %>
-    <%# <div class="excluded"> %>
-    <div class="tab-pane fadeshow active" id="excluded-tab-pane" role="tabpanel" aria-labelledby="excluded-tab" tabindex="0">
-      <%# <div class="excluded-tasks"> %>
+    <div class="tab-pane fade" id="excluded-tab-pane" role="tabpanel" aria-labelledby="excluded-tab" tabindex="2">
       <% @chasks.each do |chask| %>
-        <% if chask.chask? & chask.excluded? %>
-          <%= render 'tasks/chask_card', chask: chask %>
+        <% if chask.chask? && (chask.excluded? || chask.has_excluded_subchasks?) %>
+          <%= render 'tasks/subchask_excluded_card', chask: chask %>
         <% end %>
       <% end %>
-      <%# </div> %>
     </div>
-    <%# </div> %>
   </div>
 </div>
-<div class="show-button-div">
+<%# <div class="show-button-div">
   <%= link_to 'Continue Task Flow', chask_path(@task.chasks.first), class: 'show-button'  %>
-</div>
-</div>
+<%# </div> %>
