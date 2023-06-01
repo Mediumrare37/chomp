@@ -1,5 +1,7 @@
 // Specific CSS for your home-page
 
+// Change fonts later
+
 .wrapper {
   min-height: 100vh;
   padding: 1rem;
@@ -7,16 +9,30 @@
 }
 
 #main-header {
+  text-align: center;
+  font-family: 'Audiowide';
+
+  span {
+    color: $dreamy-yellow;
+  }
+
   h1 {
+    padding: 0;
+    margin: 0;
+
     font: {
       weight: 800;
-      size: 2rem;
+      size: 1.5rem;
     }
   }
+
   h2 {
-    span { color: $dreamy-yellow; }
+    margin-top: 3rem;
     line-height: 1.4;
+
+    // Change later
     font: {
+      family: 'Audiowide';
       weight: 600;
       size: 1.25rem;
     }
@@ -25,7 +41,11 @@
 
 h3 {
   font-weight: 600;
-  span { color: $dreamy-yellow; }
+
+  span {
+    color: $dreamy-yellow;
+  }
+
   text-align: center;
 }
 
@@ -37,6 +57,11 @@ h3 {
 
 .search-container {
   margin-top: 3rem;
+
+  // Change later
+  h3 {
+    font-family: 'Audiowide';
+  }
 }
 
 .search-bar-wrapper {
