@@ -3,12 +3,14 @@
     <%# <div class="points">
       <%= 'Points: ' + @user.totalpoints.to_s %>
     <%# </div> %>
+
     <div class="startcard-title">
       <h2><%= @chask.title %></h2>
     </div>
     <div class="startcard-prompt">
       <h2>Work mode: Do not forget to click "Done" when you finish!</h2>
     </div>
+
     <div class="startcard-timer overflow-auto mh-40 border border-white">
       <div class="chatbox">
         <div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chask.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
