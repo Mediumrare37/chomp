@@ -10,6 +10,11 @@ class User < ApplicationRecord
 
   # Gamification methods
   # Event-driven points
+
+  def self.chatgpt
+    User.find(999)
+  end
+
   def break_down_bonus
     self.totalpoints += 10
     self.daypoints += 10

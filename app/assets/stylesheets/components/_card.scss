@@ -1,17 +1,21 @@
 .card-layout {
   padding: 1em;
+  margin: 0 auto;
+  width: 90%;
 }
 
 .task-card-container {
   padding: 0;
   width: min-content;
   height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .row {
   height: 180px;
   display: flex;
-  justify-content: space-between;
 }
 
 .empty-cell {
@@ -21,8 +25,10 @@
 
 $cards: 20;
 
+// I'll probably use JS instead, cannot find a way to turn string into integer in Sass
+
 @mixin background($completion) {
-  background: conic-gradient($peace-blue $completion, white 0deg);
+  background: conic-gradient($peace-blue $completion, rgb(129, 129, 129) 0%);
 }
 
 %progress {
@@ -33,11 +39,14 @@ $cards: 20;
   height: 180px;
   z-index: -1;
   @include background($completion);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, .2)
 }
 
 @mixin progressbarx {
   @for $i from 0 through $cards {
-    .progressbar#{$i} { @extend %progress; }
+    .progressbar#{$i} {
+      @extend %progress;
+    }
   }
 }
 
@@ -61,17 +70,9 @@ $cards: 20;
   align-items: center;
   // overflow: hidden;
   border-radius: 50%;
-  p { font-size: 0.8em; }
 
-  &:hover {
-    transform: scale(1.01);
-    box-shadow: 0 0px 10px rgba(135, 28, 222, 0.4);
-    .check-icon { visibility: visible; }
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
+  p {
+    font-size: 0.8em;
   }
 }
 
@@ -88,6 +89,7 @@ $cards: 20;
     margin: 0;
     font-weight: 600;
   }
+
   align-items: center;
   display: flex;
   justify-content: flex-end;
@@ -124,18 +126,23 @@ $cards: 20;
   border-radius: 50%;
   padding: 1em;
   background: $peace-blue;
-  box-shadow: 1px 1px 10px rgba(0,0,0,.4)
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, .4)
 }
 
 .chask-card {
   margin: 0.5em 0;
   padding: 0.5em;
-  background: #606060;
   border-radius: 0.3em;
+  background: #606060;
 }
 
 .card-link {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+
+.align-left {
+  display: flex;
+  justify-content: flex-end;
 }

@@ -51,12 +51,30 @@ class Chask < ApplicationRecord
     self.status = 'queued'
   end
 
+  def has_excluded_subchasks?
+    # Use this method ONLY ON CHASKS
+    Chask.where(chask_id: self.id).where(status: 'excluded') != []
+  end
+
   def has_chasks?
     Chask.where(chask_id: self.id).where.not(status: 'unrequested') != []
   end
 
   def subchasks
+    # Use this method ONLY ON CHASKS, returns all subchasks for a given chask
     Chask.where(chask_id: self.id).where.not(status: 'unrequested')
+  end
+
+  def parent_chask
+    # Use this method ONLY on SUBCHASKS, returns parent chask for a given subchask
+    Chask.find_by(id: self.chask_id)
+  end
+
+  def all_completed?
+    # Use this method ONLY ON CHASKS
+    all_subchasks = subchasks
+    completed_subchasks = Chask.where(chask_id: self.id).where(status: 'completed')
+    all_subchasks.length == completed_subchasks.length
   end
 
   after_save :update_task_completion_status

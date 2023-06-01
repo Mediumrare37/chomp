@@ -9,8 +9,8 @@
     <div class="startcard-prompt">
       <h2>Great job getting started! Task in progress...</h2>
     </div>
-    <div class="startcard-timer">
-      <div class="chatbox border border-white">
+    <div class="startcard-timer overflow-auto mh-40 border border-white">
+      <div class="chatbox">
         <div class="container chatroom" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chask.id %>" data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
           <div class="messages" data-chatroom-subscription-target="messages">
             <% @chask.messages.each do |message| %>
@@ -21,15 +21,15 @@
               </div>
             <% end %>
           </div>
-          <%= simple_form_for [@chask, @message],
-      html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
-            <%= f.input :content, label: false, placeholder: "Feed me your questions", wrapper_html: {class: "flex-grow-1"} %>
-            <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-          <% end %>
           <%# <%= image_tag "watch.png" %>
         </div>
       </div>
     </div>
+    <%= simple_form_for [@chask, @message],
+      html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+      <%= f.input :content, label: false, placeholder: "Search here if you are feeling a bit lost!", wrapper_html: {class: "flex-grow-1"} %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <% end %>
     <div class="pausedone">
       <div class="pausedone-button">
         <%= simple_form_for @chask, url: paused_chask_path(@chask) do |f| %>
