@@ -28,12 +28,12 @@
 
 .points {
   margin: 10px;
-  align-self: start;
+  align-self: end;
   font-family: "Audiowide", sans-serif;
   color: #E8B508;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: end;
   width: 95%;
 }
 
@@ -102,10 +102,11 @@
   // display: flex;
   // flex-direction: row;
   // justify-items: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 90%;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr;
+  width: 130%;
   margin-top: 10px;
+  padding-bottom: 175px;
 }
 
 .edit-form {
@@ -129,7 +130,7 @@
   color: white;
 }
 
-.startsave-button{
+.startsave-button {
   // width: 50%;
   // flex-grow: 1;
   margin: 5px;
@@ -147,7 +148,7 @@
   color: white;
 }
 
-.startsave-button input{
+.startsave-button input {
   // width: 50%;
   width: 100%;
   color: white;
@@ -213,5 +214,5 @@
 
 .deadline {
   margin-bottom: 20px;
-  width: 70%;
+  width: 100%;
 }

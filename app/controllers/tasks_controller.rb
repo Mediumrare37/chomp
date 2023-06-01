@@ -107,9 +107,9 @@ class TasksController < ApplicationController
       #   end
       # end
 
-      # Points
-      @user.create_task
-      @user.save
+      # # Points
+      # @user.create_task
+      # @user.save
 
       # Send notification to LINE account
       line_service = LineService.new
