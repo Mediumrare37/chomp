@@ -111,11 +111,11 @@ class TasksController < ApplicationController
       # @user.create_task
       # @user.save
 
-      # Send notification to LINE account
-      line_service = LineService.new
-      message = 'A new task has been created!'
-      destination = 'U909af1996750d210edbc91f0a1fa2e1e' # Replace with the actual destination user ID
-      line_service.send_message(message, destination)
+      # # Send notification to LINE account
+      # line_service = LineService.new
+      # message = 'A new task has been created!'
+      # destination = 'U909af1996750d210edbc91f0a1fa2e1e' # Replace with the actual destination user ID
+      # line_service.send_message(message, destination)
 
       # Move to start displaying flow
       next_chask(@task)
