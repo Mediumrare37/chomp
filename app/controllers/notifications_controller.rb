@@ -1,10 +1,18 @@
 class NotificationsController < ApplicationController
 
   # require 'httparty'
-  
+
   def index
-    @notifications = policy_scope(current_user.notifications)
-    @notifications.update_all(read: true)
+    @notifications = []
+    @tasks = policy_scope(Task).all
+    @tasks.each do |task|
+      if task.completed == false
+        @notification = Notification.new(message: task.title)
+        @notifications << @notification
+      end
+    end
+    # @notifications = policy_scope(current_user.notifications)
+    # @notifications.update_all(read: true)
   end
 
   def send_notification
