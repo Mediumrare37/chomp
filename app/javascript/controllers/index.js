@@ -16,6 +16,9 @@ application.register("hello", HelloController)
 import SetActiveNavlinkController from "./set_active_navlink_controller"
 application.register("set-active-navlink", SetActiveNavlinkController)
 
+import SetDeadlineController from "./set_deadline_controller"
+application.register("set-deadline", SetDeadlineController)
+
 import SetProgressBarColorController from "./set_progress_bar_color_controller"
 application.register("set-progress-bar-color", SetProgressBarColorController)
 
