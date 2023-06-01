@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   #added the send notifications
   # post '/send_notification', to: 'notifications#send_notification'
 
+  #This will fetch the notifications to the notifications tab
+  get '/notifications', to: 'notifications#index', as: 'notifications'
+
   # Defines the root path route ("/")
   # root "articles#index"
   resources :notifications, only: [:index, :update]

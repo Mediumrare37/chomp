@@ -19,7 +19,10 @@
       <li>
         <%= link_to notifications_path, class: 'notification-link' do %>
           <%= icon("fa-solid", "bell", class: "notification-icon") %>
-        <% end %>
+          <% if current_user.tasks.where(completed: false).any? %>
+            <span class="notification-badge"></span>
+      <% end %>
+    <% end %>
       </li>
     </ul>
   </nav>

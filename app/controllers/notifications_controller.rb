@@ -1,8 +1,11 @@
 class NotificationsController < ApplicationController
 
   # require 'httparty'
-  
+
+  #added Task.where (completed: false)
   def index
+    @tasks = Task.where(completed: false)
+    authorize @tasks
     @notifications = policy_scope(current_user.notifications)
     @notifications.update_all(read: true)
   end
