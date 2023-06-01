@@ -31,21 +31,21 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="todo-tab-pane" role="tabpanel" aria-labelledby="todo-tab" tabindex="0">
       <% @chasks.each do |chask| %>
-        <% if chask.chask? & (chask.queued? |chask.paused? | chask.progress?) %>
+        <% if chask.chask? && (chask.queued? || chask.paused? || chask.progress?) %>
           <%= render 'tasks/chask_card', chask: chask  %>
         <% end %>
       <% end %>
     </div>
     <div class="tab-pane fade" id="completed-tab-pane" role="tabpanel" aria-labelledby="completed-tab" tabindex="1">
       <% @chasks.each do |chask| %>
-        <% if chask.chask? & chask.completed? %>
+        <% if chask.chask? && chask.completed? %>
           <%= render 'tasks/chask_card', chask: chask %>
         <% end %>
       <% end %>
     </div>
     <div class="tab-pane fade" id="excluded-tab-pane" role="tabpanel" aria-labelledby="excluded-tab" tabindex="2">
       <% @chasks.each do |chask| %>
-        <% if chask.chask? & (chask.excluded? || chask.has_excluded_subchasks?) %>
+        <% if chask.chask? && (chask.excluded? || chask.has_excluded_subchasks?) %>
           <%= render 'tasks/subchask_excluded_card', chask: chask %>
         <% end %>
       <% end %>

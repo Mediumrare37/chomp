@@ -93,18 +93,19 @@ class TasksController < ApplicationController
 
     if @task.save
       # API Call
-      task_hash = @task.openai_call_api
-      task_hash.keys.each do |chask_title|
-        chask = Chask.new(title: chask_title, task: @task)
-        if chask.save
-          task_hash[chask_title].each do |subchask_title|
-            subchask = Chask.new(title: subchask_title, chask: chask, task: @task, status: 'unrequested')
-            redirect_to root_path unless subchask.save
-          end
-        else
-          redirect_to root_path
-        end
-      end
+      # task_hash = @task.openai_call_api
+      GenerateTaskJob.perform_later(@task)
+      # task_hash.keys.each do |chask_title|
+      #   chask = Chask.new(title: chask_title, task: @task)
+      #   if chask.save
+      #     task_hash[chask_title].each do |subchask_title|
+      #       subchask = Chask.new(title: subchask_title, chask: chask, task: @task, status: 'unrequested')
+      #       redirect_to root_path unless subchask.save
+      #     end
+      #   else
+      #     redirect_to root_path
+      #   end
+      # end
 
       # Points
       @user.create_task
