@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-
+  get '/profile', to: 'pages#profile', as: 'user_profile'
   #added the send notifications
   # post '/send_notification', to: 'notifications#send_notification'
 
