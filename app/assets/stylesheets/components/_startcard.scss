@@ -4,10 +4,11 @@
   align-items: center;
   border: solid 2px #871CDE;
   border-radius: 8px;
-  /* background: #231855; */
   margin-top: 25px;
-  height: 700px;
-  // background-image: 'images/stars.svg';
+  height: 750px;
+  position: relative;
+  top: 20px;
+  bottom: 20px;
 }
 
 .startcard-title {
@@ -30,7 +31,7 @@
 }
 
 .startcard-prompt h2 {
-  margin-top: 85px;
+  margin-top: 35px;
   font-family: $audio-font;
   text-align: center;
   color: $dreamy-yellow;
@@ -51,7 +52,7 @@
   margin-top: 10px;
 }
 
-.pausedone-button{
+.pausedone-button {
   // width: 50%;
   // flex-grow: 1;
   margin: 5px;
@@ -61,7 +62,7 @@
   padding-bottom: 5px;
 }
 
-.pausedone-button input{
+.pausedone-button input {
   // width: 50%;
   width: 100%;
   color: white;
