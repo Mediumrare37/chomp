@@ -3,6 +3,10 @@ class TasksController < ApplicationController
 #We have an issue with the home page loading to the created methd below.
   def index
     # Index method has changed, from now on we display our task flows selectively in the following pattern: 3 task flows according to user criteria + all completed task flows
+    # line_service = LineService.new(ENV["LINE_ID"])
+    # message = 'A new task has been created!'
+    # destination = 'U909af1996750d210edbc91f0a1fa2e1e' # Replace with the actual destination user ID
+    # line_service.send_message(message)
     @tasks = policy_scope(Task).all
     filter = params[:filter]
 
@@ -111,11 +115,13 @@ class TasksController < ApplicationController
       # @user.create_task
       # @user.save
 
+      # Send notification to LINE account
       # # Send notification to LINE account
       # line_service = LineService.new
       # message = 'A new task has been created!'
       # destination = 'U909af1996750d210edbc91f0a1fa2e1e' # Replace with the actual destination user ID
       # line_service.send_message(message, destination)
+
 
       # Move to start displaying flow
       next_chask(@task)

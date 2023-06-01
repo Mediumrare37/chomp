@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
 
   # require 'httparty'
-
+  
   def index
     @notifications = policy_scope(current_user.notifications)
     @notifications.update_all(read: true)
