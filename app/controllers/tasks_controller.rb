@@ -37,12 +37,12 @@ class TasksController < ApplicationController
       least_progress(@tasks)
     else
       @label = 'Dashboard View'
-      @sublabel = ['Upcoming Deadline', 'Almost Done', 'Revisit a forgotten task']
+      @sublabel = ['Recently Added', 'Almost Done', 'Revisit a forgotten task']
       # Dashboard view displays if no filter and by default:
       @filtered_gate = []
       # Task with upcoming deadline or recently touched task
       @deadline_gate = @tasks.where.not(deadline: nil).order(deadline: :asc).first
-      @recent_gate = @tasks.order(updated_at: :desc).first
+      @recent_gate = @tasks.order(created_at: :desc).first
       if @deadline_gate.nil?
         @filtered_gate << @recent_gate
       else
