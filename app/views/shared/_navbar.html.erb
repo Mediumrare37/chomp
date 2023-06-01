@@ -13,16 +13,18 @@
       </li>
       <li>
         <%= link_to user_profile_path, class: 'user-link' do %>
-        <%= icon("fa-solid", "user", class: "user-icon") %>
+          <%= icon("fa-solid", "user", class: "user-icon") %>
         <% end %>
       </li>
       <li>
         <%= link_to notifications_path, class: 'notification-link' do %>
           <%= icon("fa-solid", "bell", class: "notification-icon") %>
-          <% if current_user.tasks.where(completed: false).any? %>
-            <span class="notification-badge"></span>
-      <% end %>
-    <% end %>
+          <% if current_user %>
+            <% if current_user.tasks.where(completed: false).any? %>
+              <span class="notification-badge"></span>
+            <% end %>
+          <% end %>
+        <% end %>
       </li>
     </ul>
   </nav>
