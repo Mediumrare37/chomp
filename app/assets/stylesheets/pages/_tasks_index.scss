@@ -3,13 +3,21 @@
 }
 
 .navbar {
-  background:linear-gradient(271.37deg, #871CDE 34.61%, #5873FE 87.96%);
+  background: linear-gradient(271.37deg, #871CDE 34.61%, #5873FE 87.96%);
   border-bottom-left-radius: 100%;
   justify-content: center;
   color: azure;
 }
 
-.index-title > h1 {
+.index-title>h1 {
+  font-family: $audio-font;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  color: $dreamy-yellow;
+}
+
+.index-title .dropdown>h1 {
   font-family: $audio-font;
   text-align: center;
   padding-top: 20px;
@@ -26,7 +34,7 @@
 }
 
 .footer {
-  background:linear-gradient(271.37deg, #871CDE 34.61%, #5873FE 87.96%);
+  background: linear-gradient(271.37deg, #871CDE 34.61%, #5873FE 87.96%);
   border-bottom-right-radius: 100%;
 }
 
@@ -36,4 +44,53 @@
   color: $dreamy-yellow;
   text-shadow: black 1px 1px;
   margin: 0;
+}
+
+.completed-task-card h6 {
+  font-family: $audio-font;
+  text-align: center;
+  color: $dark-green;
+  text-shadow: black 1px 1px;
+  margin: 0;
+}
+
+// Dashboard arrangement
+.display-box {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 25px;
+}
+
+.display-box h2 {
+  display: flex;
+  align-items: center;
+  font-family: $audio-font;
+  min-width: 70px;
+}
+
+// Dropdown style
+.dropdown-menu {
+  color: $dreamy-yellow;
+  background: $calming-purple;
+  border: solid 3px $dreamy-yellow;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.dropdown-menu li {
+  padding-bottom: 2px;
+}
+
+.dropdown {
+  margin-left: 5px;
+}
+
+.dropdown-header {
+  color: white;
+  font-weight: bold;
+  text-align: center;
 }
