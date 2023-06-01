@@ -1,4 +1,3 @@
-web: unset PORT && bin/rails server
 js: yarn build --watch
 web: bundle exec puma -C config/puma.rb
 worker: bundle exec sidekiq -C config/sidekiq.yml
