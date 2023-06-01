@@ -109,15 +109,15 @@ header>h1 {
 }
 
 .gray-chask-card .recover-button {
-  // background: $dreamy-yellow;
   border-radius: 8px;
   color: white;
   font-family: audiowide;
   align-content: center;
   text-align: center;
-  border: solid 4px $dreamy-yellow;
+  border: solid 4px #E8B508;
   border-radius: 8px;
   padding: 5px;
+  background: none;
 }
 
 // Excluded Subchask Card
@@ -139,11 +139,11 @@ header>h1 {
   border-radius: 8px;
   color: white;
   font-family: audiowide;
-  align-content: center;
   text-align: center;
   border: solid 4px $dreamy-yellow;
   border-radius: 8px;
   padding: 5px;
+  background: none;
 }
 
 // Bar menu
