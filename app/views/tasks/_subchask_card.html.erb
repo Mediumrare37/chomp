@@ -7,10 +7,10 @@
         </div>
         <div class="chask-status">
           <p><%= subchask.status %></p>
+          <%= link_to 'Start', chask_path(subchask), class: "edit-button" %>
         </div>
       </div>
       <div class="subshow-buttons">
-        <%= link_to icon("fa-solid", "play"), chask_path(subchask), class: "edit-button" %>
       </div>
     </div>
   <% end %>
