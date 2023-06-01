@@ -32,6 +32,15 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+#LINE API CALL
+# gem 'httparty'
+
+#for LINE API Call BOT
+gem 'line-bot-api', '1.3.0'
+
+#Scheduler for LINE notification
+# gem 'whenever', require: false
+
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
