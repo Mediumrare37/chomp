@@ -1,8 +1,9 @@
-// body {
-//   background: linear-gradient(180deg, #280E33, #080808);
-//   font-family: 'Audiowide', cursive;
-//   color: #FDE700; /* White text color */
-// }
+body {
+  background: linear-gradient(180deg, #280E33, #080808);
+  font-family: 'Audiowide', cursive;
+  color: #FDE700;
+  /* White text color */
+}
 
 .notifications {
   background-color: #871CDE;
@@ -17,7 +18,8 @@
   font-size: 24px;
   font-weight: normal;
   margin-top: 0;
-  color: #FDE700; /* Dreamy yellow text color */
+  color: #FDE700;
+  /* Dreamy yellow text color */
 }
 
 .list-group {
@@ -29,7 +31,8 @@
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
-  background-color: #4C0E7E; /* Updated background color */
+  background-color: #4C0E7E;
+  /* Updated background color */
 }
 
 .notification-content {
@@ -39,10 +42,12 @@
 
 .notification-message {
   margin-left: 10px;
-  color: White; /* Dreamy yellow text color */
+  color: White;
+  /* Dreamy yellow text color */
 }
 
 .notification-message strong {
   font-weight: bold;
-  color: #FDE700; /* White text color */
+  color: #FDE700;
+  /* White text color */
 }

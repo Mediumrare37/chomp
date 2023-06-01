@@ -2,12 +2,14 @@
   <div class="container">
     <div class="notifications shadow-lg">
       <h1><strong>Notifications</strong></h1>
+<div id="stars"></div>
+    <div id="stars2"></div><div id="stars3"></div>
       <ul class="list-group">
         <% @notifications.each do |notification| %>
           <li class="list-group-item notification">
             <div class="notification-content">
               <div class="notification-message">
-                <strong>Pending Task:</strong> <%= notification.message %>
+                <strong>Pending Tasks:</strong> <%= notification.message %>
               </div>
             </div>
           </li>
