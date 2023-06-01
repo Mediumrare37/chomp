@@ -6,15 +6,14 @@
   border-radius: 8px;
   margin-top: 25px;
   height: 750px;
-  position: relative;
-  top: 20px;
-  bottom: 20px;
+  // position: relative;
+  // top: 20px;
+  // bottom: 20px;
 }
 
 .startcard-title {
   width: 100%;
   padding: 25px;
-  height: 15%;
   // justify-content: start;
   // display: flex;
   // flex-direction: column;
@@ -27,7 +26,7 @@
 }
 
 .startcard-prompt {
-  height: 30%;
+  margin-bottom: 1em;
 }
 
 .startcard-prompt h2 {
@@ -39,6 +38,7 @@
 
 .startcard-timer {
   height: 40%;
+  width: 100%;
 }
 
 .startcard-timer img {
