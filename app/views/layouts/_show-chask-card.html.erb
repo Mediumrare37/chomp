@@ -25,7 +25,7 @@
     <% end %>
     <div class="deadline">
       <%= simple_form_for @chask, url: deadline_chask_path(chask) do |f| %>
-        <%= f.input :deadline, as: :date, label:false, html5: true, input_html: { class:"chask_deadline" } %>
+        <%= f.input :deadline, as: :date, label:false, html5: true, input_html: { class:"chask_deadline", onChange: "this.form.submit()" } %>
         <%= f.button :submit, 'Update Chask', class:"visually-hidden" %>
       <% end %>
     </div>
