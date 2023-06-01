@@ -1,0 +1,15 @@
+<% chask.subchasks.each do |subchask| %>
+  <% if subchask.excluded? %>
+    <div class="excluded-chask-card">
+      <div class="excluded-subshow-b-header">
+        <div class="subshow-title">
+          <p><%= subchask.title %></p>
+        </div>
+        <%= simple_form_for subchask, url: queued_chask_path(subchask) do |f| %>
+          <%= f.input :status, as: :hidden, input_html: { value: 'queued'} %>
+          <%= f.submit 'Recover Task', class: "recover-button" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

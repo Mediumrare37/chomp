@@ -5,10 +5,10 @@
 }
 
 .show-points {
-    margin: 10px;
-    text-align: end;
-    font-family: $audio-font;
-    color: $dreamy-yellow;
+  margin: 10px;
+  text-align: end;
+  font-family: $audio-font;
+  color: $dreamy-yellow;
 }
 
 .show-header {
@@ -23,7 +23,7 @@
   position: relative;
 }
 
-.show-title > h1 {
+.show-title>h1 {
   font-family: $audio-font;
   text-align: start;
   padding-top: 20px;
@@ -44,13 +44,16 @@
 }
 
 .footer {
-  background:linear-gradient(271.37deg, #871CDE 34.61%, #5873FE 87.96%);
+  background: linear-gradient(271.37deg, #871CDE 34.61%, #5873FE 87.96%);
   border-bottom-right-radius: 100%;
 }
 
 .chask-card {
   background: $calming-purple;
   margin-bottom: 20px;
+  margin: 0.5em 0;
+  padding: 0.5em;
+  border-radius: 0.3em;
 }
 
 .chask-card h6 {
@@ -60,7 +63,7 @@
   text-shadow: black 1px 1px;
 }
 
-header > h1 {
+header>h1 {
   font-family: $audio-font;
   text-align: start;
   color: $dreamy-yellow;
@@ -89,6 +92,32 @@ header > h1 {
   font-size: 17px;
 }
 
+// Excluded Subchask Card
+.excluded-chask-card {
+  background: grey;
+  margin-bottom: 20px;
+  margin: 0.5em 0;
+  padding: 0.5em;
+  border-radius: 0.3em;
+}
+
+.excluded-chask-card .excluded-subshow-b-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.excluded-chask-card .recover-button {
+  // background: $dreamy-yellow;
+  border-radius: 8px;
+  color: white;
+  font-family: audiowide;
+  align-content: center;
+  text-align: center;
+  border: solid 4px $dreamy-yellow;
+  border-radius: 8px;
+  padding: 5px;
+}
+
 // Bar menu
 .task-show-menu {
   display: flex;
@@ -105,7 +134,7 @@ header > h1 {
   flex-wrap: wrap;
 }
 
-.task-show-menu > .buttons {
+.task-show-menu>.buttons {
   font-size: 32px;
   color: $dreamy-yellow;
   position: relative;
@@ -140,7 +169,7 @@ header > h1 {
   font-size: 25px;
 }
 
-.subshow-title > p {
+.subshow-title>p {
   font-family: $audio-font;
   text-align: start;
   padding-bottom: 15px;
@@ -154,7 +183,7 @@ header > h1 {
   gap: 10px;
 }
 
-.subshow-buttons > i{
+.subshow-buttons>i {
   position: relative;
   top: 6px;
 }
@@ -178,7 +207,7 @@ header > h1 {
   // padding-left: 30px;
 }
 
-.chask-status > p {
+.chask-status>p {
   font-family: $audio-font;
   color: $white;
 }

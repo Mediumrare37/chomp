@@ -1,7 +1,12 @@
+require "sidekiq/web"
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+
+  #added the send notifications
+  # post '/send_notification', to: 'notifications#send_notification'
 
   # Defines the root path route ("/")
   # root "articles#index"
@@ -30,4 +35,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # Sidekiq
+
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

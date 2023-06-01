@@ -51,6 +51,11 @@ class Chask < ApplicationRecord
     self.status = 'queued'
   end
 
+  def has_excluded_subchasks?
+    # Use this method ONLY ON CHASKS
+    Chask.where(chask_id: self.id).where(status: 'excluded') != []
+  end
+
   def has_chasks?
     Chask.where(chask_id: self.id).where.not(status: 'unrequested') != []
   end

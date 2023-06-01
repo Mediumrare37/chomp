@@ -180,15 +180,14 @@ class ChasksController < ApplicationController
   end
 
   def queued
-    #inject HTML or create partial for progress view
     @chask = Chask.find(params[:id])
     @task = @chask.task
+    @status_holder = @chask.status
 
     authorize @chask
     authorize @task
-
     if @chask.update(chask_params)
-      next_chask(@task)
+      @status_holder == 'excluded' ? (redirect_to task_path(@task)) : next_chask(@task)
     else
       render :show
     end
