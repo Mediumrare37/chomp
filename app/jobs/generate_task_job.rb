@@ -3,8 +3,9 @@ class GenerateTaskJob < ApplicationJob
 
   def perform(task)
     task_hash = openai_call_api(task)
-    task_hash.keys.each do |chask_title|
+    task_hash.keys.each_with_index do |chask_title, index|
       chask = Chask.new(title: chask_title, task: task)
+      chask.status = 'queued' if index.zero?
       if chask.save
         task_hash[chask_title].each do |subchask_title|
           subchask = Chask.new(title: subchask_title, chask: chask, task: task, status: 'unrequested')

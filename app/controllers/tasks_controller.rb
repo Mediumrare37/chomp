@@ -152,20 +152,28 @@ class TasksController < ApplicationController
 
   def most_progress(tasks)
     # This method goes through all the tasks to get the 3 with the highest completion percentages
+    @filtered_tasks = []
     most_progress = {}
     tasks.each do |task|
       most_progress.store(task.id, task.complete_percentage) if task.complete_percentage != 100
     end
     most_ids = most_progress.max_by(3) { |k, v| v }
-    @filtered_tasks = @tasks.where(id: [most_ids[0][0], most_ids[1][0], most_ids[2][0]])
+    most_ids.each do |keyval|
+      @filtered_tasks << @tasks.find(keyval[0])
+    end
+    return @filtered_tasks
   end
 
   def least_progress(tasks)
+    @filtered_tasks = []
     least_progress = {}
     tasks.each do |task|
       least_progress.store(task.id, task.complete_percentage)
     end
     least_ids = least_progress.min_by(3) { |k, v| v }
-    @filtered_tasks = @tasks.where(id: [least_ids[0][0], least_ids[1][0], least_ids[2][0]])
+    least_ids.each do |keyval|
+      @filtered_tasks << @tasks.find(keyval[0])
+    end
+    return @filtered_tasks
   end
 end
