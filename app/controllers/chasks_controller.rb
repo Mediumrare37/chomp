@@ -101,10 +101,10 @@ class ChasksController < ApplicationController
 
       # Compares Chask deadline with task deadline, should be >=0
     if @task.deadline
-      redirect_to task_path(@task), notice: 'Chask deadline MAXIMUM Task deadline' if (@task.deadline - @chask.deadline < 0)
+      redirect_to task_path(@task)#, notice: 'Chask deadline MAXIMUM Task deadline' if (@task.deadline - @chask.deadline < 0)
     else
       @chask.update(chask_params)
-      redirect_to task_path(@task), notice: 'Chask deadline updated'
+      redirect_to task_path(@task)# , notice: 'Chask deadline updated'
     end
   end
 
@@ -117,7 +117,7 @@ class ChasksController < ApplicationController
     authorize @task
 
     if @chask.update(chask_params)
-      redirect_to chask_path(@chask), notice: 'Chask PAUSED'
+      redirect_to chask_path(@chask)#, notice: 'Chask PAUSED'
     else
       render :show
     end
@@ -145,7 +145,11 @@ class ChasksController < ApplicationController
       @task.completed!
 
       # Move to next chask
-      next_chask(@task)
+      # next_chask(@task)
+
+      # Update chask once more and redirect to task show (ideally complete)
+      @chask.save
+      redirect_to task_path(@task)
     else
       render :show
     end
@@ -171,7 +175,7 @@ class ChasksController < ApplicationController
       # need to add condition for chask not started before
       @user.start_chask
       @user.save
-      redirect_to chask_path(@chask), notice: 'Chask STARTED'
+      redirect_to chask_path(@chask)#, notice: 'Chask STARTED'
       # next_chask(@task, @chask)
       # no need to go to next chask for this
     else
@@ -187,7 +191,8 @@ class ChasksController < ApplicationController
     authorize @chask
     authorize @task
     if @chask.update(chask_params)
-      @status_holder == 'excluded' ? (redirect_to task_path(@task)) : next_chask(@task)
+      redirect_to task_path(@task)
+      # @status_holder == 'excluded' ? (redirect_to task_path(@task)) : next_chask(@task)
     else
       render :show
     end
@@ -201,7 +206,8 @@ class ChasksController < ApplicationController
     authorize @task
 
     if @chask.update(chask_params)
-      next_chask(@task)
+      redirect_to task_path(@task)
+      # next_chask(@task)
     else
       render :show
     end
@@ -224,10 +230,11 @@ class ChasksController < ApplicationController
       subchask.save
     end
 
-    # Points update
-    @user.break_down_bonus
-    @user.save
-    next_chask(@task)
+    # # Points update
+    # @user.break_down_bonus
+    # @user.save
+    redirect_to task_path(@task)
+    # next_chask(@task)
   end
 
   private

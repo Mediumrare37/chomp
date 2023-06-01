@@ -9,6 +9,9 @@
           <p><%= subchask.status %></p>
         </div>
       </div>
+      <div class="subshow-buttons">
+        <%= link_to icon("fa-solid", "play"), chask_path(subchask), class: "edit-button" %>
+      </div>
     </div>
   <% end %>
 <% end %>

@@ -1,7 +1,7 @@
 <div class="chaskcard">
   <div class="points">
-    <%= 'Points: ' + user.totalpoints.to_s %>
-    <%= link_to icon("fa-solid", "x"), tasks_path %>
+    <%# <%= 'Points: ' + user.totalpoints.to_s %>
+    <%= link_to icon("fa-solid", "x"), task_path(chask.task) %>
   </div>
   <div class="chaskcard-title">
     <h5><%= 'Task Flow: ' + chask.task.title.to_s %></h5>
@@ -17,36 +17,16 @@
           <% end %>
         <% end %>
       </div>
-      <div class="startsave-button">
-        <%= simple_form_for chask, url: queued_chask_path(chask) do |f| %>
-          <%= f.input :status, as: :hidden, input_html: { value: 'queued'} %>
-          <%= f.button :submit, 'Save and Next' %>
-        <% end %>
+    </div>
+    <% if chask.paused? %>
+      <div class="spinner-overlay d-flex justify-content-center align-items-center" data-show-target="spinner">
+        <div class="spinner"></div>
       </div>
-    </div>
-    <div class="chask-menu-icons">
-      <% if !chask.chask %>
-        <%= link_to icon("fa-solid", "arrows-split-up-and-left"), breakdown_chask_path(chask), data: { action: 'click->show#insert' } %>
-      <% end %>
-      <%= link_to icon("fa-solid", "bell") %>
-      <%= link_to icon("fa-solid", "pen"), edit_chask_path %>
-      <%= simple_form_for chask, url: excluded_chask_path(chask) do |f| %>
-        <%= f.input :status, as: :hidden, input_html: { value: 'excluded'} %>
-        <%= f.button :button do %>
-          <%= icon("fa-solid", "trash") %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-  <% if chask.paused? %>
-    <div class="spinner-overlay d-flex justify-content-center align-items-center" data-show-target="spinner">
-      <div class="spinner"></div>
-    </div>
-  <% end %>
-  <div class="deadline">
-    <%= simple_form_for @chask, url: deadline_chask_path(chask) do |f| %>
-      <%= f.input :deadline, as: :date, label:false, html5: true, input_html: { class:"chask_deadline" } %>
-      <%= f.button :submit, 'Update Chask', class:"visually-hidden" %>
     <% end %>
+    <div class="deadline">
+      <%= simple_form_for @chask, url: deadline_chask_path(chask) do |f| %>
+        <%= f.input :deadline, as: :date, label:false, html5: true, input_html: { class:"chask_deadline" } %>
+        <%= f.button :submit, 'Update Chask', class:"visually-hidden" %>
+      <% end %>
+    </div>
   </div>
-</div>

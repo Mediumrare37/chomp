@@ -104,9 +104,9 @@ class TasksController < ApplicationController
         end
       end
 
-      # Points
-      @user.create_task
-      @user.save
+      # # Points
+      # @user.create_task
+      # @user.save
 
       # Move to start displaying flow
       next_chask(@task)

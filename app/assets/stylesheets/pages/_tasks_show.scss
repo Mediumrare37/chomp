@@ -92,6 +92,34 @@ header>h1 {
   font-size: 17px;
 }
 
+// Hidden Chask Card
+.gray-chask-card {
+  background: $calming-purple;
+  margin-bottom: 20px;
+  margin: 0.5em 0;
+  padding: 0.5em;
+  border-radius: 0.3em;
+}
+
+.gray-chask-card h6 {
+  font-family: $audio-font;
+  text-align: start;
+  color: $peace-blue;
+  text-shadow: black 1px 1px;
+}
+
+.gray-chask-card .recover-button {
+  // background: $dreamy-yellow;
+  border-radius: 8px;
+  color: white;
+  font-family: audiowide;
+  align-content: center;
+  text-align: center;
+  border: solid 4px $dreamy-yellow;
+  border-radius: 8px;
+  padding: 5px;
+}
+
 // Excluded Subchask Card
 .excluded-chask-card {
   background: grey;
@@ -165,7 +193,7 @@ header>h1 {
 
 .subshow-header a {
   position: relative;
-  top: 0px;
+  top: -15px;
   font-size: 25px;
 }
 
@@ -188,8 +216,21 @@ header>h1 {
   top: 6px;
 }
 
+.subshow-buttons .edit-button {
+  font-size: 17px;
+  color: white;
+  border: none;
+}
+
 .subshow-buttons .delete-button {
   font-size: 17px;
+  color: white;
+}
+
+.subshow-buttons .delete-button i {
+  position: relative;
+  top: -1px;
+  right: 5px;
 }
 
 // Sub-header (deadline and status)
