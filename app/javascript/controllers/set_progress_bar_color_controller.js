@@ -13,6 +13,14 @@ export default class extends Controller {
 
   setColor() {
     const percentage = parseInt(getComputedStyle(this.progressbarTarget).getPropertyValue('--progress-percent'));
-    console.log(percentage);
+    if (percentage <= 25) {
+      this.progressbarTarget.style.setProperty('--progress-color', 'red');
+    } else if (percentage <= 50) {
+      this.progressbarTarget.style.setProperty('--progress-color', 'orange');
+    } else if (percentage <= 75) {
+      this.progressbarTarget.style.setProperty('--progress-color', 'yellow');
+    } else {
+      this.progressbarTarget.style.setProperty('--progress-color', 'green');
+    }
   }
 }
