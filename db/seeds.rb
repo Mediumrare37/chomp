@@ -15,15 +15,15 @@ gui_presentation = User.create!({:email => "guihortinha@test.com", :password => 
 
 puts "Created #{User.count} users!"
 
-travel = Task.new(title: "Travel abroad by myself without any money", deadline: Date.today + 30)
-parcel = Task.new(title: "Send a parcel from Japan to the US", completed: true)
-job = Task.new(title: "Find a job in web development", deadline: Date.today + 20)
-car = Task.new(title: "Fix my 1998 Toyota Camry", deadline: Date.today + 10)
+travel = Task.create!(title: "Travel abroad by myself without any money", deadline: Date.today + 30, user: lucca)
+parcel = Task.create!(title: "Send a parcel from Japan to the US", completed: true, user: lucca)
+job = Task.create!(title: "Find a job in web development", deadline: Date.today + 20, user: lucca)
+car = Task.create!(title: "Fix my 1998 Toyota Camry", deadline: Date.today + 10, user: lucca)
 
-lucca.tasks << [travel, parcel, job, car]
-john.tasks << [travel, parcel, job, car]
-paul.tasks << [travel, parcel, job, car]
-gui_presentation.tasks << [travel, parcel, job, car]
+# lucca.tasks << [travel, parcel, job, car]
+# john.tasks << [travel, parcel, job, car]
+# paul.tasks << [travel, parcel, job, car]
+# gui_presentation.tasks << [travel, parcel, job, car]
 
 # Travel - chask 2 has subchasks, nothing completed
 
@@ -35,35 +35,26 @@ travel.chasks << [
   Chask.new(title: "Use alternative accommodation options'")
   ]
 
-travel.chasks[0].chasks << [
-  Chask.new(title: 'Identify countries or cities with low living costs', status: 'unrequested'),
-  Chask.new(title: 'Look for affordable accommodation options such as hostels or budget hotels', status: 'unrequested'),
-  Chask.new(title: 'Consider destinations with low-cost transportation options', status: 'unrequested')
-]
+  Chask.create!(title: 'Identify countries or cities with low living costs', status: 'unrequested', chask: travel.chasks[0], task: travel)
+  Chask.create!(title: 'Look for affordable accommodation options such as hostels or budget hotels', status: 'unrequested', chask: travel.chasks[0], task: travel)
+  Chask.create!(title: 'Consider destinations with low-cost transportation options', status: 'unrequested', chask: travel.chasks[0], task: travel)
 
-travel.chasks[1].chasks << [
-  Chask.new(title: 'Calculate estimated expenses for accommodation, food, and transportation'),
-  Chask.new(title: 'Set a daily spending limit and track your expenses'),
-  Chask.new(title: 'Look for free or low-cost activities and attractions')
-]
 
-travel.chasks[2].chasks << [
-  Chask.new(title: 'Cut down on unnecessary expenses and save as much as possible', status: 'unrequested'),
-  Chask.new(title: 'Create a savings plan and stick to it', status: 'unrequested'),
-  Chask.new(title: 'Consider taking up temporary jobs or freelancing to earn extra money', status: 'unrequested')
-]
+  Chask.create!(title: 'Calculate estimated expenses for accommodation, food, and transportation', chask: travel.chasks[1], task: travel)
+  Chask.create!(title: 'Set a daily spending limit and track your expenses', chask: travel.chasks[1], task: travel)
+  Chask.create!(title: 'Look for free or low-cost activities and attractions', chask: travel.chasks[1], task: travel)
 
-travel.chasks[3].chasks << [
-  Chask.new(title: 'Look for volunteering programs that offer accommodation and meals', status: 'unrequested'),
-  Chask.new(title: 'Consider volunteering in exchange for room and board', status: 'unrequested'),
-  Chask.new(title: 'Research organizations that provide opportunities for travelers', status: 'unrequested')
-]
+  Chask.create!(title: 'Cut down on unnecessary expenses and save as much as possible', status: 'unrequested', chask: travel.chasks[2], task: travel)
+  Chask.create!(title: 'Create a savings plan and stick to it', status: 'unrequested', chask: travel.chasks[2], task: travel)
+  Chask.create!(title: 'Consider taking up temporary jobs or freelancing to earn extra money', status: 'unrequested', chask: travel.chasks[2], task: travel)
 
-travel.chasks[4].chasks << [
-  Chask.new(title: 'Consider couchsurfing or house-sitting as options for free accommodation', status: 'unrequested'),
-  Chask.new(title: 'Look for opportunities to exchange work for accommodation', status: 'unrequested'),
-  Chask.new(title: 'Connect with locals who may offer a place to stay', status: 'unrequested')
-]
+  Chask.create!(title: 'Look for volunteering programs that offer accommodation and meals', status: 'unrequested', chask: travel.chasks[3], task: travel)
+  Chask.create!(title: 'Consider volunteering in exchange for room and board', status: 'unrequested', chask: travel.chasks[3], task: travel)
+  Chask.create!(title: 'Research organizations that provide opportunities for travelers', status: 'unrequested', chask: travel.chasks[3], task: travel)
+
+  Chask.create!(title: 'Consider couchsurfing or house-sitting as options for free accommodation', status: 'unrequested', chask: travel.chasks[4], task: travel)
+  Chask.create!(title: 'Look for opportunities to exchange work for accommodation', status: 'unrequested', chask: travel.chasks[4], task: travel)
+  Chask.create!(title: 'Connect with locals who may offer a place to stay', status: 'unrequested', chask: travel.chasks[4], task: travel)
 
 # Parcel - no subchasks, all chasks completed
 
@@ -75,35 +66,25 @@ parcel.chasks << [
   Chask.new(title: "Track the shipment and ensure delivery", status: 'completed')
   ]
 
-parcel.chasks[0].chasks << [
-  Chask.new(title: 'Research the prohibited and restricted items for international shipping', status: 'unrequested'),
-  Chask.new(title: 'Ensure compliance with customs requirements and documentation', status: 'unrequested'),
-  Chask.new(title: 'Verify any additional regulations for specific items or materials', status: 'unrequested')
-]
+  Chask.create!(title: 'Research the prohibited and restricted items for international shipping', status: 'unrequested', chask: travel.chasks[0], task: parcel)
+  Chask.create!(title: 'Ensure compliance with customs requirements and documentation', status: 'unrequested', chask: travel.chasks[0], task: parcel)
+  Chask.create!(title: 'Verify any additional regulations for specific items or materials', status: 'unrequested', chask: travel.chasks[0], task: parcel)
 
-parcel.chasks[1].chasks << [
-  Chask.new(title: 'Select appropriate packaging materials based on the contents', status: 'unrequested'),
-  Chask.new(title: 'Use cushioning materials to protect fragile items', status: 'unrequested'),
-  Chask.new(title: 'Seal the package properly to prevent damage or tampering', status: 'unrequested')
-]
+  Chask.create!(title: 'Select appropriate packaging materials based on the contents', status: 'unrequested', chask: travel.chasks[1], task: parcel)
+  Chask.create!(title: 'Use cushioning materials to protect fragile items', status: 'unrequested', chask: travel.chasks[1], task: parcel)
+  Chask.create!(title: 'Seal the package properly to prevent damage or tampering', status: 'unrequested', chask: travel.chasks[1], task: parcel)
 
-parcel.chasks[2].chasks << [
-  Chask.new(title: 'Compare different shipping services and their features', status: 'unrequested'),
-  Chask.new(title: 'Consider factors like speed, cost, and tracking options', status: 'unrequested'),
-  Chask.new(title: 'Select a reliable carrier with a good track record', status: 'unrequested'),
-]
+  Chask.create!(title: 'Compare different shipping services and their features', status: 'unrequested', chask: travel.chasks[2], task: parcel)
+  Chask.create!(title: 'Consider factors like speed, cost, and tracking options', status: 'unrequested', chask: travel.chasks[2], task: parcel)
+  Chask.create!(title: 'Select a reliable carrier with a good track record', status: 'unrequested', chask: travel.chasks[2], task: parcel)
 
-parcel.chasks[3].chasks << [
-  Chask.new(title: 'Provide accurate sender and recipient information', status: 'unrequested'),
-  Chask.new(title: 'Include a detailed description of the parcel contents', status: 'unrequested'),
-  Chask.new(title: 'Complete any customs forms or declarations', status: 'unrequested')
-]
+  Chask.create!(title: 'Provide accurate sender and recipient information', status: 'unrequested', chask: travel.chasks[3], task: parcel)
+  Chask.create!(title: 'Include a detailed description of the parcel contents', status: 'unrequested', chask: travel.chasks[3], task: parcel)
+  Chask.create!(title: 'Complete any customs forms or declarations', status: 'unrequested', chask: travel.chasks[3], task: parcel)
 
-parcel.chasks[4].chasks << [
-  Chask.new(title: 'Obtain a tracking number and monitor the progress online', status: 'unrequested'),
-  Chask.new(title: 'Contact the carrier if there are any delays or issues', status: 'unrequested'),
-  Chask.new(title: 'Confirm the delivery with the recipient', status: 'unrequested')
-]
+  Chask.create!(title: 'Obtain a tracking number and monitor the progress online', status: 'unrequested', chask: travel.chasks[4], task: parcel)
+  Chask.create!(title: 'Contact the carrier if there are any delays or issues', status: 'unrequested', chask: travel.chasks[4], task: parcel)
+  Chask.create!(title: 'Confirm the delivery with the recipient', status: 'unrequested', chask: travel.chasks[4], task: parcel)
 
 # Job - subchasks on chask 2, different status
 
@@ -115,35 +96,25 @@ job.chasks << [
   Chask.new(title: "Apply to web development job openings")
 ]
 
-job.chasks[0].chasks << [
-  Chask.new(title: 'Add recent web development projects and experiences', status: 'unrequested'),
-  Chask.new(title: 'Highlight relevant skills like HTML, CSS, and JavaScript', status: 'unrequested'),
-  Chask.new(title: 'Include links to your GitHub or portfolio website', status: 'unrequested'),
-]
+  Chask.create!(title: 'Add recent web development projects and experiences', status: 'unrequested', chask: travel.chasks[0], task: job)
+  Chask.create!(title: 'Highlight relevant skills like HTML, CSS, and JavaScript', status: 'unrequested', chask: travel.chasks[0], task: job)
+  Chask.create!(title: 'Include links to your GitHub or portfolio website', status: 'unrequested', chask: travel.chasks[0], task: job)
 
-job.chasks[1].chasks << [
-  Chask.new(title: 'Identify in-demand web development technologies and frameworks', status: 'queued'),
-  Chask.new(title: 'Explore job boards and websites for web development positions', status: 'paused'),
-  Chask.new(title: 'Stay updated on industry news and emerging trends', status: 'queued')
-]
+  Chask.create!(title: 'Identify in-demand web development technologies and frameworks', status: 'queued', chask: travel.chasks[1], task: job)
+  Chask.create!(title: 'Explore job boards and websites for web development positions', status: 'paused', chask: travel.chasks[1], task: job)
+  Chask.create!(title: 'Stay updated on industry news and emerging trends', status: 'queued', chask: travel.chasks[1], task: job)
 
-job.chasks[2].chasks << [
-  Chask.new(title: 'Attend web development meetups and networking events', status: 'unrequested'),
-  Chask.new(title: 'Connect with web developers on professional social platforms', status: 'unrequested'),
-  Chask.new(title: 'Seek mentorship or advice from experienced professionals', status: 'unrequested')
-]
+  Chask.create!(title: 'Attend web development meetups and networking events', status: 'unrequested', chask: travel.chasks[2], task: job)
+  Chask.create!(title: 'Connect with web developers on professional social platforms', status: 'unrequested', chask: travel.chasks[2], task: job)
+  Chask.create!(title: 'Seek mentorship or advice from experienced professionals', status: 'unrequested', chask: travel.chasks[2], task: job)
 
-job.chasks[3].chasks << [
-  Chask.new(title: 'Practice coding exercises and algorithms in JavaScript', status: 'unrequested'),
-  Chask.new(title: 'Review web development concepts and best practices', status: 'unrequested'),
-  Chask.new(title: 'Brush up on common interview questions and problem-solving techniques', status: 'unrequested'),
-]
+  Chask.create!(title: 'Practice coding exercises and algorithms in JavaScript', status: 'unrequested', chask: travel.chasks[3], task: job)
+  Chask.create!(title: 'Review web development concepts and best practices', status: 'unrequested', chask: travel.chasks[3], task: job)
+  Chask.create!(title: 'Brush up on common interview questions and problem-solving techniques', status: 'unrequested', chask: travel.chasks[3], task: job)
 
-job.chasks[4].chasks << [
-  Chask.new(title: 'Tailor your resume and cover letter for each application', status: 'unrequested'),
-  Chask.new(title: 'Submit your application through online job portals or company websites', status: 'unrequested'),
-  Chask.new(title: 'Follow up with potential employers after submitting your application', status: 'unrequested')
-]
+  Chask.create!(title: 'Tailor your resume and cover letter for each application', status: 'unrequested', chask: travel.chasks[4], task: job)
+  Chask.create!(title: 'Submit your application through online job portals or company websites', status: 'unrequested', chask: travel.chasks[4], task: job)
+  Chask.create!(title: 'Follow up with potential employers after submitting your application', status: 'unrequested', chask: travel.chasks[4], task: job)
 
 # Car
 
@@ -151,38 +122,28 @@ car.chasks << [
   Chask.new(title: "Diagnose the issues", status: 'completed'),
   Chask.new(title: "Repair or replace faulty components", status: 'completed'),
   Chask.new(title: "Perform regular maintenance", status: 'completed'),
-  Chask.new(title: "Prepare for technical interviews", status: 'excluded'),
-  Chask.new(title: "Apply to web development job openings", status: 'paused')
+  Chask.new(title: "Check and refill fluids", status: 'excluded'),
+  Chask.new(title: "Ensure proper alignment and balances", status: 'paused')
 ]
 
-car.chasks[0].chasks << [
-  Chask.new(title: 'Perform a comprehensive inspection of the vehicle', status: 'unrequested'),
-  Chask.new(title: 'Identify any warning signs or symptoms of malfunction', status: 'unrequested'),
-  Chask.new(title: 'Use diagnostic tools to retrieve error codes (if applicable)', status: 'unrequested')
-]
+  Chask.create!(title: 'Perform a comprehensive inspection of the vehicle', status: 'unrequested', chask: travel.chasks[0], task: car)
+  Chask.create!(title: 'Identify any warning signs or symptoms of malfunction', status: 'unrequested', chask: travel.chasks[0], task: car)
+  Chask.create!(title: 'Use diagnostic tools to retrieve error codes (if applicable)', status: 'unrequested', chask: travel.chasks[0], task: car)
 
-car.chasks[1].chasks << [
-  Chask.new(title: 'Fix or replace malfunctioning engine parts', status: 'unrequested'),
-  Chask.new(title: 'Repair or replace worn-out brakes, suspension, or steering components', status: 'unrequested'),
-  Chask.new(title: 'Address electrical issues and faulty wiring', status: 'unrequested')
-]
+  Chask.create!(title: 'Fix or replace malfunctioning engine parts', status: 'unrequested', chask: travel.chasks[1], task: car)
+  Chask.create!(title: 'Repair or replace worn-out brakes, suspension, or steering components', status: 'unrequested', chask: travel.chasks[1], task: car)
+  Chask.create!(title: 'Address electrical issues and faulty wiring', status: 'unrequested', chask: travel.chasks[1], task: car)
 
-car.chasks[2].chasks << [
-  Chask.new(title: 'Change the engine oil and oil filter', status: 'unrequested'),
-  Chask.new(title: 'Replace the air filter and spark plugs', status: 'unrequested'),
-  Chask.new(title: 'Inspect and rotate the tires, and check the tire pressure', status: 'unrequested')
-]
+  Chask.create!(title: 'Change the engine oil and oil filter', status: 'unrequested', chask: travel.chasks[2], task: car)
+  Chask.create!(title: 'Replace the air filter and spark plugs', status: 'unrequested', chask: travel.chasks[2], task: car)
+  Chask.create!(title: 'Inspect and rotate the tires, and check the tire pressure', status: 'unrequested', chask: travel.chasks[2], task: car)
 
-car.chasks[3].chasks << [
-  Chask.new(title: 'Inspect the coolant, brake fluid, and transmission fluid levels', status: 'unrequested'),
-  Chask.new(title: 'Refill or replace fluids as needed', status: 'unrequested'),
-  Chask.new(title: 'Flush and replace old coolant or brake fluid if necessary', status: 'unrequested'),
-]
+  Chask.create!(title: 'Inspect the coolant, brake fluid, and transmission fluid levels', status: 'unrequested', chask: travel.chasks[3], task: car)
+  Chask.create!(title: 'Refill or replace fluids as needed', status: 'unrequested', chask: travel.chasks[3], task: car)
+  Chask.create!(title: 'Flush and replace old coolant or brake fluid if necessary', status: 'unrequested', chask: travel.chasks[3], task: car)
 
-car.chasks[4].chasks << [
-  Chask.new(title: 'Check the wheel alignment and adjust if needed', status: 'unrequested'),
-  Chask.new(title: 'Balance the tires to prevent uneven wear', status: 'unrequested'),
-  Chask.new(title: 'Inspect and replace worn-out or damaged suspension components', status: 'unrequested')
-]
+  Chask.create!(title: 'Check the wheel alignment and adjust if needed', status: 'unrequested', chask: travel.chasks[4], task: car)
+  Chask.create!(title: 'Balance the tires to prevent uneven wear', status: 'unrequested', chask: travel.chasks[4], task: car)
+  Chask.create!(title: 'Inspect and replace worn-out or damaged suspension components', status: 'unrequested', chask: travel.chasks[4], task: car)
 
 puts "Compleed seeding"
