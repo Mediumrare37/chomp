@@ -16,7 +16,8 @@
     color: $dreamy-yellow;
   }
 
-  h1 {
+  .header-login h1 {
+    color: $dreamy-yellow;
     padding: 0;
     margin: 0;
 
@@ -37,6 +38,38 @@
       size: 1.25rem;
     }
   }
+}
+
+.header-login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-sign-out-buttons {
+  font-size: 0.7em;
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-button {
+  text-decoration: underline;
+}
+
+.sign-up-button {
+  padding: 0.4rem;
+  // background: $dreamy-yellow;
+  border: 2px solid $dreamy-yellow;
+  border-radius: 10px;
+}
+
+.logout-button {
+  border: 0px solid transparent;
+  background: transparent;
+  color: white;
+  text-decoration: underline;
 }
 
 h3 {
