@@ -1,63 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>User Profile</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    /* Additional CSS styles */
-    body {
-      padding: 20px;
-      background-color: #231855; /* Background color */
-      font-family: "Audiowide", sans-serif; /* Audiowide font */
-    }
-
-    .card {
-      background-color: #871CDE; /* Dark space purple background color */
-    }
-
-    .card-body {
-      color: white; /* Text color */
-    }
-
-    .card-body h1 {
-      color: #FDE700; /* Guilherme Hortinha text color */
-    }
-
-    .card-body label {
-      color: #FDE700; /* "Email:" and "Bio:" text color */
-    }
-
-    img {
-      width: 100%;
-    }
-
-  </style>
-</head>
-<body>
-<div id="stars"></div>
-    <div id="stars2"></div><div id="stars3"></div>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <h1 class="card-title text-center">Guilherme Hortinha</h1>
-           <%= image_tag "57235115.jpg" %>
-            <div class="form-group">
-              <label>Email:</label>
-              <p>Guilherme@lewagon.com</p>
-            </div>
-            <div class="form-group">
-              <label>Bio:</label>
-              <p class="form-control-static">I love to code everyday! I love Le wagon, it's gucci </p>
-            </div>
+<div class="container">
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title text-center">Guilherme Hortinha</h1>
+          <%= image_tag "57235115.jpg" %>
+          <div class="form-group">
+            <label>Email:</label>
+            <p>Guilherme@lewagon.com</p>
+          </div>
+          <div class="form-group">
+            <label>Bio:</label>
+            <p class="form-control-static">I'm no longer a procrastinator!</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- Bootstrap JS (place it before the closing body tag for better performance) -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
